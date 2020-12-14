@@ -1,0 +1,17 @@
+@import "./color";
+
+$base-font-size: 15px;
+
+@mixin project_orignal_font {
+  font-family: Ubuntu, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+@mixin base_font_family {
+  font-family: Ubuntu, -apple-system, sans-serif, Segoe UI, Roboto;
+}
+
+@mixin base_font {
+  @include base_font_family;
+  font-size: $base-font-size;
+}

@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+
+.flex-col {
+  @extend .d-flex;
+  @extend .flex-column;
+}
+
+.flex-row {
+  @extend .d-flex;
+  @extend .flex-row;
+}

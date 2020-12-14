@@ -1,0 +1,29 @@
+@import "../styles/index.scss";
+
+.mainContainer {
+  background-color: $white;
+  display: flex;
+  z-index: 1;
+
+  .a_primary {
+    margin: 10px;
+    font-weight: bold;
+  }
+
+  .a_secondary {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-right: 10px;
+  }
+
+  a {
+    color: $secondary-text-color;
+    text-decoration: none;
+    font-size: 1.2em;
+
+    @include tablet {
+      font-size: 1.6em;
+    }
+  }
+}

@@ -4,27 +4,6 @@
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "dependencies": {
-    "gatsby": "^2.26.1",
-    "gatsby-image": "^2.5.0",
-    "gatsby-plugin-manifest": "^2.6.1",
-    "gatsby-plugin-offline": "^3.4.0",
-    "gatsby-plugin-react-helmet": "^3.4.0",
-    "gatsby-plugin-sharp": "^2.8.0",
-    "gatsby-source-filesystem": "^2.5.0",
-    "gatsby-transformer-sharp": "^2.6.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0"
-  },
-  "devDependencies": {
-    "prettier": "2.1.2"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -34,11 +13,54 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.12.0",
+    "bootstrap": "^4.5.3",
+    "expo": "^36.0.2",
+    "gatsby": "^2.26.1",
+    "gatsby-image": "^2.5.0",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-manifest": "^2.6.1",
+    "gatsby-plugin-offline": "^3.4.0",
+    "gatsby-plugin-react-helmet": "^3.4.0",
+    "gatsby-plugin-react-native-web": "^3.0.0-beta.7",
+    "gatsby-plugin-sass": "^2.7.0",
+    "gatsby-plugin-sharp": "^2.8.0",
+    "gatsby-plugin-styled-components": "^3.6.0",
+    "gatsby-source-filesystem": "^2.5.0",
+    "gatsby-transformer-sharp": "^2.6.0",
+    "node-sass": "^4.14.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-gesture-handler": "https://github.com/software-mansion/react-native-gesture-handler.git#95bfb4df7ce9b1e222d50ead99eee7e27cd79043",
+    "react-native-web": "^0.11.7",
+    "react-spring": "^8.0.27",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/react-native": "^0.63.37",
+    "@types/styled-components": "^5.1.5",
+    "prettier": "2.1.2"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ]
 }
