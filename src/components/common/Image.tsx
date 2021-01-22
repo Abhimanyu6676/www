@@ -26,7 +26,7 @@ const Image = ({
         return <div>Picture not found</div>
     }
 
-    return <Img style={{ width: 100, ...style }} fluid={imgData.placeholderImage.childImageSharp.fluid} />
+    return <Img style={{ width: 100, height: "auto", ...style }} fluid={imgData.placeholderImage.childImageSharp.fluid} />
 }
 
 export default Image

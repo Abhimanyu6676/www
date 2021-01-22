@@ -1,0 +1,33 @@
+@import "../styles/index.scss";
+
+.mainContainer {
+  background-color: $white;
+  justify-content: space-around;
+
+  a {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $secondary-text-color;
+  }
+
+  .sec1 {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sec2 {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sec3 {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

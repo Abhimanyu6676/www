@@ -1,0 +1,1 @@
+{"ast":null,"code":"var a = 1;","map":{"version":3,"sources":["C:/Users/admin/react/Website/web/.cache/dummy.js"],"names":["a"],"mappings":"AAEA,IAAMA,CAAC,GAAG,CAAV","sourcesContent":["// Dummy file to work around a webpack hot reloading bug.\n// eslint-disable-next-line\nconst a = 1\n"]},"metadata":{},"sourceType":"script"}

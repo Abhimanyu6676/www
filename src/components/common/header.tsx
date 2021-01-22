@@ -1,55 +1,62 @@
-import { Link, useStaticQuery, graphql } from "gatsby"
-import PropTypes from "prop-types"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
-import { View, Dimensions } from "react-native"
+import { Container, Row, Col } from "react-bootstrap"
+import { Dimensions } from "react-native"
+import { animated, useSpring } from 'react-spring'
+import { AntDesign, MaterialIcons } from '@expo/vector-icons'
 import Image from "./Image"
-import { useSpring, animated } from 'react-spring'
-//@ts-ignore
-import styles from "./header.module.scss"
+import styles from "./_header.module.scss"
+
 
 const primaryMenu = ["Connected You", "Store", "App", "About Us"]
 const SecondaryMenu = ["HUElite Community", "Blog", "Support"]
 
 
-const { width, height } = Dimensions.get("window")
-const Header = ({ siteTitle }) => {
+const Icon = () => {
   return (
-    <div className={styles.mainContainer}>
-      <Link to="/">
-        <Image
-          imgData={useStaticQuery(graphql`
-        query {
-            placeholderImage: file(relativePath: { eq: "icon/icon.png" }) {
-                childImageSharp {
-                    fluid(maxWidth: 300) {
-                        ...GatsbyImageSharpFluid
-                    }
+    <Link to="/">
+      <Image
+        imgData={useStaticQuery(graphql`
+    query {
+        placeholderImage: file(relativePath: { eq: "icon/icon.png" }) {
+            childImageSharp {
+                fluid(maxWidth: 300) {
+                    ...GatsbyImageSharpFluid
                 }
             }
-        }`)}
-          style={{ zIndex: 100 }}
-        />
-      </Link>
-      <div style={{ backgroundColor: "#fff", flex: 1, height: 100, display: "flex" }}>
-        {width > 480 &&
-          <div style={{ backgroundColor: "#fff", display: "flex", flexDirection: "column", flex: 1, }}>
-            <div style={{ backgroundColor: "#fff", display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+        }
+    }`)}
+        style={{ zIndex: 1, width: 80 }}
+      />
+    </Link>
+  )
+}
+
+const { width, height } = Dimensions.get("window")
+const Header = ({ siteTitle = "" }) => {
+  return (
+    <div className={styles.Container}>
+      <Icon />
+      <Container fluid className="">
+        {width > 600 &&
+          <Container className=" my-auto">
+            <div className="-flex-row- -jus-fe-">
               {SecondaryMenu.map((item, index) => {
                 return (
-                  <Link className={styles.a_secondary} to={"/" + item.split(" ").join("").toLowerCase()}>{item}</Link>
+                  <Link className="-mt-10- -mr-10-" to={"/" + item.split(" ").join("").toLowerCase()}><h6>{item}</h6></Link>
                 )
               })}
             </div>
-            <div style={{ backgroundColor: "#fff", display: "flex", justifyContent: "flex-end", alignItems: "flex-start" }}>
+            <div className=" -flex-row- -jus-fe-">
               {primaryMenu.map((item, index) => {
                 return (
-                  <Link className={styles.a_primary} to={"/" + item.split(" ").join("").toLowerCase()}>{item}</Link>
+                  <Link className="-mt-10- -mr-10- " to={"/" + item.split(" ").join("").toLowerCase()}><h3>{item}</h3></Link>
                 )
               })}
             </div>
-          </div>}
+          </Container>}
         <MobileHeaderContainer />
-      </div>
+      </Container>
     </div>
   )
 }
@@ -59,35 +66,62 @@ interface MobileHeaderContainerProps {
 }
 const MobileHeaderContainer = ({ }: MobileHeaderContainerProps) => {
   const [state, setState] = useState(false)
-  const animationStyle = useSpring({ top: state ? 100 : -height })
+  const animationStyle = useSpring({ top: state ? 0 : -height })
 
 
-  if (width <= 480)
+  if (width <= 600)
     return (
       <>
         <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", backgroundColor: "#fff", flex: 99, height: "100%" }}>
-          <div style={{ height: 50, width: 50, backgroundColor: "#00f", marginRight: 15 }} onClick={() => {
+          <div style={{ marginRight: 15 }} onClick={() => {
             setState(!state)
           }}>
+            <MaterialIcons name="menu" size={30} color="#555" />
           </div>
         </div>
-
         {/* Sec: Absolute Container */}
-        <animated.div style={{ backgroundColor: "#eee", height: height, width: "100vw", position: "absolute", top: 100, left: 0, zIndex: 1, ...animationStyle }}>
-
+        <animated.div style={{
+          backgroundColor: "#fff",
+          minHeight: height,
+          width: "100vw",
+          position: "absolute",
+          left: 0,
+          zIndex: 100,
+          ...animationStyle
+        }}>
+          <Container>
+            <Row className="-jus-sb- -aln-c-">
+              <Icon />
+              <div className="-mr-20-" onClick={() => {
+                setState(!state)
+              }}>
+                <AntDesign name="close" size={30} color="black" />
+              </div>
+            </Row>
+          </Container>
+          <div style={{ marginTop: "10vh", marginLeft: "5vw", marginRight: "5vw" }}>
+            <Row style={{ height: "50vh", }}>
+              <Col className="-flex-col- -jus-sa-" style={{ flex: 1 }}>
+                {primaryMenu.map((item, index) => {
+                  return (
+                    <Link className="" to={"/" + item.split(" ").join("").toLowerCase()}><h3 >{item}</h3></Link>
+                  )
+                })}
+              </Col>
+              <Col className="-flex-col- -jus-sa- -aln-fe-" style={{ marginTop: "8vh", marginBottom: "8vh" }}>
+                {SecondaryMenu.map((item, index) => {
+                  return (
+                    <Link className="" to={"/" + item.split(" ").join("").toLowerCase()}><h6>{item}</h6></Link>
+                  )
+                })}
+              </Col>
+            </Row>
+          </div>
         </animated.div>
 
       </>
     )
   return (<></>)
-}
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Header

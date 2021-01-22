@@ -1,0 +1,11 @@
+@import "../styles/index.scss";
+
+.Container {
+  background-color: $white;
+  display: flex;
+  z-index: 100;
+
+  a {
+    color: $secondary-text-color;
+  }
+}

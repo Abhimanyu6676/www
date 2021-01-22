@@ -1,9 +1,11 @@
-import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
+import React from "react"
 import { Footer } from "./footer"
-import "./layout.scss"
+import Header from "./header"
+import "./_layout.scss"
+
+
 
 
 interface props {
@@ -21,7 +23,7 @@ const Layout = ({ children }: props) => {
   `)
 
   return (
-    <div>
+    <div style={{ width: "100%", overflow: "hidden" }}>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       {children}
       <Footer />

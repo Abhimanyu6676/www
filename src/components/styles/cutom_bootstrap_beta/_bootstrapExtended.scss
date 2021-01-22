@@ -1,0 +1,374 @@
+@import "./_beta_helper.scss";
+
+$breakpoints: (
+  xs: --xs,
+  sm: --sm,
+  md: --md,
+  lg: --lg,
+  xl: --xl,
+);
+$specifiers: (
+  only: "",
+  up: -up,
+  dn: -dn,
+);
+$bgclVector: (
+  #fff: "fff",
+  #f00: "f00",
+  #0f0: "0f0",
+  #00f: "00f",
+  #f0f: "f0f",
+  #0ff: "0ff",
+  #ff0: "ff0",
+  #000: "000",
+);
+$txtAlignVector: (
+  center: c,
+  right: r,
+  left: l,
+);
+$positionVector: (
+  flex-start: fs,
+  flex-end: fe,
+  space-between: sb,
+  space-around: sa,
+  space-evenly: se,
+  center: c,
+);
+$alignVector: (
+  flex-start: fs,
+  flex-end: fe,
+  center: c,
+);
+$flexContainerVector: (
+  row: row,
+  column: col,
+);
+
+$marginVector: (
+  margin: (
+    propertyPrefix: m-,
+    properties: (
+      margin,
+    ),
+  ),
+  margin-vertival: (
+    propertyPrefix: my-,
+    properties: (
+      margin-top,
+      margin-bottom,
+    ),
+  ),
+  margin-horizontal: (
+    propertyPrefix: mx-,
+    properties: (
+      margin-left,
+      margin-right,
+    ),
+  ),
+  margin-left: (
+    propertyPrefix: ml-,
+    properties: (
+      margin-left,
+    ),
+  ),
+  margin-right: (
+    propertyPrefix: mr-,
+    properties: (
+      margin-right,
+    ),
+  ),
+  margin-top: (
+    propertyPrefix: mt-,
+    properties: (
+      margin-top,
+    ),
+  ),
+  margin-bottom: (
+    propertyPrefix: mb-,
+    properties: (
+      margin-bottom,
+    ),
+  ),
+);
+
+$paddingVector: (
+  padding: (
+    propertyPrefix: p-,
+    properties: (
+      padding,
+    ),
+  ),
+  padding-vertival: (
+    propertyPrefix: py-,
+    properties: (
+      padding-top,
+      padding-bottom,
+    ),
+  ),
+  padding-horizontal: (
+    propertyPrefix: px-,
+    properties: (
+      padding-left,
+      padding-right,
+    ),
+  ),
+  padding-left: (
+    propertyPrefix: pl-,
+    properties: (
+      padding-left,
+    ),
+  ),
+  padding-right: (
+    propertyPrefix: pr-,
+    properties: (
+      padding-right,
+    ),
+  ),
+  padding-top: (
+    propertyPrefix: pt-,
+    properties: (
+      padding-top,
+    ),
+  ),
+  padding-bottom: (
+    propertyPrefix: pb-,
+    properties: (
+      padding-bottom,
+    ),
+  ),
+);
+
+@mixin addBaseProperties {
+  background-color: white;
+}
+
+@mixin addBaseFlexProperties {
+  display: flex;
+}
+
+@mixin addBaseCss($_addBaseFlexProperties, $_addBaseProperties) {
+  @if $_addBaseFlexProperties == true {
+    @include addBaseFlexProperties;
+  }
+  @if $_addBaseProperties == true {
+    @include addBaseProperties;
+  }
+}
+
+@mixin getBreakpointSpecific(
+  $breakpoint,
+  $specifier,
+  $_addBaseFlexProperties,
+  $_addBaseProperties
+) {
+  @if $specifier== only {
+    @include media-breakpoint-only($breakpoint) {
+      @include addBaseCss($_addBaseFlexProperties, $_addBaseProperties);
+      @content;
+    }
+  } @else if $specifier==dn {
+    @if $breakpoint ==xl {
+      @include addBaseCss($_addBaseFlexProperties, $_addBaseProperties);
+      @content;
+    } @else {
+      @include media-breakpoint-down($breakpoint) {
+        @include addBaseCss($_addBaseFlexProperties, $_addBaseProperties);
+        @content;
+      }
+    }
+  } @else if $specifier==up {
+    @include media-breakpoint-up($breakpoint) {
+      @include addBaseCss($_addBaseFlexProperties, $_addBaseProperties);
+      @content;
+    }
+  } @else {
+    @include addBaseCss($_addBaseFlexProperties, $_addBaseProperties);
+    @content;
+  }
+}
+/** 
+    @param - 
+        property - CSS property
+        propertyPrefix - CSS style class Attribute Prefex for selector
+*/
+@mixin getAtt(
+  $propertyAtt,
+  $propertyPrefix,
+  $valuesVector,
+  $_addBaseFlexProperties: false,
+  $_addBaseProperties: false
+) {
+  @each $Val, $suffix in $valuesVector {
+    .-#{$propertyPrefix}#{$suffix}- {
+      @include getBreakpointSpecific(
+        "",
+        "",
+        $_addBaseFlexProperties,
+        $_addBaseProperties
+      ) {
+        @each $_propertyAtt in $propertyAtt {
+          #{$_propertyAtt}: #{$Val};
+        }
+      }
+    }
+    @each $breakpointType, $breakpointSuffix in $breakpoints {
+      @each $specifierName, $specifierSuffix in $specifiers {
+        .-#{$propertyPrefix}#{$suffix}#{$breakpointSuffix}#{$specifierSuffix}- {
+          @include getBreakpointSpecific(
+            $breakpointType,
+            $specifierName,
+            $_addBaseFlexProperties,
+            $_addBaseProperties
+          ) {
+            @each $_propertyAtt in $propertyAtt {
+              #{$_propertyAtt}: #{$Val};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin getDimensionalAtt($map) {
+  $keys: ();
+  @for $i from 0 through 5 {
+    $keys: append($keys, (#{($i * 10)}#{"px"}, $i * 10));
+  }
+  @each $property, $propertyContainer in $map {
+    $propertyPrefix: get("propertyPrefix", $propertyContainer);
+    $properties: get("properties", $propertyContainer);
+    @include getAtt($properties, $propertyPrefix, $keys);
+  }
+}
+
+@include getAtt(text-align, txt-, $txtAlignVector);
+@include getAtt(background-color, bg-, $bgclVector);
+@include getAtt(justify-content, jus-, $positionVector);
+@include getAtt(align-items, aln-, $alignVector);
+@include getAtt(flex-direction, flex-, $flexContainerVector, true, false);
+@include getDimensionalAtt($marginVector);
+@include getDimensionalAtt($paddingVector);
+
+// $breakpoints: (xs, sm, md);
+// $specifiers: (only, up, dn);
+// $positionAttVector: (
+//   flex-start,
+//   flex-end,
+//   flex-between,
+//   flex-around,
+//   flex-evenly,
+//   center
+// );
+// $alignmentAttVector: (flex-start, flex-end, center);
+// $containerAttVector: (row, column);
+
+// @mixin getAttVauleAtBreakpoint($breakpoint, $specifier) {
+//   @if $specifier==only {
+//     @include media-breakpoint-only($breakpoint) {
+//       @content;
+//     }
+//   } @else if $specifier==dn {
+//     @include media-breakpoint-down($breakpoint) {
+//       @content;
+//     }
+//   } @else if $specifier==up {
+//     @include media-breakpoint-up($breakpoint) {
+//       @content;
+//     }
+//   } @else {
+//     @content;
+//   }
+// }
+
+// @each $breakpoint in $breakpoints {
+//   @each $specifier in $specifiers {
+//     @each $positionAtt in $positionAttVector {
+//       %temp-pos-#{$positionAtt} {
+//         @include getAttVauleAtBreakpoint("", "") {
+//           justify-content: $positionAtt;
+//         }
+//       }
+//       %temp-pos-#{$positionAtt}-#{$breakpoint}-#{$specifier} {
+//         @include getAttVauleAtBreakpoint($breakpoint, $specifier) {
+//           justify-content: $positionAtt;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @each $breakpoint in $breakpoints {
+//   @each $specifier in $specifiers {
+//     @each $alignmentAtt in $alignmentAttVector {
+//       %temp-align-#{$alignmentAtt} {
+//         @include getAttVauleAtBreakpoint("", "") {
+//           align-items: $alignmentAtt;
+//         }
+//       }
+//       %temp-align-#{$alignmentAtt}-#{$breakpoint}-#{$specifier} {
+//         @include getAttVauleAtBreakpoint($breakpoint, $specifier) {
+//           align-items: $alignmentAtt;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @each $breakpoint in $breakpoints {
+//   @each $specifier in $specifiers {
+//     @each $containerAtt in $containerAttVector {
+//       %temp-flexDir-#{$containerAtt} {
+//         @include getAttVauleAtBreakpoint("", "") {
+//           flex-direction: $containerAtt;
+//         }
+//       }
+//       %temp-flexDir-#{$containerAtt}-#{$breakpoint}-#{$specifier} {
+//         @include getAttVauleAtBreakpoint($breakpoint, $specifier) {
+//           flex-direction: $containerAtt;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .flex {
+//   display: flex;
+// }
+
+// @each $containerAtt in $containerAttVector {
+//   .#{$containerAtt} {
+//     @extend %temp-flexDir-#{$containerAtt};
+//     @extend .flex;
+//   }
+//   @each $positionAtt in $positionAttVector {
+//     @each $alignmentAtt in $alignmentAttVector {
+//       .#{$containerAtt}-#{$positionAtt}-#{$alignmentAtt} {
+//         @extend %temp-align-#{$alignmentAtt};
+//         @extend %temp-pos-#{$positionAtt};
+//         @extend %temp-flexDir-#{$containerAtt};
+//         @extend .flex;
+//       }
+
+//       @each $breakpoint in $breakpoints {
+//         @each $specifier in $specifiers {
+//           .#{$containerAtt}-#{$positionAtt}-#{$alignmentAtt}-#{$breakpoint}-#{$specifier} {
+//             @extend %temp-align-#{$alignmentAtt}-#{$breakpoint}-#{$specifier};
+//             @extend %temp-pos-#{$positionAtt}-#{$breakpoint}-#{$specifier};
+//             @extend %temp-flexDir-#{$containerAtt}-#{$breakpoint}-#{$specifier};
+//             @extend .flex;
+//           }
+//           // @for $i from 0 through 5 {
+//           //   .#{$containerAtt}-#{$positionAtt}-#{$alignmentAtt}-#{$breakpoint}-#{$specifier}-#{"pl"}_#{$i} {
+//           //     @extend %temp-align-#{$alignmentAtt}-#{$breakpoint}-#{$specifier};
+//           //     @extend %temp-pos-#{$positionAtt}-#{$breakpoint}-#{$specifier};
+//           //     @extend %temp-flexDir-#{$containerAtt}-#{$breakpoint}-#{$specifier};
+//           //     @extend .flex;
+//           //   }
+//           // }
+//         }
+//       }
+//     }
+//   }
+// }
