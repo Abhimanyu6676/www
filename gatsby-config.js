@@ -1,6 +1,7 @@
 
 const autoprefixer = require("autoprefixer")
 module.exports = {
+  pathPrefix: "/web",
   flags: {
     FAST_REFRESH: true
   },
