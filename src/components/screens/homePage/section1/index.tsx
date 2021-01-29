@@ -1,12 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from "gatsby-image";
-import React from 'react';
-import { Dimensions } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Dimensions, View } from 'react-native';
 import styles from "./index.module.scss";
 
 
 
-const { width } = Dimensions.get("window")
 interface Props { }
 export default (props: Props) => {
   const data = useStaticQuery(graphql`
@@ -65,6 +64,18 @@ const OverlaySection = () => {
     if (!highlighter.classList.contains(styles.highlighter_appear))
       highlighter.classList.add(styles.highlighter_appear)
   }
+  const [width, setWidth] = useState(0)
+  const ref = useRef(undefined)
+
+
+  useEffect(() => {
+    if (ref.current) {
+      console.log("-----width :: " + ref.current.offsetWidth)
+      setWidth(ref.current.offsetWidth)
+    }
+    return () => {
+    }
+  }, [ref.current])
   return (
     <div
       style={{
@@ -73,7 +84,8 @@ const OverlaySection = () => {
         left: 0,
         width: "100%",
         height: "100%",
-      }} >
+      }}
+      ref={ref}>
       {/* Sec: Main OverLay */}
       <div
         id="homeSec1_Overlay"
@@ -87,7 +99,7 @@ const OverlaySection = () => {
         }}>
         <div className={styles.overlay} />
         <div className={styles.sec1TextContainer}>
-          <h1 style={{ filter: "drop-shadow(2px 2px 2px #ffffff)" }}> Decorating Spaces</h1>
+          <h1 style={{ filter: "drop-shadow(1px 1px 1px #ffffff)" }}>Decorating Spaces</h1>
         </div>
       </div>
       {/* Sec: Button Indigator */}

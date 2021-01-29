@@ -1,0 +1,29 @@
+@import "../../styles/index.scss";
+@import "../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+.contentContainer {
+  //backgroundColor: "white",
+  position: absolute;
+  bottom: 25%;
+  z-index: 2;
+  max-width: 85%;
+
+  @include media-breakpoint-up(sm) {
+    bottom: 20%;
+    max-width: 50%;
+  }
+}
+
+.left_placed {
+  @include media-breakpoint-down(xs) {
+    left: 5%;
+  }
+  left: 10%;
+}
+.right_placed {
+  @include media-breakpoint-down(xs) {
+    right: 5%;
+  }
+  right: 10%;
+}

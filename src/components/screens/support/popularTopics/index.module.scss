@@ -1,0 +1,29 @@
+@import "../../../styles/index.scss";
+@import "../../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+._container {
+  //background-color: red;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.popularTopicCard {
+  background-color: #eee;
+  border-radius: 10px;
+  margin-top: 25px;
+  width: 100%;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+
+  @include media-breakpoint-up(sm) {
+    width: 40%;
+  }
+}
+
+.popularTopicCard:hover {
+  transform: scale(1.05);
+}

@@ -191,6 +191,20 @@ $paddingVector: (
     @param - 
         property - CSS property
         propertyPrefix - CSS style class Attribute Prefex for selector
+        valuesVector - vector containing propertyValue and propertyValue suffix
+        _addBaseFlexProperties - `optional`
+        _addBaseProperties - `optional`
+
+
+    @output 1 - without breakpoints
+        format    =>    '-' + `propertyPrefix` + `propertySuffix` + '-'
+        example   -txt-c-         (`text-align` as property, center alignment as universal type)
+
+    @output 2 - with breakpoints
+        format    =>    '-' + `propertyPrefix` + `propertySuffix` + '--' + `breakpointSuffix` + `breakpointScopeSpecifier` + '-'
+        example 1     -txt-c--md-     (`text-align` as property, center alignment for `md` breakpoint for scope bount to only md limits)
+        example 2     -txt-c--md-up-  (`text-align` as property, center alignment for `md` breakpoint for upaord open)
+
 */
 @mixin getAtt(
   $propertyAtt,
@@ -200,6 +214,7 @@ $paddingVector: (
   $_addBaseProperties: false
 ) {
   @each $Val, $suffix in $valuesVector {
+    //thi section is responsible for output 1
     .-#{$propertyPrefix}#{$suffix}- {
       @include getBreakpointSpecific(
         "",
@@ -212,6 +227,7 @@ $paddingVector: (
         }
       }
     }
+    // this section is reponsible for output 1
     @each $breakpointType, $breakpointSuffix in $breakpoints {
       @each $specifierName, $specifierSuffix in $specifiers {
         .-#{$propertyPrefix}#{$suffix}#{$breakpointSuffix}#{$specifierSuffix}- {
@@ -243,6 +259,18 @@ $paddingVector: (
   }
 }
 
+/** 
+  @outputs
+      global styles without breakpoints
+        -txt-c-
+      
+      breakpoint specific outpot
+        -txt-c--md-
+
+      breakpoint specific with open bound towards up and down including the breakpoint specifier section itself and in the bound direction
+        -txt-c--md-up-
+        -txt-c--md-dn-
+ */
 @include getAtt(text-align, txt-, $txtAlignVector);
 @include getAtt(background-color, bg-, $bgclVector);
 @include getAtt(justify-content, jus-, $positionVector);

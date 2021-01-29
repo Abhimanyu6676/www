@@ -1,0 +1,62 @@
+@import "../../styles/index.scss";
+@import "../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+._row {
+  flex-direction: row;
+}
+
+._row_reverse {
+  flex-direction: row-reverse;
+}
+
+.sectionContainer {
+  width: 100%;
+  padding: 50px 0px;
+  display: flex;
+
+  @include media-breakpoint-down(xs) {
+    flex-direction: column;
+    padding: 0px 0;
+    margin-top: 60px;
+  }
+}
+
+.imgContainer {
+  flex: 1;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px 30px;
+  margin-top: 50px;
+  flex: 1;
+
+  @include media-breakpoint-up(sm) {
+    margin-top: 0px;
+    padding: 0px 20px;
+    max-width: 700px;
+  }
+}
+
+._heading {
+  color: #555;
+  text-align: center;
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    text-align: left;
+  }
+}
+
+._subText {
+  color: #555;
+  font-weight: normal;
+  margin-top: 30px;
+  text-align: center;
+  @include media-breakpoint-up(sm) {
+    text-align: left;
+  }
+}

@@ -1,0 +1,41 @@
+@import "../../../styles/index.scss";
+@import "../../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+.navigatorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include media-breakpoint-up(sm) {
+    flex-direction: row;
+  }
+}
+
+.navigatorCard {
+  width: 95%;
+  min-height: 250px;
+  border-radius: 10px;
+  background-color: #eeeeeeee;
+  overflow: hidden;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: all 0.5s ease-in-out;
+
+  @include media-breakpoint-up(sm) {
+    margin-top: 50px;
+    min-width: 250px;
+    height: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.navigatorCard:hover {
+  transform: scale(1.05);
+}

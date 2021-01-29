@@ -7,9 +7,19 @@ import { AntDesign, MaterialIcons } from '@expo/vector-icons'
 import Image from "./Image"
 import styles from "./_header.module.scss"
 
-
-const primaryMenu = ["Connected You", "Store", "App", "About Us"]
-const SecondaryMenu = ["HUElite Community", "Blog", "Support"]
+interface link_i {
+  key: string
+  href?: string
+}
+const primaryMenu: link_i[] = [
+  { key: "Connected You" },
+  { key: "Products", href: "spectrum_strip" },
+  { key: "App" },
+  { key: "About Us" }]
+const SecondaryMenu: link_i[] = [
+  { key: "HUElite Community" },
+  { key: "Blog" },
+  { key: "Support", href: "support" }]
 
 
 const Icon = () => {
@@ -43,14 +53,14 @@ const Header = ({ siteTitle = "" }) => {
             <div className="-flex-row- -jus-fe-">
               {SecondaryMenu.map((item, index) => {
                 return (
-                  <Link className="-mt-10- -mr-10-" to={"/" + item.split(" ").join("").toLowerCase()}><h6>{item}</h6></Link>
+                  <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} className="-mt-10- -mr-10-" to={item.href ? ("/" + item?.href) : "/"}><h6>{item.key}</h6></Link>
                 )
               })}
             </div>
             <div className=" -flex-row- -jus-fe-">
               {primaryMenu.map((item, index) => {
                 return (
-                  <Link className="-mt-10- -mr-10- " to={"/" + item.split(" ").join("").toLowerCase()}><h3>{item}</h3></Link>
+                  <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} className="-mt-10- -mr-10- " to={item.href ? ("/" + item?.href) : "/"}><h3 style={{ marginLeft: 15 }}>{item.key}</h3></Link>
                 )
               })}
             </div>
@@ -104,14 +114,14 @@ const MobileHeaderContainer = ({ }: MobileHeaderContainerProps) => {
               <Col className="-flex-col- -jus-sa-" style={{ flex: 1 }}>
                 {primaryMenu.map((item, index) => {
                   return (
-                    <Link className="" to={"/" + item.split(" ").join("").toLowerCase()}><h3 >{item}</h3></Link>
+                    <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} className="" to={item.href ? ("/" + item?.href) : "/"}><h3 >{item.key}</h3></Link>
                   )
                 })}
               </Col>
               <Col className="-flex-col- -jus-sa- -aln-fe-" style={{ marginTop: "8vh", marginBottom: "8vh" }}>
                 {SecondaryMenu.map((item, index) => {
                   return (
-                    <Link className="" to={"/" + item.split(" ").join("").toLowerCase()}><h6>{item}</h6></Link>
+                    <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} className="" to={item.href ? ("/" + item?.href) : "/"}><h6>{item.key}</h6></Link>
                   )
                 })}
               </Col>

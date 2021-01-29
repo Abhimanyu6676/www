@@ -182,6 +182,9 @@ button::-moz-focus-inner {
 button:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
+button {
+  border-width: 0px;
+}
 fieldset {
   border: 1px solid silver;
   padding: 0.35em 0.625em 0.75em;

@@ -1,0 +1,59 @@
+@import "../../styles/index.scss";
+@import "../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+.ImageSliderContainer {
+  @include media-breakpoint-down(xs) {
+    flex-direction: column-reverse;
+  }
+
+  .thumbnailsCol {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+    //background-color: red;
+  }
+
+  .thumbnailContainer {
+    overflow: hidden;
+  }
+}
+
+.thumbnailArrow {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background-color: #eeeeeebb;
+}
+.thumbnailLeft {
+  @include media-breakpoint-down(sm) {
+    left: 0px;
+  }
+}
+
+.thumbnailRight {
+  @include media-breakpoint-down(sm) {
+    right: 0px;
+  }
+}
+.thumbnailUp {
+  @include media-breakpoint-up(md) {
+    top: 0px;
+  }
+}
+.thumbnailDown {
+  @include media-breakpoint-up(md) {
+    bottom: 0px;
+  }
+}
+
+.acc1Header_heading2 {
+  color: $secondary-text-color;
+}
+
+.acc1Header_heading1 {
+  color: $tertiary-text-color;
+}

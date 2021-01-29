@@ -19,7 +19,7 @@ export const Footer = ({ }: Props) => {
                     <h2 style={{}} className="-txt-c--sm-dn-">HUElite</h2>
                     {sec1Menu.map((item, index) => {
                         return (
-                            <Link to={"/" + item.split(" ").join("").toLowerCase()}><LinkContainer title={item} /></Link>
+                            <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} to={"/" + item.split(" ").join("").toLowerCase()}><LinkContainer title={item} /></Link>
                         )
                     })}
                 </Col>
@@ -27,7 +27,7 @@ export const Footer = ({ }: Props) => {
                     <h2 style={{}} className="-txt-c--sm-dn-">Extended Support</h2>
                     {sec2Menu.map((item, index) => {
                         return (
-                            <Link to={"/" + item.split(" ").join("").toLowerCase()}><LinkContainer title={item} /></Link>
+                            <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} to={"/" + item.split(" ").join("").toLowerCase()}><LinkContainer title={item} /></Link>
                         )
                     })}
                 </Col>
@@ -35,7 +35,7 @@ export const Footer = ({ }: Props) => {
                     <h2 style={{}} className="-txt-c--sm-dn-">Customer Service</h2>
                     {sec3Menu.map((item, index) => {
                         return (
-                            <Link to={"/" + item.split(" ").join("").toLowerCase()}><LinkContainer title={item} /></Link>
+                            <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} to={"/" + item.split(" ").join("").toLowerCase()}><LinkContainer title={item} /></Link>
                         )
                     })}
                 </Col>
