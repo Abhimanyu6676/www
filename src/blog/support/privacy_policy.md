@@ -5,6 +5,8 @@ auther: ""
 auther_link: ""
 uuid: ""
 related_uuid: ""
+banner_img: "support/"
+
 ---
 
 # **PRIVACY POLICY**
