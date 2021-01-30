@@ -2,7 +2,9 @@
 title: Hello World - from mdx!
 auther: "@sternetIndustries"
 date: 2019-06-01
-bannerImg: "support/banner1.png"
+banner_img: "support/banner1.png"
+uuid: "uuid_1"
+relared_uuids: "uuid_2/uuid_3"
 ---
 
 # h1 Heading
