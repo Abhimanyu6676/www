@@ -13,7 +13,10 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "ADD_UNIVERSALS": "git subtree add --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash",
+    "PUSH_UNIVERSALS": "git subtree push --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash",
+    "PULL_UNIVERSALS": "git subtree pull --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
@@ -49,7 +52,8 @@
     "react-native-gesture-handler": "https://github.com/software-mansion/react-native-gesture-handler.git#95bfb4df7ce9b1e222d50ead99eee7e27cd79043",
     "react-native-web": "^0.11.7",
     "react-spring": "^8.0.27",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "@bit/sternet.base-ui.modal": "file:./components/modal"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -83,5 +87,10 @@
     "last 4 versions",
     "Firefox ESR",
     "not ie < 9"
-  ]
+  ],
+  "bit": {
+    "env": {},
+    "componentsDefaultDirectory": "components/{name}",
+    "packageManager": "npm"
+  }
 }
