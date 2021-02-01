@@ -1,6 +1,7 @@
 import { CSSProperties } from '@material-ui/core/styles/withStyles'
 import React from 'react'
 import { Container } from 'react-bootstrap'
+import { TransformOnHover } from '../../../common/webDivWrapper/TransformOnHover'
 import styles from "./index.module.scss"
 
 interface Props {
@@ -67,13 +68,13 @@ const SectionType3 = ({
         <div className={" " + className} style={!noStyles ? { display: "flex", flexWrap: "wrap", flexDirection: "row", justifyContent: "space-around", ...style } : { ...styles }}>
             {item.map((item, index) => {
                 return (
-                    <div
-                        className={" " + compClassName}
+                    <TransformOnHover
+                        className={compClassName}
                         key={"_" + index}
                         style={!noCompStyles ? { overflow: "hidden", border: "0.5px #000000 solid", width: 200, height: 200, margin: 5, ...componentStyle } : { ...componentStyle }} >
-                        <img src={item.img} style={{ height: "auto", width: 60, margin: 20 }} />
-                        <h4 style={{ fontWeight: "normal", textAlign: "center" }}>{item.heading}</h4>
-                    </div>
+                        <img src={item.img} style={{ height: "auto", width: 60 }} />
+                        <h4 style={{ fontWeight: "normal", textAlign: "center", marginTop: 10 }}>{item.heading}</h4>
+                    </TransformOnHover>
                 )
             })}
         </div>

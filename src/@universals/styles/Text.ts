@@ -1,45 +1,46 @@
 import { StyleSheet } from "react-native";
 import color from "./colors"
+import { textColors } from "./colors"
 
 
-const common = StyleSheet.create({
-    _headingCommonStyles: {
-        ...color.primaryTextColors,
-        marginHorizontal: 5,
-        fontWeight: "bold",
-    }
-})
+
 export default StyleSheet.create({
-    _headingCommonStyles: {
-        marginHorizontal: 5,
-        fontWeight: "bold"
-    },
     H1: {
-        ...common._headingCommonStyles,
-        fontSize: 30,
+        color: textColors.primary,
+        fontWeight: "bold",
+        fontSize: 36,
     },
     H2: {
-        ...common._headingCommonStyles,
-        fontSize: 27,
+        color: textColors.primary,
+        fontWeight: "bold",
+        fontSize: 26,
     },
     H3: {
-        ...common._headingCommonStyles,
-        fontSize: 24,
+        color: textColors.primary,
+        fontWeight: "bold",
+        fontSize: 22,
     },
     H4: {
-        ...common._headingCommonStyles,
-        fontSize: 21,
+        color: textColors.primary,
+        fontWeight: "bold",
+        fontSize: 16,
     },
     H5: {
-        ...common._headingCommonStyles,
-        fontSize: 18,
+        color: textColors.primary,
+        fontWeight: "bold",
+        fontSize: 13.6,
     },
     H6: {
-        ...common._headingCommonStyles,
-        fontSize: 15,
+        color: textColors.primary,
+        fontWeight: "bold",
+        fontSize: 12,
     },
     H7: {
-        ...common._headingCommonStyles,
-        fontSize: 12,
+        color: textColors.primary,
+        fontWeight: "bold",
+        fontSize: 8,
+    },
+    centerText: {
+        textAlign: "center"
     }
 })

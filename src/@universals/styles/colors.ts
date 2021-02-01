@@ -13,7 +13,7 @@ export const themeColors = {
     primary: "#5555ff"
 }
 
-export default StyleSheet.create({
+export default {
     primaryTextColors: {
         color: textColors.primary
     },
@@ -29,4 +29,4 @@ export default StyleSheet.create({
     textFeather: {
         color: textColors.feather
     }
-})
+}
