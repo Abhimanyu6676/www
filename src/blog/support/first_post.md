@@ -4,7 +4,7 @@ auther: "@sternetIndustries"
 date: 2019-06-01
 banner_img: "support/banner1.png"
 uuid: "uuid_1"
-relared_uuids: "uuid_2/uuid_3"
+related_uuid: "uuid_2/uuid_3"
 ---
 
 # h1 this is changed heading

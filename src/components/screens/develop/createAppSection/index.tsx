@@ -39,17 +39,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-interface Props {
-
-}
+interface Props { }
 
 export default (props: Props) => {
     const classes = useStyles();
     const [show, setShow] = useState(true)
-    const [Comp, login] = API.cloudAPI.user.loginAPI.useLoginHook({})
 
     return (
-        <Comp
+        <div
             style={{ position: "relative" }}>
             <div style={{
                 width: "100%",
@@ -75,6 +72,6 @@ export default (props: Props) => {
                     <Text style={[UNIVERSALS.STYLES.H4, UNIVERSALS.STYLES.centerText, {}]}>Let's Build</Text>
                 </button>
             </div>
-        </Comp>
+        </div>
     )
 }

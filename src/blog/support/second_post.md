@@ -1,8 +1,11 @@
 ---
-title: Second Post!
-auther: "@sternetIndustries"
-date: 2019-05-10
-bannerImg: "support/headerImage.jpg"
+title: "this is title with uuid_2"
+date: "2021-01-30"
+auther: ""
+auther_link: ""
+uuid: "uuid_2"
+related_uuid: "lkj"
+banner_img: "support/"
 ---
 
 This is my second post!

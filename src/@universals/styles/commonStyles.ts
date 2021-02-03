@@ -7,16 +7,14 @@ export default StyleSheet.create({
         borderRadius: 35,
     },
     shadow: {
-        backgroundColor: "#fff",
-        alignItems: 'center',
-        shadowColor: '#777',
+        shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 0,
+            height: 2,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 2,
-        elevation: 2,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     absoluteFill: {
         width: "100%",

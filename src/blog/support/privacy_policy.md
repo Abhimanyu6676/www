@@ -1,10 +1,10 @@
 ---
-title: ""
+title: "this is titile with uuid_3"
 date: "2021-01-30"
 auther: ""
 auther_link: ""
-uuid: ""
-related_uuid: ""
+uuid: "uuid_3"
+related_uuid: "kjn"
 banner_img: "support/"
 ---
 
