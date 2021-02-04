@@ -100,6 +100,7 @@ query PostsBySlug($slug: String!, $banner_img: String!, $test_related_uuid: [Str
         title
         auther_link
         auther
+        main_img
       }
     }
   }

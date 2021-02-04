@@ -6,6 +6,7 @@ auther_link: ""
 uuid: "uuid_3"
 related_uuid: "kjn"
 banner_img: "support/"
+main_img: "support/banner1.png"
 ---
 
 # **PRIVACY POLICY**
