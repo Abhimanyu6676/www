@@ -39,6 +39,7 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           slug: post.fields.slug,
           banner_img: post.frontmatter.banner_img,
+          banner_img_mob: post.frontmatter.banner_img_mob ? post.frontmatter.banner_img_mob : post.frontmatter.banner_img,
           uuid: post.frontmatter.uuid,
           related_uuid: post.frontmatter.related_uuid,
           title: post.frontmatter.title,

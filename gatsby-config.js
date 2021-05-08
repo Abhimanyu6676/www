@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
+    `gatsby-plugin-use-query-params`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {

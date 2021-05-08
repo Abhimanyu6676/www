@@ -40,6 +40,7 @@
     "gatsby-plugin-sass": "^2.7.0",
     "gatsby-plugin-sharp": "^2.8.0",
     "gatsby-plugin-styled-components": "^3.9.0",
+    "gatsby-plugin-use-query-params": "^1.0.1",
     "gatsby-remark-images": "^3.10.0",
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-sharp": "^2.6.0",
@@ -52,8 +53,10 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "react-native-gesture-handler": "https://github.com/software-mansion/react-native-gesture-handler.git#95bfb4df7ce9b1e222d50ead99eee7e27cd79043",
     "react-native-web": "^0.11.7",
+    "react-share": "^4.3.1",
     "react-spring": "^8.0.27",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "use-query-params": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

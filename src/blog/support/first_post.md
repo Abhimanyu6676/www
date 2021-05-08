@@ -2,10 +2,10 @@
 title: Hello World - from mdx!
 auther: "@sternetIndustries"
 date: 2019-06-01
-banner_img: "support/banner1.png"
 uuid: "uuid_1"
 related_uuid: "uuid_2/uuid_3"
-main_img: "support/banner1.png"
+banner_img: "support/banner1.png"
+main_img: "support/testImg1.png"
 ---
 
 # h1 this is changed heading

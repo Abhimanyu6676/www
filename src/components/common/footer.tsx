@@ -5,9 +5,34 @@ import { FontAwesome } from '@expo/vector-icons';
 import styles from "./_footer.module.scss"
 import { Container, Row, Col } from 'react-bootstrap';
 
-const sec1Menu = ["About Us", "HUElite Blog", "Careers", "Media", "CSR", "Contact Us"]
-const sec2Menu = ["Tutorial Videos", "Download Center", "Manual & Guides", "Feedback", "Support", "FAQ",]
-const sec3Menu = ["Return & Shipping Policy", "Terms & Conditions", "Privacy Policy", "E-waste Management", "Do's & Don'ts", "Where to Buy"]
+interface link_i {
+    key: string
+    href?: string
+}
+const sec1Menu: link_i[] = [
+    { key: "About Us" },
+    { key: "HUElite Blog" },
+    { key: "Careers" },
+    { key: "Media" },
+    { key: "CSR" },
+    { key: "Contact Us" }
+]
+const sec2Menu: link_i[] = [
+    { key: "Tutorial Videos" },
+    { key: "Download Center" },
+    { key: "Manual & Guides" },
+    { key: "Feedback" },
+    { key: "Support" },
+    { key: "FAQ" }
+]
+const sec3Menu: link_i[] = [
+    { key: "Return & Shipping Policy" },
+    { key: "Terms & Conditions", href: "support/termsNconditions" },
+    { key: "Privacy Policy", href: "support/privacy_policy" },
+    { key: "E-waste Management" },
+    { key: "Do's & Don'ts" },
+    { key: "Where to Buy" }
+]
 
 interface Props { }
 export const Footer = ({ }: Props) => {
@@ -19,7 +44,7 @@ export const Footer = ({ }: Props) => {
                     <h2 style={{}} className="-txt-c--sm-dn-">HUElite</h2>
                     {sec1Menu.map((item, index) => {
                         return (
-                            <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} to={"/" + item.split(" ").join("").toLowerCase()}><LinkContainer title={item} /></Link>
+                            <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} to={item.href ? ("/" + item?.href) : "/"}><LinkContainer title={item.key} /></Link>
                         )
                     })}
                 </Col>
@@ -27,7 +52,7 @@ export const Footer = ({ }: Props) => {
                     <h2 style={{}} className="-txt-c--sm-dn-">Extended Support</h2>
                     {sec2Menu.map((item, index) => {
                         return (
-                            <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} to={"/" + item.split(" ").join("").toLowerCase()}><LinkContainer title={item} /></Link>
+                            <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} to={item.href ? ("/" + item?.href) : "/"}><LinkContainer title={item.key} /></Link>
                         )
                     })}
                 </Col>
@@ -35,7 +60,7 @@ export const Footer = ({ }: Props) => {
                     <h2 style={{}} className="-txt-c--sm-dn-">Customer Service</h2>
                     {sec3Menu.map((item, index) => {
                         return (
-                            <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} to={"/" + item.split(" ").join("").toLowerCase()}><LinkContainer title={item} /></Link>
+                            <Link key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} to={item.href ? ("/" + item?.href) : "/"}><LinkContainer title={item.key} /></Link>
                         )
                     })}
                 </Col>

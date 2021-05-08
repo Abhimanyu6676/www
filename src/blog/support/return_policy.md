@@ -1,11 +1,11 @@
 ---
 title: ""
 date: "2021-01-30"
-auther: ""
+auther: "@sternetIndustries"
 auther_link: ""
 uuid: ""
 related_uuid: "lkj"
-banner_img: "support/"
+banner_img: "support/banner1.png"
 ---
 
 2324rfsdblivkj

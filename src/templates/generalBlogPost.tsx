@@ -8,6 +8,8 @@ import { blogMetaData_i } from '../blog/blog'
 import RelatedBlogView from '../blog/blog-UI/relatedBlogView'
 import Layout from '../components/common/layout'
 import SubscribeSection from "../components/common/subscribeSection"
+import { FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons';
+import { WhatsappShareButton, FacebookMessengerShareButton } from "react-share";
 
 export default ({ data }: {
   data: {
@@ -17,28 +19,38 @@ export default ({ data }: {
     },
     relatedPost: any,
     placeholderImage: any
+    mobileBlogImage: { childImageSharp: { fluid: any } }
+    desktopBlogImage: { childImageSharp: { fluid: any } }
   }
 }) => {
   const { frontmatter, body } = data.mdx
 
 
-  if (data?.relatedPost?.nodes?.length > 0) {
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    console.log("--data is " + JSON.stringify(data, null, 2))
-  } else {
-    console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
-  }
+  /*   if (data?.relatedPost?.nodes?.length > 0) {
+      console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+      console.log("--data is " + JSON.stringify(data, null, 2))
+    } else {
+      console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+    } */
+
+  const sources = [
+    data.mobileBlogImage.childImageSharp.fluid,
+    {
+      ...data.desktopBlogImage.childImageSharp.fluid,
+      media: `(min-width: 576px)`,
+    },
+  ]
 
 
   return (
     <Layout>
       <div
-        style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", alignItems: "center", position: "relative" }}>
-        <div style={{
-          position: "absolute",
-          zIndex: 2,
-          bottom: 20
-        }}>
+        style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", position: "relative" }}>
+        <div /** /// heading contaienr */
+          style={{
+            position: "absolute",
+            zIndex: 2,
+          }}>
           <h1 style={{ marginTop: "20px", color: "white" }}>{frontmatter.title}</h1>
           <div style={{
             display: "flex",
@@ -46,14 +58,32 @@ export default ({ data }: {
             justifyContent: "space-between",
             alignItems: "center"
           }}>
-            <h5 style={{ color: "white" }}>{frontmatter.date}</h5>
-            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", }}>
               {/*  <Avatar style={{ backgroundColor: "#ff5722", color: "white", height: 30, width: 30 }}>ST</Avatar> */}
               <h5 style={{ color: "white" }}>{frontmatter.auther}</h5>
             </div>
+            <h5 style={{ color: "white" }}>{frontmatter.date}</h5>
           </div>
         </div>
-        {data.placeholderImage && <Img style={{ width: "100%", height: "auto" }} fluid={data.placeholderImage.childImageSharp.fluid} />}
+        {(data.desktopBlogImage && data.mobileBlogImage) && <Img style={{ width: "100%", height: "auto" }} fluid={sources} />}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}>
+          <WhatsappShareButton url={"httsp://www.huelite.in"} title={frontmatter.title} separator=" ">
+            <FontAwesome name="whatsapp" size={24} color="white" style={{ padding: 5, paddingHorizontal: 10 }} />
+          </WhatsappShareButton>
+          {/*  <FacebookMessengerShareButton url={"httsp://www.huelite.in"}>
+            <FontAwesome5 name="facebook-messenger" size={24} color="white" style={{ padding: 5, paddingHorizontal: 10 }} />
+          </FacebookMessengerShareButton> */}
+          <Ionicons name="ios-share-alt" size={24} color="white" style={{ padding: 5, paddingHorizontal: 10 }} />
+        </div>
       </div>
       <Container>
         <h1 style={{ marginTop: "20px" }}>{frontmatter.title}</h1>
@@ -68,7 +98,7 @@ export default ({ data }: {
 };
 
 export const query = graphql`
-query PostsBySlug($slug: String!, $banner_img: String!, $test_related_uuid: [String] ) {
+query PostsBySlug($slug: String!, $banner_img: String!, $banner_img_mob: String!, $test_related_uuid: [String] ) {
   mdx(fields: {slug: {eq: $slug}}) {
     body
     frontmatter {
@@ -80,9 +110,17 @@ query PostsBySlug($slug: String!, $banner_img: String!, $test_related_uuid: [Str
       related_uuid
     }
   }
-  placeholderImage: file(relativePath: {eq: $banner_img}) {
+
+  mobileBlogImage: file(relativePath: {eq: $banner_img_mob }) {
     childImageSharp {
-      fluid(maxWidth: 1200) {
+      fluid(maxWidth: 700, quality: 100) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  desktopBlogImage: file (relativePath: { eq: $banner_img }) {
+    childImageSharp {
+      fluid(maxWidth: 2000, quality: 100) {
         ...GatsbyImageSharpFluid
       }
     }
@@ -102,6 +140,7 @@ query PostsBySlug($slug: String!, $banner_img: String!, $test_related_uuid: [Str
         auther
         main_img
       }
+      excerpt(pruneLength: 50)
     }
   }
 
