@@ -9,10 +9,10 @@ interface popularTopic_i {
 }
 
 const popularTpoics: popularTopic_i[] = [
-    { heading: "topic 1", subText: "suntext will be placed here" },
-    { heading: "topic 1", subText: "suntext will be placed here" },
-    { heading: "topic 1", subText: "suntext will be placed here" },
-    { heading: "topic 1", subText: "suntext will be placed here" },
+    { heading: "HUElite Strip Installation", subText: "3 step easy installation." },
+    { heading: "Getting started huelite app", subText: "How to pair your device to home network" },
+    { heading: "Let's connect with Alexa", subText: "Link huelite smart Products Alexa with and how to control" },
+    { heading: "TroubleShoot Guide", subText: "Find answers to your queries" },
 ]
 
 interface Props { }
@@ -33,8 +33,8 @@ const PopularTopicCard = ({ item }: { item: popularTopic_i }) => {
 
     return (
         <div className={styles.popularTopicCard}>
-            <h1>{item.heading}</h1>
-            <h5 style={{ fontWeight: "normal" }}>{item.subText}</h5>
+            <h3>{item.heading}</h3>
+            <h5 style={{ fontWeight: "normal", marginTop: 10 }}>{item.subText}</h5>
         </div>
     )
 }

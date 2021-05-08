@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 import React, { useEffect, useRef, useState } from 'react';
 import { Dimensions, View } from 'react-native';
+//@ts-ignore
 import styles from "./index.module.scss";
 
 
@@ -194,4 +195,4 @@ const OverlaySection = () => {
       </div >
     </div>
   )
-}; 
+};

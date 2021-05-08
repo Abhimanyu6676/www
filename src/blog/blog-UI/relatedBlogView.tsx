@@ -1,9 +1,11 @@
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { Link } from 'gatsby'
 import React from 'react'
 import { Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import UNIVERSALS from '../../@universals'
 import { TransformOnHover } from "../../components/common/webDivWrapper/TransformOnHover"
+//@ts-ignore
 import styles from "./relatedBlogView.module.scss"
 
 interface Props {
@@ -38,21 +40,41 @@ export default (props: Props) => {
                 contentContainerStyle={{
                     display: "flex",
                     flexDirection: "row",
-                    alignItems: "flex-end",
+                    alignItems: "flex-start",
                     justifyContent: "space-evenly",
                 }}>
                 {props.data.map((item, index) => {
                     console.log("()()()--" + JSON.stringify(item))
                     return (
-                        <TransformOnHover
+                        <Link
+                            to={(() => {
+                                let link = "/"
+                                switch (item.frontmatter.uuid) {
+                                    case "linkAlexa":
+                                        link = "/support/linkAlexa"
+                                        break
+
+                                    case "how_to_pair":
+                                        link = "/support/how_to_pair"
+                                        break
+
+                                    case "how_to_install":
+                                        link = "/support/how_to_install"
+                                        break
+
+                                    default:
+                                        break
+                                }
+                                return link
+                            })()}
                             key={"_" + index}>
                             <div className={styles.relativeBlogContainer}>
                                 <div className={styles.relativeBlogImgContainer}>
                                     {item?.frontmatter?.main_img && <img style={{ width: '100%', height: "100%" }} src={require("../" + item.frontmatter.main_img)} />}
                                 </div>
                                 <View style={{ padding: 10 }}>
-                                    <Text style={[UNIVERSALS.STYLES.H7, {}]}>{item.frontmatter.date}</Text>
-                                    <Text style={[UNIVERSALS.STYLES.H3, { marginTop: 5, marginBottom: 5, fontWeight: "normal" }]}>{item.frontmatter.title}</Text>
+                                    <Text style={[UNIVERSALS.STYLES.H6, {}]}>{item.frontmatter.date}</Text>
+                                    <Text style={[UNIVERSALS.STYLES.H4, { marginTop: 15, marginBottom: 8, }]}>{item.frontmatter.title}</Text>
                                     <Text style={[UNIVERSALS.STYLES.H5, { fontWeight: "normal" }]}>{item.excerpt}</Text>
                                 </View>
                                 <div style={{
@@ -77,7 +99,7 @@ export default (props: Props) => {
 
                                 </div>
                             </div>
-                        </TransformOnHover>)
+                        </Link>)
                 })}
             </ScrollView>
         </View>

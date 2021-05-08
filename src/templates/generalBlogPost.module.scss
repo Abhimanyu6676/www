@@ -1,0 +1,33 @@
+@import "../components/styles/index.scss";
+@import "../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+.mobileHeading {
+  margin-top: 20px;
+
+  @include media-breakpoint-up(sm) {
+    display: none;
+  }
+}
+
+.desktopHeading {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include media-breakpoint-down(xs) {
+    display: none;
+  }
+}
+
+.desktopHeadingAurtherDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+}

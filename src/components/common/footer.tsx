@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from "gatsby"
 import Image from './Image'
 import { FontAwesome } from '@expo/vector-icons';
-import styles from "./_footer.module.scss"
 import { Container, Row, Col } from 'react-bootstrap';
+//@ts-ignore
+import styles from "./_footer.module.scss"
 
 interface link_i {
     key: string
@@ -20,13 +21,13 @@ const sec1Menu: link_i[] = [
 const sec2Menu: link_i[] = [
     { key: "Tutorial Videos" },
     { key: "Download Center" },
-    { key: "Manual & Guides" },
+    { key: "Manual & Guides", href: "support/getstarted" },
     { key: "Feedback" },
-    { key: "Support" },
+    { key: "Support", href: "support" },
     { key: "FAQ" }
 ]
 const sec3Menu: link_i[] = [
-    { key: "Return & Shipping Policy" },
+    { key: "Return & Shipping Policy", href: "support/return_policy" },
     { key: "Terms & Conditions", href: "support/termsNconditions" },
     { key: "Privacy Policy", href: "support/privacy_policy" },
     { key: "E-waste Management" },
@@ -64,16 +65,16 @@ export const Footer = ({ }: Props) => {
                         )
                     })}
                 </Col>
-                <Col sm={12} md={3} className={["-flex-col- -aln-c- -my-50--sm-dn- -jus-c-"]}>
-                    <Link style={{ fontSize: "1em", fontWeight: "bold", color: "#555" }} to="">1800-HUE-LITE</Link>
+                <Col sm={12} md={3} className={"-flex-col- -aln-c- -my-50--sm-dn- -jus-c-"}>
+                    {/*   <Link style={{ fontSize: "1em", fontWeight: "bold", color: "#555" }} to="">1800-HUE-LITE</Link> */}
                     <Link style={{ fontSize: 18, fontWeight: "bold", color: "#555" }} to="">support@huelite.in</Link>
                     <p style={{ fontWeight: 500, fontSize: 20, marginTop: 20, marginBottom: 5 }}>Download App</p>
-                    <div className={["-flex-row- -jus-sa-"]} style={{ width: 100 }}>
-                        <Link to="" className="px_2">
-                            <FontAwesome name="apple" size={24} color="#555" />
+                    <div className={"-flex-row- -jus-sa-"} style={{ width: 100 }}>
+                        <Link to="https://apps.apple.com/in/app/huelite/id1556187847" className="px_2">
+                            <FontAwesome name="apple" size={30} color="#555" />
                         </Link>
-                        <Link to="" className="px_2">
-                            <FontAwesome name="android" size={24} color="#555" />
+                        <Link to="https://play.google.com/store/apps/details?id=com.sternet.huelite" className="px_2">
+                            <FontAwesome name="android" size={30} color="#555" />
                         </Link>
                     </div>
                 </Col>

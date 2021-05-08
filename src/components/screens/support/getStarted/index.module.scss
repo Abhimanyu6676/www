@@ -1,0 +1,85 @@
+@import "../../../styles/index.scss";
+@import "../../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  //background-color: red;
+}
+
+.col1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  //background-color: red;
+  padding: 0px 10vw;
+
+  @include media-breakpoint-down(xs) {
+    flex-direction: column;
+  }
+}
+
+.howToInstall {
+  @include media-breakpoint-down(xs) {
+    width: 80vw;
+  }
+
+  width: unset;
+  height: 300px;
+  background-color: #777777;
+  background-image: linear-gradient(90deg, #ec6f66, #f3a183);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-top: 50px;
+  transition: all 0.5s ease-in-out;
+
+  @include media-breakpoint-up(sm) {
+    flex: 1;
+  }
+}
+
+.howToInstall:hover {
+  transform: scale(1.07);
+}
+
+.howToPair {
+  width: unset;
+  height: 300px;
+  background-color: #777777;
+  background-image: linear-gradient(90deg, #ff8008, #ffc837);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-top: 50px;
+  transition: all 0.5s ease-in-out;
+
+  @include media-breakpoint-down(xs) {
+    width: 80vw;
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex: 1;
+  }
+}
+
+.howToPair:hover {
+  transform: scale(1.07);
+}
+.col1Divider {
+  flex: 0.1;
+  height: 200px;
+
+  @include media-breakpoint-down(xs) {
+    display: none;
+  }
+}

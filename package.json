@@ -14,6 +14,7 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "publish": "gh-pages -d public",
     "ADD_UNIVERSALS": "git subtree add --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash",
     "PUSH_UNIVERSALS": "git subtree push --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash",
     "PULL_UNIVERSALS": "git subtree pull --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash"

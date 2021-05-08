@@ -6,6 +6,7 @@ auther_link: ""
 uuid: ""
 related_uuid: "lkj"
 banner_img: "support/banner1.png"
+mdxTemplateType: "support"
 ---
 
 2324rfsdblivkj

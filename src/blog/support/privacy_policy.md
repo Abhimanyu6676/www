@@ -7,6 +7,7 @@ uuid: "uuid_3"
 related_uuid: "uuid_1"
 banner_img: "support/banner1.png"
 main_img: "support/testblog/blogPost1.png"
+mdxTemplateType: "support"
 ---
 
 Sternet Industries India, Pvt. Ltd. dba HUELITE and its affiliates and subsidiaries (&quot; **HUELITE**&quot;, &quot; **we**&quot;, &quot; **us**&quot;, or &quot; **our**&quot;) are committed to protecting your privacy. Please read this Privacy Policy (the &quot; **Privacy Policy**&quot;) carefully to understand our policies and practices regarding your information and how we will treat it. This Privacy Policy is intended to inform you about the kind of information, including personally identifiable information, that we may collect from you in connection with your use of the Services and how, and for what purpose, we use that information.

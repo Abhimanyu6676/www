@@ -2,6 +2,7 @@ import Avatar from '@material-ui/core/Avatar'
 import { graphql } from 'gatsby'
 import Img from "gatsby-image"
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { MDXProvider } from "@mdx-js/react"
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import { blogMetaData_i } from '../blog/blog'
@@ -10,6 +11,10 @@ import Layout from '../components/common/layout'
 import SubscribeSection from "../components/common/subscribeSection"
 import { FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { WhatsappShareButton, FacebookMessengerShareButton } from "react-share";
+//@ts-ignore
+import styles from "./generalBlogPost.module.scss"
+
+import { NoteBox } from "../blog/support/howToPair/temp"
 
 export default ({ data }: {
   data: {
@@ -41,28 +46,18 @@ export default ({ data }: {
     },
   ]
 
+  const shortcodes = { NoteBox }
 
   return (
     <Layout>
       <div
         style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", position: "relative" }}>
         <div /** /// heading contaienr */
-          style={{
-            position: "absolute",
-            zIndex: 2,
-          }}>
+          className={styles.desktopHeading}>
           <h1 style={{ marginTop: "20px", color: "white" }}>{frontmatter.title}</h1>
-          <div style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center"
-          }}>
-            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", }}>
-              {/*  <Avatar style={{ backgroundColor: "#ff5722", color: "white", height: 30, width: 30 }}>ST</Avatar> */}
-              <h5 style={{ color: "white" }}>{frontmatter.auther}</h5>
-            </div>
-            <h5 style={{ color: "white" }}>{frontmatter.date}</h5>
+          <div className={styles.desktopHeadingAurtherDiv}>
+            <h5 style={{ color: "white" }}>{frontmatter.auther}</h5>
+            <h5 style={{ color: "white", marginLeft: 10 }}>{frontmatter.date}</h5>
           </div>
         </div>
         {(data.desktopBlogImage && data.mobileBlogImage) && <Img style={{ width: "100%", height: "auto" }} fluid={sources} />}
@@ -70,7 +65,7 @@ export default ({ data }: {
           style={{
             position: "absolute",
             bottom: 0,
-            right: 0,
+            right: 25,
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
@@ -86,10 +81,13 @@ export default ({ data }: {
         </div>
       </div>
       <Container>
-        <h1 style={{ marginTop: "20px" }}>{frontmatter.title}</h1>
-        <p>{frontmatter.date}</p>
+        <h1 className={styles.mobileHeading} >{frontmatter.title}</h1>
+        <p style={{ fontSize: 14 }}>Last updated : {frontmatter.date}</p>
         <div style={{ height: 25 }} />
-        <MDXRenderer>{body}</MDXRenderer>
+        <MDXProvider components={shortcodes}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
+        <div style={{ height: 25 }} />
         <RelatedBlogView data={data.relatedPost.nodes} />
       </Container>
       <SubscribeSection />
@@ -97,8 +95,9 @@ export default ({ data }: {
   );
 };
 
+
 export const query = graphql`
-query PostsBySlug($slug: String!, $banner_img: String!, $banner_img_mob: String!, $test_related_uuid: [String] ) {
+query PostsBySlug($slug: String!, $banner_img: String!, $banner_img_mob: String!, $relatedTopics: [String] ) {
   mdx(fields: {slug: {eq: $slug}}) {
     body
     frontmatter {
@@ -128,7 +127,7 @@ query PostsBySlug($slug: String!, $banner_img: String!, $banner_img_mob: String!
 
 
 
-  relatedPost: allMdx(filter: {frontmatter: {uuid: {in: $test_related_uuid}}}) {
+  relatedPost: allMdx(filter: {frontmatter: {uuid: {in: $relatedTopics}}}) {
     nodes {
       frontmatter {
         date
@@ -143,10 +142,6 @@ query PostsBySlug($slug: String!, $banner_img: String!, $banner_img_mob: String!
       excerpt(pruneLength: 50)
     }
   }
-
-
-
-
 
 
 }

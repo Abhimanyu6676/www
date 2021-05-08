@@ -8,11 +8,18 @@
   margin-right: 20px;
   border-radius: 5px;
   overflow: hidden;
-  width: 250px;
+  width: 200px;
+  transition: all 0.5s ease-in-out;
 
   @include media-breakpoint-up(sm) {
-    width: 350px;
+    width: 300px;
+    margin-left: 30px;
+    margin-right: 30px;
   }
+}
+
+.relativeBlogContainer:hover {
+  transform: scale(1.05);
 }
 
 .relativeBlogImgContainer {

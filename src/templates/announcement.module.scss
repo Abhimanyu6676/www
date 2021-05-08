@@ -1,0 +1,50 @@
+@import "../components/styles/index.scss";
+@import "../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+.contentConatiner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+  }
+}
+
+.mdxContainer {
+  margin: 30px 10px;
+  flex: 1;
+  @include media-breakpoint-up(sm) {
+    margin: 50px 30px;
+  }
+}
+
+.secondaryContainer {
+  flex: 0.7;
+  //background-color: yellow;
+  height: 200px;
+
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.title {
+  margin: 0px 10px;
+  margin-top: 30px;
+
+  @include media-breakpoint-up(sm) {
+    margin-left: 30px;
+    margin-top: 50px;
+  }
+}
+
+.subtitle {
+  margin: 0px 10px;
+
+  @include media-breakpoint-up(sm) {
+    margin-left: 30px;
+  }
+}

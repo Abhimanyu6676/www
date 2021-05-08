@@ -53,7 +53,7 @@ export default () => {
                     <div /* Sec2: query section */
                         style={{ display: "flex", flexDirection: "column", marginTop: 80, alignItems: "center", justifyContent: "center" }}>
                         <h1 style={{ textAlign: "center" }}>Still have a question?</h1>
-                        <h4 style={{ maxWidth: 350, marginTop: 10, textAlign: "center", fontWeight: "normal" }}>If you cannot find answer to your question in our FAQ, help is just a mail away. We will answer to you shortly!</h4>
+                        <h4 style={{ maxWidth: 350, marginTop: 10, textAlign: "center", fontWeight: "normal" }}>Have a look into FAQ section before writing us. We usually respond back within 24 hrs</h4>
                         <a href="mailto:support@huelite.in" style={{ marginTop: 50 }}>
                             <div /** Sec3: email Button */
                                 style={{
