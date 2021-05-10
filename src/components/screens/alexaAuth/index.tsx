@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { View, Text, Animated } from "react-native"
+import { View, Text, Animated, Dimensions } from "react-native"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image";
 import AlexaLoginScreen from "./alexaLogin"
 
 
+const { height, width } = Dimensions.get("window")
 
 interface Props { }
 export default (props: Props) => {
@@ -14,10 +15,11 @@ export default (props: Props) => {
 
     return (
         <View style={{
-            height: "100vh",
+            flex: 1,
+            height
             //backgroundColor: "#0000ff"
         }}>
-            {policyAccepted
+            {!policyAccepted
                 ? <AlexaLoginScreen />
                 : <ConcentScreen setPolicyAccepted={setPolicyAccepted} />
             }
@@ -33,7 +35,7 @@ const ConcentScreen = ({ setPolicyAccepted }: concentScreenProps) => {
         
         icon: file(relativePath: {eq: "icon/icon.png"}) {
           childImageSharp {
-            fluid(maxWidth: 100) {
+            fluid(maxWidth: 200) {
               ...GatsbyImageSharpFluid
             }
           }

@@ -6,10 +6,12 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "scripts": {
     "build": "gatsby build",
+    "build_withPrefix": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "develop_lan": "gatsby develop -H 0.0.0.0 -p 8000",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop_lan",
+    "serve_withPrefix": "gatsby serve -H 0.0.0.0 -p 8000 --prefix-paths",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
@@ -20,6 +22,7 @@
     "PULL_UNIVERSALS": "git subtree pull --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash"
   },
   "dependencies": {
+    "@expo/vector-icons": "^12.0.5",
     "@material-ui/core": "^4.11.2",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",

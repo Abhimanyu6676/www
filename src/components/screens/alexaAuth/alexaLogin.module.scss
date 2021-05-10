@@ -1,0 +1,35 @@
+@import "../../styles/index.scss";
+@import "../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+.input {
+  height: 40px;
+  border-width: 0px;
+  border-bottom-width: 1px;
+  //width: 80%;
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 400px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #55f;
+}
+
+.notificationCard {
+  background-color: #55f;
+  min-height: 50px;
+  margin: 10px;
+  animation-name: notificationCardAnimation;
+  animation-duration: 0.3s;
+}
+
+@keyframes notificationCardAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
