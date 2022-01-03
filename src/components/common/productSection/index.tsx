@@ -112,14 +112,14 @@ export default ({
         },
     }))(MuiAccordionDetails);
 
-    //console.log(">>>>><<<<<<<" + data.allFile.edges.length)
+    //console.log(">>>>><<<<<<<" data.allFile.edges.length)
 
     return (
         <View /* fluid */ style={{ width: "100%", height: "100%" }}>
             <Row>
-                <Col sm /* Sec2:product Image slider and thumbnails */>
+                <Col sm /** ///product Image slider and thumbnails */>
                     <Row className={styles.ImageSliderContainer + " "}>
-                        <Col sm={2} className={styles.thumbnailsCol + " p-0"} style={{ marginRight: 20 }}/* Sec3:thumbnails container */>
+                        <Col sm={2} className={styles.thumbnailsCol + " p-0"} style={{ marginRight: 20 }}/** /// thumbnails container */>
                             <div
                                 className={" d-flex -jus-c--md-up- " + styles.thumbnailContainer}
                                 style={{ height }} >
@@ -208,7 +208,7 @@ export default ({
                                 </button>
                             </div>
                         </Col>
-                        <Col sm style={{ overflow: "hidden", height }} /* Sec3:Image container */>
+                        <Col sm style={{ overflow: "hidden", }} /* /// Image container */>
                             <div
                                 style={{
                                     width: `${data.pics.edges.length * 100}%`,
@@ -225,7 +225,7 @@ export default ({
                                         position: "absolute",
                                         width: "100%",
                                         height: "100%",
-                                        //backgroundColor: "red",
+                                        backgroundColor: "red",
                                         top: 0,
                                         left: 0,
                                         justifyContent: "center",
@@ -237,10 +237,10 @@ export default ({
                                         setHeight(height)
                                     }}>
                                 </View>
-                                {data.pics.edges.map((edge) => {
+                                {data.pics.edges.map((edge) => { 
                                     return (
                                         <div key={index + "_" + Math.floor(Math.random() * Math.floor(9999))} className="" style={{ flex: 1 }}>
-                                            <Img fluid={edge.node.childImageSharp.fluid} />
+                                            <Img style={{  }} fluid={edge.node.childImageSharp.fluid} />
                                         </div>
                                     )
                                 })}
@@ -258,7 +258,7 @@ export default ({
                         </Col>
                     </Row>
                 </Col>
-                <Col sm className={"-p-0- -p-10--xs-dn- -ml-20--sm-up-"} /* Sec2: Product info accordion */>
+                <Col sm className={"-p-0- -p-10--xs-dn- -ml-20--sm-up-"} /* /// Product info accordion */>
                     <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
                             <div style={{}}>

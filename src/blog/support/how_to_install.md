@@ -8,6 +8,7 @@ related_uuid: "how_to_pair/linkAlexa"
 banner_img: "support/banner1.png"
 main_img: "support/testblog/blogPost1.png"
 mdxTemplateType: "support"
+absoluteHeading: true
 ---
 
 It&#39;s a simple Plug &amp; Play Process. Let me guide you.

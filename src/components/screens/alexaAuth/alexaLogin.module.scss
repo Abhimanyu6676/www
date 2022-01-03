@@ -6,7 +6,7 @@
   height: 40px;
   border-width: 0px;
   border-bottom-width: 1px;
-  //width: 80%;
+  width: 90%;
   margin-left: 20px;
   margin-right: 20px;
   max-width: 400px;
@@ -18,9 +18,9 @@
 }
 
 .notificationCard {
-  background-color: #55f;
   min-height: 50px;
   margin: 10px;
+  margin-bottom: 0px;
   animation-name: notificationCardAnimation;
   animation-duration: 0.3s;
 }

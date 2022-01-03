@@ -1,0 +1,331 @@
+import { graphql, Link, useStaticQuery } from "gatsby"
+import React, { useState, useEffect } from "react"
+import { ScrollView } from "react-native"
+import { Container, Row, Col } from "react-bootstrap"
+import { Dimensions } from "react-native"
+import { animated, useSpring } from "react-spring"
+import { FadeInSection } from "../FadeInSection"
+import { AntDesign, Entypo, Feather, FontAwesome } from "@expo/vector-icons"
+import Image from "../Image"
+import { useSelector, useDispatch } from "react-redux"
+import Cart from "../../cart"
+//@ts-ignore
+import styles from "./index.module.scss"
+
+interface link_i {
+  key: string
+  href?: string
+}
+const primaryMenu: link_i[] = [{ key: "Connected You" }, { key: "Products", href: "spectrum_strip" }, { key: "App" }, { key: "About Us" }]
+const SecondaryMenu: link_i[] = [{ key: "HUElite Community" }, { key: "Blog" }, { key: "Support", href: "support" }]
+
+const Icon = () => {
+  return (
+    <Link to="/">
+      <Image
+        imgData={useStaticQuery(graphql`
+          query {
+            placeholderImage: file(relativePath: { eq: "icon/icon.png" }) {
+              childImageSharp {
+                fluid(maxWidth: 300) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        `)}
+        style={{ zIndex: 1, width: 80 }}
+      />
+    </Link>
+  )
+}
+
+const { width, height } = Dimensions.get("window")
+export default ({ siteTitle = "" }) => {
+  const pathname = typeof window !== "undefined" ? window?.location?.pathname : ""
+  const [headerWhite, setHeaderWhite] = useState(pathname == "/" ? false : true)
+  const [mobileHeaderVisible, setMobileHeaderVisible] = useState(false)
+  const [cartVisible, setCartVisible] = useState(false)
+
+  useEffect(() => {
+    console.log("pathname is -- " + pathname)
+    let observer = undefined
+    if (pathname == "/") {
+      observer = new IntersectionObserver(enteries => {
+        enteries.forEach(entry => {
+          console.log("---------homeSec-1 Intersection-----------" + entry.intersectionRatio)
+          if (entry.intersectionRatio == 0) {
+            setHeaderWhite(true)
+          } else if (entry.intersectionRatio > 0) {
+            setHeaderWhite(false)
+          }
+        })
+      })
+      const target = document.querySelector("#home_sec1")
+      observer.observe(target)
+    }
+    return () => {
+      if (observer) observer.disconnect()
+    }
+  }, [])
+  return (
+    <div style={{}}>
+      <div
+        /*  className={
+          `${headerWhite || mobileHeaderVisible || cartVisible ? styles.containerWhite : styles.containerTranslucent}` + " " + styles.container
+        } */
+        style={
+          {
+            //position: window.location.pathname == "/" ? "fixed" : "relative",
+          }
+        }
+      >
+        <div style={{ position: "absolute" }}>
+          <Icon />
+        </div>
+        <div className={styles.headersLinkContainer}>
+          <div className={styles.primaryMenuContainer}>
+            {primaryMenu.map((item, index) => {
+              return (
+                <Link
+                  key={index + "_" + Math.floor(Math.random() * Math.floor(9999))}
+                  className="-mt-10- -mr-10- "
+                  to={item.href ? "/" + item?.href : "/"}
+                >
+                  <h3 style={{ marginLeft: 15 }}>{item.key}</h3>
+                </Link>
+              )
+            })}
+          </div>
+
+          <div className={styles.secondaryMenuContainer}>
+            {SecondaryMenu.map((item, index) => {
+              return (
+                <Link
+                  key={index + "_" + Math.floor(Math.random() * Math.floor(9999))}
+                  className="-mt-10- -mr-10-"
+                  to={item.href ? "/" + item?.href : "/"}
+                >
+                  <h6>{item.key}</h6>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+
+        {/*   {width <= 600 && (
+            <MobileHeaderContainer
+              headerWhite={headerWhite}
+              setMobileHeaderVisible={setMobileHeaderVisible}
+              mobileHeaderVisible={mobileHeaderVisible}
+              setCartVisible={setCartVisible}
+              cartVisible={cartVisible}
+            />
+          )} */}
+      </div>
+      {pathname != "/" && ( //this section is to cover absolute header space
+        <div
+          style={{
+            height: 80,
+            width: "100vw",
+          }}
+        />
+      )}
+    </div>
+  )
+}
+
+interface MobileHeaderContainerProps {
+  headerWhite: boolean
+  setMobileHeaderVisible: React.Dispatch<React.SetStateAction<boolean>>
+  mobileHeaderVisible: boolean
+  cartVisible: boolean
+  setCartVisible: React.Dispatch<React.SetStateAction<boolean>>
+}
+const MobileHeaderContainer = ({ headerWhite, ...props }: MobileHeaderContainerProps) => {
+  const headerAnimationStyle = useSpring({
+    height: props.mobileHeaderVisible ? "100vh" : "0vh",
+    opacity: props.mobileHeaderVisible ? 1 : 0,
+  })
+
+  const cartAnimationStyle = useSpring({
+    height: props.cartVisible ? "100vh" : "0vh",
+    opacity: props.cartVisible ? 1 : 0,
+  })
+
+  const count = useSelector<any>(state => state.cartReducer.count)
+  const dispatch = useDispatch()
+
+  return (
+    <>
+      <div /// iconsContainer
+        style={{
+          position: "relative",
+          //backgroundColor: "red",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          flex: 99,
+          height: "100%",
+        }}
+      >
+        {!props.mobileHeaderVisible &&
+          false && /// cart icon
+          !props.cartVisible && (
+            <div
+              style={{
+                marginRight: 30,
+                position: "relative",
+                overflow: "visible",
+              }}
+              onClick={() => {
+                props.setCartVisible(true)
+              }}
+            >
+              <div // color highlight
+                onClick={() => {}}
+                style={{
+                  backgroundColor: "#04AA6D",
+                  height: 10,
+                  width: 10,
+                  borderRadius: 10,
+                  position: "absolute",
+                  top: -2,
+                  left: -2,
+                  zIndex: 2,
+                }}
+              ></div>
+              <Feather className={headerWhite || props.mobileHeaderVisible ? styles.iconsDark : styles.iconsWhite} name="shopping-bag" size={20} />
+            </div>
+          )}
+        <div /// <burger || close> icon
+          style={{ marginRight: 15 }}
+        >
+          {props.mobileHeaderVisible || props.cartVisible ? (
+            <div
+              onClick={() => {
+                if (props.mobileHeaderVisible) props.setMobileHeaderVisible(false)
+                else if (props.cartVisible) props.setCartVisible(false)
+              }}
+            >
+              <AntDesign
+                name="close"
+                size={25}
+                className={headerWhite || props.mobileHeaderVisible || props.cartVisible ? styles.iconsDark : styles.iconsWhite}
+              />
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                if (!props.mobileHeaderVisible) props.setMobileHeaderVisible(true)
+              }}
+            >
+              <Entypo className={headerWhite || props.mobileHeaderVisible ? styles.iconsDark : styles.iconsWhite} name="menu" size={25} />
+            </div>
+          )}
+        </div>
+      </div>
+      {/* Sec: newHeader & cart absolute menu container */}
+      <animated.div
+        style={{
+          position: "absolute",
+          left: 0,
+          backgroundColor: "#ffffff",
+          width: "100vw",
+          zIndex: 10,
+          paddingLeft: 20,
+          paddingRight: 20,
+          ...headerAnimationStyle,
+        }}
+      >
+        {props.mobileHeaderVisible && (
+          <FadeInSection>
+            <div /// header munu
+            >
+              <h2
+                style={{
+                  marginTop: "5vh",
+                  paddingBottom: 15,
+                  border: "0px solid #eee",
+                  borderBottomWidth: 2,
+                  fontWeight: "normal",
+                }}
+              >
+                Connected You
+              </h2>
+              <h2
+                style={{
+                  paddingTop: 15,
+                  paddingBottom: 15,
+                  border: "0px solid #eee",
+                  borderBottomWidth: 2,
+                  fontWeight: "normal",
+                }}
+              >
+                Shop
+              </h2>
+              <h2
+                style={{
+                  paddingTop: 15,
+                  paddingBottom: 15,
+                  border: "0px solid #eee",
+                  borderBottomWidth: 2,
+                  fontWeight: "normal",
+                }}
+              >
+                App
+              </h2>
+              <h2
+                style={{
+                  paddingTop: 15,
+                  paddingBottom: 15,
+                  border: "0px solid #eee",
+                  //borderBottomWidth: 2,
+                  fontWeight: "normal",
+                }}
+              >
+                Support
+              </h2>
+              <p style={{ fontWeight: "bold", marginTop: 30 }}>HUElite Community</p>
+              <p style={{ fontWeight: "bold", marginTop: 5 }}>Blog</p>
+              <p style={{ fontWeight: "bold", marginTop: 5 }}>About us</p>
+            </div>
+
+            <div /// share icons
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                width: "100vw",
+                marginTop: 30,
+              }}
+            >
+              <FontAwesome name="facebook-f" size={30} color="#2d2f30" style={{ marginRight: 20 }} />
+              <FontAwesome name="whatsapp" size={30} color="#2d2f30" style={{ marginRight: 20 }} />
+              <FontAwesome name="twitter" size={30} color="#2d2f30" style={{ marginRight: 20 }} />
+              <FontAwesome name="telegram" size={30} color="#2d2f30" style={{ marginRight: 20 }} />
+            </div>
+          </FadeInSection>
+        )}
+      </animated.div>
+      {/* Sec: cart */}
+      <animated.div
+        style={{
+          position: "absolute",
+          left: 0,
+          backgroundColor: "#ffffff",
+          width: "100vw",
+          zIndex: 10,
+          paddingLeft: 15,
+          paddingRight: 15,
+          ...cartAnimationStyle,
+        }}
+      >
+        {props.cartVisible && (
+          <FadeInSection>
+            <Cart />
+          </FadeInSection>
+        )}
+      </animated.div>
+    </>
+  )
+}

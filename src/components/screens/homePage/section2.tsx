@@ -9,31 +9,32 @@ interface Props { }
 export default ({ }: Props) => {
     const data = useStaticQuery(graphql`
         query {
-            thumbs: allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, dir: {eq: "C:/Users/admin/react/Website/web/src/images/Products/Strips/spectrum_strip/productPhotos"}}, sort: {fields: name}) {
-            edges {
+            thumbs: allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, dir: {eq: "/home/abhimanyu/HUElite/www/src/images/Products/Strips/spectrum_strip/productPhotos"}}, sort: {fields: name}) {
+              edges {
                 node {
-                    id
-                    childImageSharp {
-                        fluid(maxWidth: 100) {
-                            ...GatsbyImageSharpFluid
-                        }
+                  id
+                  childImageSharp {
+                    fluid(maxWidth: 100) {
+                      ...GatsbyImageSharpFluid
                     }
+                  }
                 }
+              }
             }
-            }
-                    pics: allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, dir: {eq: "C:/Users/admin/react/Website/web/src/images/Products/Strips/spectrum_strip/productPhotos"}}, sort: {fields: name}) {
-            edges {
+            pics: allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, dir: {eq: "/home/abhimanyu/HUElite/www/src/images/Products/Strips/spectrum_strip/productPhotos"}}, sort: {fields: name}) {
+              edges {
                 node {
-                    id
-                    childImageSharp {
-                        fluid(maxWidth: 500) {
-                            ...GatsbyImageSharpFluid
-                        }
+                  id
+                  childImageSharp {
+                    fluid(maxWidth: 500) {
+                      ...GatsbyImageSharpFluid
                     }
+                  }
                 }
+              }
             }
-            }
-        }`)
+          }`)
+
 
     return (
         <Container /* fluid */ style={{ marginTop: 20 }}>
