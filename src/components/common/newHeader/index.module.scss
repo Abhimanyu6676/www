@@ -1,0 +1,96 @@
+@import "../../styles/index.scss";
+@import "../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+.mainContainer {
+  position: fixed;
+  width: 100vw;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  transition: background-color 0.5s ease-in;
+  border-width: 0px;
+  border-style: solid;
+  border-color: #eee;
+
+  a {
+    color: $secondary-text-color;
+  }
+}
+
+.containerWhite {
+  background-color: #ffffff;
+  border-bottom-width: 2px;
+}
+
+.containerTranslucent {
+  background-color: #ffffff22;
+}
+
+.iconstransition {
+  transition: color 1s ease-in;
+}
+
+.iconsWhite {
+  color: #fff;
+}
+
+.iconsDark {
+  color: #2d2f30;
+}
+
+.headersLinkContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 50px;
+
+  @include media-breakpoint-down(xs) {
+    display: none;
+  }
+}
+
+.primaryLinkContainer_desktop {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.secondaryLinkContainer_desktop {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  //align-items: center;
+}
+
+.primaryLinkStyles_mobile {
+  color: #2d2f30;
+  font-size: xx-large;
+  padding-left: 15px;
+  padding-top: 30px;
+}
+
+.secondaryLinkStyles_mobile {
+  color: #2d2f30;
+  font-size: large;
+  padding-left: 15px;
+  padding-top: 20px;
+}
+
+.absoluteFiller {
+  display: none;
+  @include media-breakpoint-down(xs) {
+    display: block;
+  }
+}
+
+.mobileHeader {
+  @include media-breakpoint-up(sm) {
+    display: none;
+  }
+}

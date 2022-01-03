@@ -6,6 +6,7 @@ auther_link: ""
 uuid: "uuid_termsNconditions"
 banner_img: "support/banner1.png"
 mdxTemplateType: "support"
+absoluteHeading: true
 ---
 
 Welcome to HUELITE! Sternet Industries India, Pvt. Ltd. dba HUELITE, and its affiliates and subsidiaries (&quot; **HUELITE**&quot;, &quot; **we**&quot;, &quot; **us**&quot;, or &quot; **our**&quot;) owns, operates and provides the (i) the websites owned and operated by HUELITE, including the domains (the &quot; **HUELITE Website**&quot;), (ii) the HUELITE proprietary iOS and Android mobile software applications (the &quot; **HUELITE App**&quot;), (iii) the HUELITE proprietary Wi-Fi enabled smart light products (the &quot; **HUELITE Products**&quot;), including any HUELITE Technology therein; and (iv) any other products and services offered by HUELITE. Your use of the Services, or any part thereof, are governed by these Terms of Use (the &quot; **Terms**&quot;). The HUELITE Website, HUELITE App, HUELITE Products, and HUELITE Technology are collectively referred to as the &quot; **HUELITE Service**&quot;).

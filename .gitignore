@@ -76,3 +76,7 @@ yarn-error.log
 
 
 # bit components
+
+
+# custom ignores
+test.*

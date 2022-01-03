@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 
 const autoprefixer = require("autoprefixer")
 module.exports = {
@@ -6,7 +10,7 @@ module.exports = {
     //FAST_REFRESH: true
   },
   siteMetadata: {
-    title: `HUElite`,
+    title: "HUElite",
     description: `Decorating Spaces`,
     author: `@STERNET_INDUSTRIES`,
   },
@@ -73,6 +77,19 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    { /// google tag manager
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: process.env.NODE_ENV == "development" ? "GTM-dev_key" : "GTM-M6GCD9J",
+        includeInDevelopment: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: process.env.NODE_ENV == "development" ? "dev_key" : "524234818946270",
       },
     },
     /* {

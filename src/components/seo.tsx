@@ -16,16 +16,16 @@ function SEO({ description, lang, meta, title }) {
   return (
     <StaticQuery
       query={graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
+        query {
+          site {
+            siteMetadata {
+              title
+              description
+              author
+            }
           }
         }
-      }
-    `}
+      `}
       render={({ site }) => {
         const metaDescription = description || site.siteMetadata.description
         const defaultTitle = site.siteMetadata?.title
@@ -36,7 +36,12 @@ function SEO({ description, lang, meta, title }) {
             }}
             title={title}
             titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+            script={[{ src: "http", type: "text/javascript" }]}
             meta={[
+              {
+                name: "viewport",
+                content: "width=device-width, initial-scale=1.0",
+              },
               {
                 name: `description`,
                 content: metaDescription,

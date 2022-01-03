@@ -1,21 +1,25 @@
-import React from 'react';
-import Sec1 from "./section1";
-import Section2 from './section2';
+import React from "react"
+import Sec1 from "./section1"
+import Section2 from "./section2"
 import SubscribeSection from "../../common/subscribeSection"
 
-interface Props {
-
+interface Props {}
+const Component = ({}: Props) => {
+  return (
+    <div className="-bg-fff-" style={{ minHeight: "50vh" }}>
+      <Sec1 />
+      <Section2 />
+      {/*  <button
+        onClick={() => {
+          //@ts-ignore
+          typeof window !== undefined && window.gtag("event", "click")
+        }}
+      >
+        test button
+      </button> */}
+      <SubscribeSection />
+    </div>
+  )
 }
-const Component = ({ }: Props) => {
-
-    return (
-        <div className="-bg-fff-" style={{ minHeight: "50vh" }}>
-            <Sec1 />
-            <Section2 />
-            <SubscribeSection />
-        </div>
-    )
-}
-
 
 export default Component

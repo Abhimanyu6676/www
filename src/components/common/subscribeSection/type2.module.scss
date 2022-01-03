@@ -1,0 +1,13 @@
+.subscribeText {
+  color: #ffffff;
+  @media only screen and (max-width: 500px) {
+    display: none;
+  }
+}
+
+.subscribeIcon {
+  color: #ffffff;
+  @media only screen and (min-width: 500px) {
+    display: none;
+  }
+}
