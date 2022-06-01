@@ -1,12 +1,14 @@
 import React from "react"
 import Layout from "../../components/layout"
-
+import Support from "../../components/screens/support"
 type Props = {}
 
-export default (props: Props) => {
+const Comp = (props: Props) => {
   return (
     <Layout>
-      <div>support index</div>
+      <Support />
     </Layout>
   )
 }
+
+export default Comp

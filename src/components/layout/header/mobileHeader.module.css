@@ -7,7 +7,6 @@
   .mobileBlockContainer {
     display: flex;
     align-items: center;
-    height: 50px;
     justify-content: flex-start;
   }
 }

@@ -9,21 +9,49 @@ import Button from "../../Button"
 //@ts-ignore
 import * as styles from "./mobileHeader.module.css"
 import { primartMenu } from "."
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
 
 type Props = {}
 export const MobileHeader = (props: Props) => {
+  const data = useStaticQuery(graphql`
+    query {
+      icon: file(relativePath: { eq: "icon/icon.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 200) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
   const [showDrawer, setShowDrawer] = useState(false)
 
   return (
     <div className={styles.mobileBlockContainer}>
-      <Button
-        onClick={() => {
-          setShowDrawer(!showDrawer)
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          flex: 1,
         }}
       >
-        <MenuIcon fontSize="large" style={{ color: "#000000" }} />
-      </Button>
+        <Button
+          onClick={() => {
+            setShowDrawer(!showDrawer)
+          }}
+          style={{
+            position: "absolute",
+            left: 0,
+          }}
+        >
+          <MenuIcon fontSize="large" style={{ color: "#000000" }} />
+        </Button>
+        <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 50 }} />
+      </div>
 
       <div // drawer container
         className={styles.drawer}

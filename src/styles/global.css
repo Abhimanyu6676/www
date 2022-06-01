@@ -16,6 +16,30 @@ p {
   color: #000000;
 }
 
+button {
+  font-size: unset;
+  background-color: #ffffff00;
+  border-width: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+button:focus {
+  outline: none;
+}
+
+input {
+  border-width: 0px;
+  border-radius: 0px;
+  border-bottom-width: 1px;
+  min-height: 40px;
+  padding: 0px 5px;
+  margin: 0px;
+  font-size: large;
+}
+input:focus {
+  outline: none;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 }

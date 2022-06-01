@@ -12,8 +12,6 @@ export default ({
   return (
     <button
       style={{
-        backgroundColor: "#ffffff00",
-        borderWidth: 0,
         ...style,
       }}
       onClick={onClick}

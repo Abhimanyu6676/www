@@ -12,7 +12,7 @@ import * as Styles from "./alexaLogin.module.css"
 import NotificationContainer, {
   getNewNotificationUUID,
   notification_i,
-} from "../../components/NotificationContainer"
+} from "../../NotificationContainer"
 
 interface Props {}
 export default (props: Props) => {

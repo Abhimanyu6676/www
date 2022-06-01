@@ -1,38 +1,26 @@
-.main {
-  background-color: #ffffff;
+.textSection {
+  margin: 0px 20vw;
+  margin-top: 50px;
 }
 
-.linkText {
-  text-align: start;
-  font-size: 15px;
+.articlesContainer {
+  margin: 0px 10vw;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .main {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .textSection {
+    margin: 0px 30px;
+    margin-top: 50px;
   }
 
-  .linkRowHeading {
-    text-align: center;
-  }
-
-  .linkText {
-    text-align: center;
-    font-size: 18px;
+  .articlesContainer {
+    margin: 0px 0px;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .main {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 50px;
-  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */

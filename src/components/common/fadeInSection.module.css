@@ -1,0 +1,28 @@
+.fadeInSection {
+  transform: translateY(30px);
+  opacity: 0;
+  will-change: opacity, transform, visibility;
+  transition: opacity 1200ms ease-out, transform 600ms ease-out,
+    visibility 1200ms ease-out;
+}
+
+.fadeInSectionIsVisible {
+  transform: none;
+  opacity: 1;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.test {
+  /* This section calls the slideInFromLeft animation we defined above */
+  animation: 1s ease-out 0s 1 slideInFromBottom;
+}
