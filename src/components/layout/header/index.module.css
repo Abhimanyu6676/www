@@ -1,23 +1,9 @@
-body {
-  margin: 0;
-  padding: 0;
-  color: #202124;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  color: #000000;
-}
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .main {
+    width: 100vw;
+    /* background-color: red; */
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -34,7 +20,4 @@ p {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  body {
-    font-size: 20px;
-  }
 }

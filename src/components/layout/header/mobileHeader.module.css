@@ -1,27 +1,22 @@
-body {
-  margin: 0;
-  padding: 0;
-  color: #202124;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  color: #000000;
+.drawer {
+  transition: left 0.4s ease-out;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .mobileBlockContainer {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    justify-content: flex-start;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .mobileBlockContainer {
+    display: none;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -34,7 +29,4 @@ p {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  body {
-    font-size: 20px;
-  }
 }

@@ -8,6 +8,7 @@ module.exports = {
       "gatsby-plugin-sharp",
       "gatsby-transformer-sharp",
       "gatsby-plugin-use-query-params",
+      `gatsby-plugin-react-helmet`,
     /* "gatsby-plugin-image", */
       {
         resolve: `gatsby-plugin-mdx`,
@@ -29,7 +30,8 @@ module.exports = {
           name: `blog`,
           path: `${__dirname}/blog`,
         },
-      },{
+      },
+      {
         resolve: `gatsby-source-filesystem`,
         options: {
           name: `images`,
