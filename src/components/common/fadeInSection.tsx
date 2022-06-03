@@ -36,7 +36,7 @@ export const FadeInSection = (props: {
 
 export const FadeInSectionCSS = (props: {
   style?: React.CSSProperties
-  children: any
+  children?: any
 }) => {
   return (
     <div className={styles.test} style={{} && props.style}>

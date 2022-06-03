@@ -10,12 +10,21 @@ export const primartMenu: Link_i[] = [
   { text: "Support", link: "/support" },
   { text: "Contact Us", link: "/contact_us" },
 ]
-type Props = {}
+type Props = {
+  style?: React.CSSProperties
+  transparent?: boolean
+}
 export default (props: Props) => {
   return (
-    <div className={styles.main}>
-      <MobileHeader />
-      <DesktopHeader />
+    <div
+      className={styles.main}
+      style={{
+        backgroundColor: props.transparent ? "#aaaaaa77" : "#ffffff",
+        ...props.style,
+      }}
+    >
+      <MobileHeader transparent={props.transparent} />
+      <DesktopHeader transparent={props.transparent} />
     </div>
   )
 }

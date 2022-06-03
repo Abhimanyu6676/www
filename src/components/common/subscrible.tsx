@@ -1,6 +1,6 @@
 import { maxWidth } from "@mui/system"
 import React from "react"
-import Button from "./Button"
+import Button from "../Button"
 
 type Props = {
   style?: React.CSSProperties

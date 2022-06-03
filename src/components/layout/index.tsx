@@ -4,7 +4,11 @@ import Header from "./header"
 //@ts-ignore
 import Helmet from "react-helmet"
 
-export default (props: { children?: any }) => {
+export default (props: {
+  children?: any
+  headerStyle?: React.CSSProperties
+  transparentHeader?: boolean
+}) => {
   return (
     <div>
       <Helmet>
@@ -13,7 +17,7 @@ export default (props: { children?: any }) => {
           content="width=device-width,initial-scale=1"
         ></meta>
       </Helmet>
-      <Header />
+      <Header style={props.headerStyle} transparent={props.transparentHeader} />
       {props.children}
       <Footer />
     </div>

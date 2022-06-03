@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   padding: 0;
@@ -14,10 +17,12 @@ h5,
 h6,
 p {
   color: #000000;
+  font-family: Inter, Ubuntu, sans-serif;
 }
 
 button {
   font-size: unset;
+  text-align: unset;
   background-color: #ffffff00;
   border-width: 0px;
   padding: 0px;
@@ -38,6 +43,12 @@ input {
 }
 input:focus {
   outline: none;
+}
+
+.mdxhint {
+  color: #333;
+  font-size: 15px;
+  font-family: Nunito Sans;
 }
 
 /* Extra small devices (phones, 600px and down) */

@@ -6,7 +6,7 @@ import * as styles from "./index.module.css"
 import globalStyles from "../../../styles/globalStyles"
 import { Grid } from "@mui/material"
 import { textAlign } from "@mui/system"
-import { Subscrible } from "../../subscrible"
+import { Subscrible } from "../../common/subscrible"
 
 interface article_i {
   heading: string

@@ -1,8 +1,9 @@
-import { graphql } from "gatsby"
+import { graphql, navigate, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 import Img from "gatsby-image"
 import React from "react"
+import { NoteBox } from "../components/noteBox"
 //@ts-ignore
 import * as styles from "./generalBlogPost.module.css"
 
@@ -54,7 +55,7 @@ const generalBlogPostTemplate = ({ data }) => {
       <div style={{ padding: "0px 3%" }}>
         <MDXProvider
           components={{
-            step: props => (
+            step: (props: any) => (
               <strong
                 style={{
                   fontSize: "1.1em",
@@ -64,7 +65,7 @@ const generalBlogPostTemplate = ({ data }) => {
                 {...props}
               />
             ),
-            "h4.inlineCode": props => (
+            "h4.inlineCode": (props: any) => (
               <code
                 style={{
                   color: "#EC7063",
@@ -73,7 +74,7 @@ const generalBlogPostTemplate = ({ data }) => {
                 {...props}
               />
             ),
-            note: props => (
+            note: (props: any) => (
               <div
                 style={{
                   backgroundColor: "#F7DC6F",
@@ -85,17 +86,44 @@ const generalBlogPostTemplate = ({ data }) => {
                   borderLeftStyle: "solid",
                 }}
               >
-                <p
-                  style={{
-                    margin: "0px 10px",
-                    color: "#E74C3C",
-                    marginBottom: 20,
-                    fontFamily: "monospace",
-                  }}
-                  {...props}
-                />
+                {props}
               </div>
             ),
+            hint: (props: {
+              color?: string
+              children?: any
+              style?: React.CSSProperties
+            }) => (
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <div
+                  style={{
+                    backgroundColor: props.color
+                      ? props.color + "aa"
+                      : "#F1C40Faa",
+                    borderRadius: 5,
+                    padding: "10px 10px",
+                    borderLeftColor: props.color ? props.color : "#F1C40F",
+                    borderLeftWidth: 5,
+                    borderLeftStyle: "solid",
+                    maxWidth: 600,
+                    minWidth: 300,
+                  }}
+                >
+                  {props.children}
+                </div>
+              </div>
+            ),
+            glink: (props: { children?: any; link?: string }) => {
+              return (
+                <button
+                  {...props}
+                  onClick={() => {
+                    if (props.link) navigate(props.link)
+                  }}
+                />
+              )
+            },
+            Link,
           }}
         >
           <MDXRenderer>{body}</MDXRenderer>

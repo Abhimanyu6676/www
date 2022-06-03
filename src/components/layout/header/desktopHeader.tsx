@@ -5,7 +5,9 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import { primartMenu } from "."
 
-type Props = {}
+type Props = {
+  transparent?: boolean
+}
 export const DesktopHeader = (props: Props) => {
   const data = useStaticQuery(graphql`
     query {
@@ -21,7 +23,7 @@ export const DesktopHeader = (props: Props) => {
 
   return (
     <div className={styles.main}>
-      <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 100 }} />
+      <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 80 }} />
       <div
         style={{
           display: "flex",
@@ -43,15 +45,16 @@ export const DesktopHeader = (props: Props) => {
                 marginTop: 15,
               }}
             >
-              <h5
+              <h3
                 style={{
                   margin: 0,
-                  fontWeight: "normal",
-                  color: "#777",
+                  //fontWeight: "normal",
+                  fontFamily: "Inter",
+                  color: props.transparent ? "#ffffff" : "#777777",
                 }}
               >
                 {item.text}
-              </h5>
+              </h3>
             </Link>
           )
         })}

@@ -1,15 +1,15 @@
 ---
 title: "How to pair with HUElite app v2.x.x"
-date: "2021-01-30"
+date: "2022-01-15"
 auther: "@sternetIndustries"
 auther_link: ""
-uuid: "how_to_pair"
+uuid: "how_to_pair_v2"
 related_uuid: "how_to_install/linkAlexa"
 banner_img: "support/banner.png"
 main_img: "support/howToPair/main.png"
 mdxTemplateType: "support"
 absoluteHeading: true
-warningText: "uuid-how_to_pair"
+warningText: "uuid-how_to_pair_v2"
 ---
 
 #### <step>Step 1:</step> Download the Huelite Application from Play Store/App Store respectively.
@@ -20,7 +20,7 @@ warningText: "uuid-how_to_pair"
 
 <p>&nbsp;</p>
 
-Once the app is installed , register an account with Huelite, or login with an existing account.
+- Once the app is installed , register an account with Huelite, or login with an existing account.
 
 <p>&nbsp;</p>
 
@@ -32,7 +32,11 @@ Once the app is installed , register an account with Huelite, or login with an e
 
 <p>&nbsp;</p>
 
-![](./howToPair/step2.png)
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./howToPair/v2/step2.png" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -45,32 +49,35 @@ Once the app is installed , register an account with Huelite, or login with an e
 
 <p>&nbsp;</p>
 
-![](./howToPair/step3.jpg)
-
-<NoteBox compId="faq_devicenotvisible1" heading="Troubleshoot">
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./howToPair/v2/step3.jpg" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-<h4 style={{ marginTop: 10, marginBottom: 10 }}>
+<hint>
+<h5 style={{ marginTop: 10, marginBottom: 10 ,}}>
         FAQ: Huelite device doesn't appear in the avaliable Wi-Fi network list?
-      </h4>
+      </h5>
       <ul>
         <li>
-          <p>
+          <p classname="mdxhint">
             Make sure the Huelite device is installed within your home network
             range. (While pairing your smartphone is required to be within 5
             meter radius of huelite device providing no direct obstruction)
           </p>
         </li>
         <li>
-          <p>
+          <p classname="mdxhint">
             If the device Wi-Fi doesnt appear in the Wi-Fi settings kindly
-            factory reset the device. Check <Link to="/faq/howtoreset">here</Link>
+            factory reset the device. Check <Link to="/faq/howtoreset"><u>here</u></Link>
           </p>
         </li>
       </ul>
-</NoteBox>
+</hint>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -84,33 +91,37 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-![](./howToPair/step4.png)
-
-<NoteBox compId="faq_homeNetworkNotVisible" heading="Troubleshoot">
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./howToPair/v2/step4.png" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
+<p>&nbsp;</p>
 
+<hint>
 <h4 style={{ marginTop: 10, marginBottom: 10 }}>
         FAQ: My home Wi-Fi doesn’t appear in the list?
       </h4>
       <ul>
         <li>
-          <p>
+          <p classname="mdxhint">
             Make sure you are connecting with 2.4Ghz bandwidth network. Huelite lights connect to the 2.4Ghz band of Wi-Fi not 5Ghz. If you have more than one available network on your router this could mean you are connected to 5Ghz and need to try your other network. All Wi-Fi routers have a 2.4 GHz band so if you only have one network you will be on the right one to get started.
           </p>
         </li>
         <li>
-          <p>
+          <p classname="mdxhint">
             Try refreshing the network list with the `Refresh Wifi Scan` button on the screen.
           </p>
         </li>
          <li>
-          <p>
+          <p classname="mdxhint">
             Make sure the Huelite device is installed within your home network range. (While pairing your smartphone is required to be within 5 meter radius of huelite device providing no direct obstruction)
           </p>
         </li>
       </ul>
-</NoteBox>
+</hint>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -120,7 +131,11 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-![](./howToPair/step7.png)
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./howToPair/v2/step5.png" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -130,7 +145,11 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-![](./howToPair/step8.png)
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./howToPair/v2/step6.png" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -140,7 +159,11 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-![](./howToPair/step9.png)
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./howToPair/v2/step7.png" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -149,11 +172,17 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 
 <p>&nbsp;</p>
 
-<note>If you have more than one device you can group them now</note>
+<hint color="#48C9B0">
+<p classname="mdxhint">If you have more than one device you can group them now</p>
+</hint>
 
 <p>&nbsp;</p>
 
-![](./howToPair/step10.jpg)
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./howToPair/v2/step8.jpg" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>

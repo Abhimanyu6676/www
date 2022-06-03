@@ -11,8 +11,11 @@ import * as styles from "./mobileHeader.module.css"
 import { primartMenu } from "."
 import { graphql, Link, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace"
 
-type Props = {}
+type Props = {
+  transparent?: boolean
+}
 export const MobileHeader = (props: Props) => {
   const data = useStaticQuery(graphql`
     query {
@@ -30,13 +33,17 @@ export const MobileHeader = (props: Props) => {
 
   return (
     <div className={styles.mobileBlockContainer}>
-      <div
+      <div //mobile header
         style={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItems: "center",
           flex: 1,
+          padding: "0px 10px",
+          boxShadow: props.transparent
+            ? "unset"
+            : "0px 4px 8px 0px rgba(143,143,143,0.75)",
         }}
       >
         <Button
@@ -45,12 +52,22 @@ export const MobileHeader = (props: Props) => {
           }}
           style={{
             position: "absolute",
-            left: 0,
+            right: 15,
           }}
         >
-          <MenuIcon fontSize="large" style={{ color: "#000000" }} />
+          {showDrawer ? (
+            <CloseIcon
+              fontSize="large"
+              style={{ color: props.transparent ? "#ffffff" : "#333333" }}
+            />
+          ) : (
+            <MenuIcon
+              fontSize="large"
+              style={{ color: props.transparent ? "#ffffff" : "#333333" }}
+            />
+          )}
         </Button>
-        <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 50 }} />
+        <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 60 }} />
       </div>
 
       <div // drawer container
@@ -58,9 +75,9 @@ export const MobileHeader = (props: Props) => {
         style={{
           position: "fixed",
           top: 0,
-          left: showDrawer ? "0vw" : "-90vw",
+          left: showDrawer ? "0vw" : "-80vw",
           //left: 0,
-          width: "90vw",
+          width: "80vw",
           height: "100vh",
           backgroundColor: "white",
           zIndex: 10,
@@ -72,16 +89,19 @@ export const MobileHeader = (props: Props) => {
         <div // close button container
           style={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: "flex-start",
           }}
         >
           <Button
             onClick={() => {
               setShowDrawer(!showDrawer)
             }}
-            style={{ marginTop: 10, marginRight: 10 }}
+            style={{ marginTop: 20, marginRight: 10, marginLeft: 20 }}
           >
-            <CloseIcon fontSize="large" style={{ color: "#000000" }} />
+            <KeyboardBackspaceIcon
+              fontSize="large"
+              style={{ color: "#000000" }}
+            />
           </Button>
         </div>
         <div // primary menu items container
@@ -92,6 +112,7 @@ export const MobileHeader = (props: Props) => {
             alignItems: "flex-start",
             position: "relative",
             marginLeft: 20,
+            marginTop: 20,
             flex: 1,
           }}
         >
