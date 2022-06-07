@@ -5,7 +5,7 @@ auther: "@sternetIndustries"
 auther_link: ""
 uuid: ""
 related_uuid: "lkj"
-banner_img: "support/banner1.png"
+banner_img: "support/banner.png"
 mdxTemplateType: "support"
 absoluteHeading: true
 ---

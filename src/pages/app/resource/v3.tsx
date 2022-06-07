@@ -6,9 +6,11 @@ import appColors from "../../../styles/appColors"
 
 type Props = {}
 const AppDownload = (props: Props) => {
-  const getPlatform = () => {
-    //@ts-ignore
-    let userAgent = navigator.platform
+  /*  const getPlatform = () => {
+    let userAgent =
+      typeof window !== "undefined" && window.navigator
+        ? window.navigator.platform
+        : undefined
     if (userAgent && typeof userAgent === typeof "") {
       userAgent = userAgent.toLowerCase()
       if (
@@ -23,8 +25,8 @@ const AppDownload = (props: Props) => {
       }
     }
     return "android"
-  }
-  const isIos: boolean = getPlatform() == "ios"
+  } */
+  const [isIos, setIsIos] = useState<"none" | "ios" | "android">("none")
 
   const data = useStaticQuery(graphql`
     query {
@@ -37,6 +39,17 @@ const AppDownload = (props: Props) => {
       }
     }
   `)
+
+  useEffect(() => {
+    /*  const isIos: boolean = getPlatform() == "ios"
+    let _p = getPlatform()
+    if (_p == "ios") {
+      setIsIos("ios")
+    } else if (_p == "android") {
+      setIsIos("android")
+    } */
+    return () => {}
+  }, [])
 
   return (
     <div // main container

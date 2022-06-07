@@ -4,7 +4,7 @@ date: "2020-01-30"
 auther: "@sternetIndustries"
 auther_link: ""
 uuid: "uuid_termsNconditions"
-banner_img: "support/banner1.png"
+banner_img: "support/banner.png"
 mdxTemplateType: "support"
 absoluteHeading: true
 ---

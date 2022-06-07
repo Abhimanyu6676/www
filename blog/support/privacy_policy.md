@@ -5,8 +5,8 @@ auther: "@sternetIndustries"
 auther_link: ""
 uuid: "uuid_3"
 related_uuid: "uuid_1"
-banner_img: "support/banner1.png"
-main_img: "support/testblog/blogPost1.png"
+banner_img: "support/banner.png"
+main_img: "support/how_to_pair/main.png"
 mdxTemplateType: "support"
 absoluteHeading: true
 ---

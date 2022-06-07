@@ -1,12 +1,12 @@
 ---
 title: "App updates summery"
-date: "2021-06-06"
+date: "2022-05-28"
 auther: "@sternetIndustries"
 auther_link: ""
 uuid: "appUpdateSummery"
 related_uuid: "how_to_install/linkAlexa"
-banner_img: "support/appUpdateSummery/headerImage.png"
-main_img: "support/testblog/blogPost1.png"
+banner_img: "support/app/changelog/headerImage.png"
+main_img: "support/banner.png"
 mdxTemplateType: "support"
 ---
 
@@ -75,13 +75,12 @@ mdxTemplateType: "support"
 
 ### bugfix
 
-<br></br>
-
 - [#c26fe9 - closed] connectivity issue resolved (socket lost as app goes in background) {more on git}
 - [#ao1296 - testing] timers appear n disappear un expectedly
 
 ### halts
 
-<br></br>
-
 - 2.0.3 compatability layer will freeze backend sync across devices untill next update
+
+<br></br>
+<br></br>

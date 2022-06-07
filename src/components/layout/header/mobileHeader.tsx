@@ -67,7 +67,9 @@ export const MobileHeader = (props: Props) => {
             />
           )}
         </Button>
-        <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 60 }} />
+        <Link to="/">
+          <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 60 }} />
+        </Link>
       </div>
 
       <div // drawer container

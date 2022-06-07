@@ -23,7 +23,9 @@ export const DesktopHeader = (props: Props) => {
 
   return (
     <div className={styles.main}>
-      <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 80 }} />
+      <Link to="/">
+        <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 80 }} />
+      </Link>
       <div
         style={{
           display: "flex",

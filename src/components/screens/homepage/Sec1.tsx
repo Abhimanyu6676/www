@@ -67,13 +67,6 @@ export const Sec1 = (props: Props) => {
     config: { duration: 500 },
   })
 
-  const transition1 = useTransition(slides[index], item => item.id, {
-    from: { opacity: 0, transform: "translateX(-20px)" },
-    enter: { opacity: 1, transform: "translateX(0px)" },
-    leave: { opacity: 0, transform: "translateX(20px)" },
-    config: { duration: 500 },
-  })
-
   useEffect(() => {
     let indexLoop = setInterval(() => {
       if (index == 3) setIndex(0)
@@ -90,66 +83,68 @@ export const Sec1 = (props: Props) => {
       style={{ position: "relative", width: "100vw", height: "100vh" }}
       id="home_sec1"
     >
-      {transition.map(({ item, props, key }) => {
-        return (
-          <animated.div /// slides
-            key={key}
-            style={{
-              width: "100%",
-              position: "absolute",
-              top: 0,
-              color: "#fff",
-              ...props,
-            }}
-          >
-            <Img
-              style={{ height: "100vh", width: "100vw" }}
-              fluid={
-                data.homepage_sec_1.edges[index].node.childImageSharp.fluid
-              }
-            />
-          </animated.div>
-        )
-      })}
+      <div // images contaienr
+        style={{ position: "relative", width: "100vw", height: "100vh" }}
+      >
+        {transition.map(({ item, props, key }) => {
+          return (
+            <animated.div /// slides
+              key={key}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                color: "#fff",
+                height: "100vh",
+                width: "100vw",
+                ...props,
+              }}
+            >
+              <Img
+                style={{ height: "100vh", width: "100vw" }}
+                fluid={
+                  data.homepage_sec_1.edges[index].node.childImageSharp.fluid
+                }
+              />
+            </animated.div>
+          )
+        })}
+      </div>
       <div // bottom text container
         style={{
           position: "absolute",
-          bottom: 130,
+          bottom: "15%",
           left: 0,
           //backgroundColor: "red",
           padding: "0px 20px",
         }}
       >
-        {transition1.map(({ item, props, key }) => {
-          return (
-            <animated.div
-              key={key}
-              style={{
-                //backgroundColor: "red",
-                ...props,
-              }}
-            >
-              <h1
-                style={{
-                  color: "#fff",
-                }}
-              >
-                {curSlide.heading}
-              </h1>
-              <p
-                style={{
-                  marginTop: 20,
-                  fontSize: 18,
-                  lineHeight: "1.6em",
-                  color: "#fff",
-                }}
-              >
-                {curSlide.text}
-              </p>
-            </animated.div>
-          )
-        })}
         <div
+          style={{
+            //backgroundColor: "red",
+            ...props,
+          }}
+        >
+          <h1
+            style={{
+              color: "#fff",
+            }}
+          >
+            {curSlide.heading}
+          </h1>
+          <p
+            style={{
+              marginTop: 20,
+              fontSize: 18,
+              lineHeight: "1.6em",
+              color: "#fff",
+            }}
+          >
+            {curSlide.text}
+          </p>
+        </div>
+
+        <div // scene buttons container
           className="flex-container"
           style={{
             marginTop: 50,
