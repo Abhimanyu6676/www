@@ -8,8 +8,10 @@ type Props = {}
 const AppDownload = (props: Props) => {
   const getPlatform = () => {
     let userAgent =
+      //@ts-ignore
       typeof window !== "undefined" && window.navigator
-        ? window.navigator.platform
+        ? //@ts-ignore
+          window.navigator.platform
         : undefined
     if (userAgent && typeof userAgent === typeof "") {
       userAgent = userAgent.toLowerCase()
