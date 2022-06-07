@@ -6,7 +6,7 @@ import appColors from "../../../styles/appColors"
 
 type Props = {}
 const AppDownload = (props: Props) => {
-  /*  const getPlatform = () => {
+  const getPlatform = () => {
     let userAgent =
       typeof window !== "undefined" && window.navigator
         ? window.navigator.platform
@@ -25,12 +25,12 @@ const AppDownload = (props: Props) => {
       }
     }
     return "android"
-  } */
+  }
   const [isIos, setIsIos] = useState<"none" | "ios" | "android">("none")
 
   const data = useStaticQuery(graphql`
-    query {
-      icon: file(relativePath: { eq: "icon/icon.png" }) {
+    query appDownloadV3icon {
+      appDownloadV3icon: file(relativePath: { eq: "icon/icon.png" }) {
         childImageSharp {
           fluid(maxWidth: 200) {
             ...GatsbyImageSharpFluid
@@ -41,13 +41,13 @@ const AppDownload = (props: Props) => {
   `)
 
   useEffect(() => {
-    /*  const isIos: boolean = getPlatform() == "ios"
+    const isIos: boolean = getPlatform() == "ios"
     let _p = getPlatform()
     if (_p == "ios") {
       setIsIos("ios")
     } else if (_p == "android") {
       setIsIos("android")
-    } */
+    }
     return () => {}
   }, [])
 
@@ -88,7 +88,10 @@ const AppDownload = (props: Props) => {
             margin: "50px 0px",
           }}
         >
-          <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 200 }} />
+          <Img
+            fluid={data.appDownloadV3icon.childImageSharp.fluid}
+            style={{ width: 200 }}
+          />
         </div>
         <div // button
           style={{
@@ -107,7 +110,7 @@ const AppDownload = (props: Props) => {
               color: "#ffffff",
             }}
           >
-            {isIos ? "Visit App Store" : "Visit Play Store"}
+            {isIos == "ios" ? "Visit App Store" : "Visit Play Store"}
           </h4>
         </div>
       </div>
@@ -131,13 +134,17 @@ const AppDownload = (props: Props) => {
             //...globalStyles.shadowLight,
           }}
         >
-          <Img fluid={data.icon.childImageSharp.fluid} style={{}} />
+          <Img
+            fluid={data.appDownloadV3icon.childImageSharp.fluid}
+            style={{}}
+          />
         </div>
         <div // textSection
           style={{ marginLeft: 20 }}
         >
           <p style={{ margin: 0 }}>
-            Or perhaps download from {isIos ? "Play Store" : "App Store"}
+            Or perhaps download from{" "}
+            {isIos == "ios" ? "Play Store" : "App Store"}
           </p>
           <p
             style={{
@@ -148,7 +155,7 @@ const AppDownload = (props: Props) => {
               color: appColors.primaryHighlight,
             }}
           >
-            {isIos ? "Visit Play Store" : "Visit App Store"}
+            {isIos == "ios" ? "Visit Play Store" : "Visit App Store"}
           </p>
         </div>
       </div>
