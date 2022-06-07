@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 
 export default () => (
     <Layout>
-        <SEO title="Develop with HUElite" />
+        <SEO title="Develop with HUElite." />
         <Develop />
     </Layout>
 )
