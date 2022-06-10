@@ -3,7 +3,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
-import { NoteBox } from "../components/noteBox"
 //@ts-ignore
 import * as styles from "./generalBlogPost.module.css"
 import Layout from "../components/layout"

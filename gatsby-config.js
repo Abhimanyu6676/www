@@ -5,7 +5,8 @@ module.exports = {
     },
     plugins: [
       "gatsby-plugin-use-query-params",
-      `gatsby-plugin-react-helmet`,
+      "gatsby-plugin-react-helmet",
+      "gatsby-plugin-material-ui",
       { /* gatsby-plugin-sharp */
         resolve: `gatsby-plugin-sharp`,
         options: {
@@ -57,6 +58,5 @@ module.exports = {
           display: 'swap'
         }
       },
-      "gatsby-plugin-material-ui"
     ]
 }

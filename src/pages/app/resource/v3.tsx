@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from "react"
 import globalStyles from "../../../styles/globalStyles"
 import appColors from "../../../styles/appColors"
-import { HueliteIcon } from "../../../components/imageQueries/icon"
+import HueliteIcon from "../../../components/imageQueries/HueliteIcon"
 
 type Props = {
   data: any
 }
 const AppDownload = ({ data }: Props) => {
   const [isIos, setIsIos] = useState<"none" | "ios" | "android">("none")
-
+  const [text, setText] = useState("text")
   const androidAppLink =
       "https://play.google.com/store/apps/details?id=com.sternet.huelite3",
     iosAppLink = "https://apps.apple.com/in/app/huelite-3-0/id1627075117"
 
   useEffect(() => {
-    const getPlatform = () => {
-      let userAgent =
+    if (window !== "undefined") {
+      const getPlatform = () => {
         //@ts-ignore
-        typeof window != undefined && window.navigator
-          ? //@ts-ignore
-            window.navigator.platform
-          : navigator != undefined
-          ? navigator.platform
-          : undefined
-      if (userAgent && typeof userAgent === typeof "") {
-        userAgent = userAgent.toLowerCase()
+        let userAgent = window.navigator.platform
+        if (!userAgent || typeof userAgent != typeof "") {
+          userAgent = "android"
+        } else {
+          userAgent = userAgent.toLowerCase()
+        }
         if (
           userAgent.includes("mac") ||
           userAgent.includes("iphone") ||
@@ -38,16 +36,26 @@ const AppDownload = ({ data }: Props) => {
         ) {
           //return false
         }
+        return "android"
       }
-      return "android"
+
+      try {
+        console.log("starting")
+        setText(window.navigator.platform)
+        console.log("=== === ", window.navigator.platform)
+        let _p = getPlatform()
+        if (_p == "ios") {
+          setIsIos("ios")
+        } else if (_p == "android") {
+          setIsIos("android")
+        }
+      } catch (error) {
+        console.log("error - ", error)
+      }
+    } else {
+      console.log("window is undefined")
     }
-    const isIos: boolean = getPlatform() == "ios"
-    let _p = getPlatform()
-    if (_p == "ios") {
-      setIsIos("ios")
-    } else if (_p == "android") {
-      setIsIos("android")
-    }
+
     return () => {}
   }, [])
 

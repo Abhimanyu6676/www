@@ -6,7 +6,7 @@ type Props = {
   style?: React.CSSProperties
 }
 
-export const HueliteIcon = (props: Props) => {
+export default (props: Props) => {
   const { icon } = useStaticQuery(graphql`
     query {
       icon: file(relativePath: { eq: "icon/icon.png" }) {

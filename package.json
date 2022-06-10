@@ -9,11 +9,12 @@
   "scripts": {
     "develop": "gatsby develop -H 0.0.0.0 -p 8000",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build":"GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "_build": "gatsby build",
     "serve": "gatsby serve -H 0.0.0.0 -p 8000",
     "clean": "gatsby clean",
-    "deploy": "gatsby build && gh-pages -d public",
-    "publish": "gh-pages -d public"
+    "deploy": "gatsby build && scp -r ./public root@huelite.in:/var/www",
+    "publish": "scp -r ./public root@huelite.in:/var/www"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
