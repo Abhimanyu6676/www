@@ -29,12 +29,15 @@ const AppDownload = (props: Props) => {
     return "android"
   }
   const [isIos, setIsIos] = useState<"none" | "ios" | "android">("none")
+  const androidAppLink =
+      "https://play.google.com/store/apps/details?id=com.sternet.huelite3",
+    iosAppLink = "https://apps.apple.com/in/app/huelite-3-0/id1627075117"
 
   const data = useStaticQuery(graphql`
     query appDownloadV3icon {
       appDownloadV3icon: file(relativePath: { eq: "icon/icon.png" }) {
         childImageSharp {
-          fluid(maxWidth: 200) {
+          fluid(maxWidth: 500) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -65,7 +68,7 @@ const AppDownload = (props: Props) => {
           margin: "10vh 10vw 0px 10vw",
         }}
       >
-        <h1 style={{ textAlign: "center" }}>HUElite App-3.0</h1>
+        <h1 style={{ textAlign: "center" }}>HUElite App 3.0</h1>
         <p style={{ textAlign: "center" }}>
           Download the app with respective store
         </p>
@@ -95,7 +98,8 @@ const AppDownload = (props: Props) => {
             style={{ width: 200 }}
           />
         </div>
-        <div // button
+        <a // primary store jump button
+          href={isIos == "ios" ? iosAppLink : androidAppLink}
           style={{
             backgroundColor: appColors.primaryHighlight,
             borderRadius: 10,
@@ -104,6 +108,7 @@ const AppDownload = (props: Props) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            textDecoration: "none",
           }}
         >
           <h4
@@ -114,7 +119,7 @@ const AppDownload = (props: Props) => {
           >
             {isIos == "ios" ? "Visit App Store" : "Visit Play Store"}
           </h4>
-        </div>
+        </a>
       </div>
       <div // bottom section
         style={{
@@ -148,17 +153,20 @@ const AppDownload = (props: Props) => {
             Or perhaps download from{" "}
             {isIos == "ios" ? "Play Store" : "App Store"}
           </p>
-          <p
+          <a // secondary store link
+            target="_blank"
+            href={isIos == "ios" ? androidAppLink : iosAppLink}
             style={{
               margin: 0,
               marginTop: 10,
               fontSize: 15,
               fontWeight: "bold",
               color: appColors.primaryHighlight,
+              textDecoration: "none",
             }}
           >
             {isIos == "ios" ? "Visit Play Store" : "Visit App Store"}
-          </p>
+          </a>
         </div>
       </div>
     </div>

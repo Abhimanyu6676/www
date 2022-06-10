@@ -49,7 +49,11 @@ absoluteHeading: true
 
 <p>&nbsp;</p>
 
-![](./linkAlexa/step1.png)
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./step1.png" style=""/>
+  </div>
+</div>
 
 #### `Step 2` Tap the search icon in the top right corner & Search “huelite”.
 
@@ -57,29 +61,57 @@ absoluteHeading: true
 
 - You can find the HUElite Alexa skill [here](https://www.amazon.in/Sternet-Industries-India-PvtLtd/dp/B09232RPS3/ref=sr_1_1?crid=27RSQCGYCBUSO&dchild=1&keywords=huelite+smart+home&qid=1620464925&s=digital-skills&sprefix=huelite%2Calexaskills%2C293&sr=1-1)
 
-![](./linkAlexa/step_2.png)
+<p>&nbsp;</p>
+
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./step2.png" style=""/>
+  </div>
+</div>
+
+<p>&nbsp;</p>
 
 #### `Step 3` Select “huelite” and tap “ENABLE TO USE” to enable the Skill.
 
-![](./linkAlexa/step3.png)
+<p>&nbsp;</p>
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./step3.png" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 
 #### `Step 4` You will be redirected to the account linking page. Tap on “AGREE & CONTINUE”, then type in your Huelite account & password, then tap “LOGIN”.
 
-![](./linkAlexa/step4.png)
+<p>&nbsp;</p>
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./step4.png" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 
 #### `Step 5` Tap on close icon, now Alexa needs to discover your smart devices before it controls them. You can tap on “DISCOVER DEVICES”.
 
-![](./linkAlexa/step5.png)
+<p>&nbsp;</p>
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./step5.png" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 
 #### `Step 6` The discovered devices will be shown in the list. Tap on your device to complete setup process.
 
-![](./linkAlexa/step6.png)
+<p>&nbsp;</p>
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./step6.png" style=""/>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 
@@ -95,7 +127,12 @@ absoluteHeading: true
 
 - **Alexa, set bedroom light to green.**
 
-![](./linkAlexa/step7.png)
+<p>&nbsp;</p>
+<div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
+  <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
+        <img src="./step7.png" style=""/>
+  </div>
+</div>
 
 <NoteBox heading="Troubleshoot">
 

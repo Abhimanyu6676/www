@@ -6,7 +6,7 @@ auther_link: ""
 uuid: "how_to_pair_v2"
 related_uuid: "how_to_install/linkAlexa"
 banner_img: "support/banner.png"
-main_img: "support/howToPair/main.png"
+main_img: "support/how_to_pair/main.png"
 mdxTemplateType: "support"
 absoluteHeading: true
 warningText: "uuid-how_to_pair_v2"
@@ -34,7 +34,7 @@ warningText: "uuid-how_to_pair_v2"
 
 <div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
   <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
-        <img src="./howToPair/v2/step2.png" style=""/>
+        <img src="./step2.png" style=""/>
   </div>
 </div>
 
@@ -51,7 +51,7 @@ warningText: "uuid-how_to_pair_v2"
 
 <div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
   <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
-        <img src="./howToPair/v2/step3.jpg" style=""/>
+        <img src="./step3.jpg" style=""/>
   </div>
 </div>
 
@@ -93,7 +93,7 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 
 <div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
   <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
-        <img src="./howToPair/v2/step4.png" style=""/>
+        <img src="./step4.png" style=""/>
   </div>
 </div>
 
@@ -133,7 +133,7 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 
 <div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
   <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
-        <img src="./howToPair/v2/step5.png" style=""/>
+        <img src="./step5.png" style=""/>
   </div>
 </div>
 
@@ -147,7 +147,7 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 
 <div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
   <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
-        <img src="./howToPair/v2/step6.png" style=""/>
+        <img src="./step6.png" style=""/>
   </div>
 </div>
 
@@ -161,7 +161,7 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 
 <div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
   <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
-        <img src="./howToPair/v2/step7.png" style=""/>
+        <img src="./step7.png" style=""/>
   </div>
 </div>
 
@@ -180,7 +180,7 @@ Wait for a few seconds for wifi scan results, and you will be redirected to choo
 
 <div style="display:flex; flex-direction:row; flex:1; justify-content:space-evenly;">
   <div style="width:40vw; max-width:300px; background-color:#ffffff; box-shadow:0px 0px 13px 0px rgba(64,64,64,0.75);">
-        <img src="./howToPair/v2/step8.jpg" style=""/>
+        <img src="./step8.jpg" style=""/>
   </div>
 </div>
 

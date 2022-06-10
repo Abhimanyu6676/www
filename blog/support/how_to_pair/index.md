@@ -17,9 +17,9 @@ warningText: "uuid-how_to_pair"
 
 #### <step>Step 1:</step> Download the Huelite Application from Play Store/App Store respectively.
 
-- [HUElite app for Ios](https://apps.apple.com/in/app/huelite/id1556187847)
+- [HUElite app for Ios](https://apps.apple.com/in/app/huelite-3-0/id1627075117)
 
-- [HUElite app for Android](https://play.google.com/store/apps/details?id=com.sternet.huelite)
+- [HUElite app for Android](https://play.google.com/store/apps/details?id=com.sternet.huelite3)
 
 <p>&nbsp;</p>
 
