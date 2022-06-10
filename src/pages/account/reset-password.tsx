@@ -1,7 +1,8 @@
 import axios from "axios"
 import React, { useState } from "react"
 import { StringParam, useQueryParam } from "use-query-params"
-import { FadeInSection } from "../../components/common/FadeInSection"
+import { FadeInSection } from "../../components/common/fadeInSection"
+import appColors from "../../styles/appColors"
 //@ts-ignore
 import * as styles from "./reset-password.module.css"
 
@@ -13,7 +14,7 @@ enum APIstate {
 }
 
 interface Props {}
-export default (props: Props) => {
+const ResetPassForm = (props: Props) => {
   const [tokenParam, setTokenParam] = useQueryParam("token", StringParam)
   const [password, setPassword] = useState("")
   const [re_password, setRePassword] = useState("")
@@ -46,12 +47,25 @@ export default (props: Props) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "0px 5vw",
+        marginBottom: 100,
+      }}
+    >
       {apiState == APIstate.IDLE || apiState == APIstate.BUSY ? (
         <FadeInSection>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1 style={{ marginTop: 100 }}>Choose your new password</h1>
-            <p className={styles.note}>
+            <h1 style={{ marginTop: "10vh" }}>Choose your new password</h1>
+            <p
+              style={{
+                marginTop: 20,
+                color: "#777",
+                maxWidth: 500,
+              }}
+            >
               If you did not forget your password, than you can safely skip this
               step. This link will stay valid till 5 minutes from the time of
               token generation.
@@ -60,7 +74,7 @@ export default (props: Props) => {
               type="password"
               placeholder="Enter password"
               color="#777"
-              className={styles.input}
+              style={_styles.input}
               value={password}
               onChange={e => {
                 setPassword(e.target.value)
@@ -84,7 +98,7 @@ export default (props: Props) => {
               type="password"
               placeholder="Re-Enter password"
               color="#777"
-              className={styles.input}
+              style={_styles.input}
               value={re_password}
               onChange={e => {
                 setRePassword(e.target.value)
@@ -102,18 +116,29 @@ export default (props: Props) => {
                 password length must be minimum 8 characters
               </p>
             )}
-            <div className={styles.buttonContainer}>
-              <button
-                onClick={onClick}
-                className={styles.button}
+            <button
+              onClick={onClick}
+              style={{
+                marginTop: 50,
+                width: 300,
+                backgroundColor: appColors.primaryHighlight,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                opacity:
+                  password.length >= 8 && password == re_password ? 1 : 0.5,
+              }}
+            >
+              <h3
                 style={{
-                  opacity:
-                    password.length >= 8 && password == re_password ? 1 : 0.2,
+                  color: "#fff",
+                  margin: "5px 10px",
+                  textAlign: "center",
                 }}
               >
                 UPDATE PASSWORD
-              </button>
-            </div>
+              </h3>
+            </button>
           </div>
         </FadeInSection>
       ) : apiState == APIstate.SUCCESS ? (
@@ -130,3 +155,18 @@ export default (props: Props) => {
     </div>
   )
 }
+
+const _styles = {
+  input: {
+    lineHeight: "150%",
+    color: "#777",
+    borderWidth: 0,
+    borderBottomWidth: 1,
+    marginTop: 50,
+    fontSize: 25,
+    maxWidth: 400,
+    outline: "none",
+  },
+}
+
+export default ResetPassForm

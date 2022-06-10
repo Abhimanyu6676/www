@@ -1,9 +1,11 @@
 import React from "react"
 import { useState } from "react"
-import { FadeInSection } from "../../components/common/FadeInSection"
+import {
+  FadeInSection,
+  FadeInSectionCSS,
+} from "../../components/common/fadeInSection"
 import axios from "axios"
-//@ts-ignore
-import * as styles from "./reset-password-mail.module.css"
+import appColors from "../../styles/appColors"
 
 enum APIstate {
   IDLE,
@@ -13,7 +15,7 @@ enum APIstate {
 }
 
 interface Props {}
-export default (props: Props) => {
+const ResetPassMailForm = (props: Props) => {
   const [email, setEmail] = useState("")
   const [apiState, setApiState] = useState(APIstate.IDLE)
 
@@ -28,9 +30,18 @@ export default (props: Props) => {
         .post(
           "https://huelite.in/backend/user/reset-password-mail",
           {
-            email: email.trim(),
+            email: email.toLowerCase().trim(),
           },
-          { timeout: 5000 }
+          {
+            timeout: 5000,
+            /* headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods":
+                "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+              "Access-Control-Allow-Headers":
+                "Origin, Content-Type, X-Auth-Token",
+            }, */
+          }
         )
         .then(res => {
           console.log("generate link api success - " + JSON.stringify(res))
@@ -44,49 +55,80 @@ export default (props: Props) => {
   }
 
   return (
-    <FadeInSection>
-      <div className={styles.container}>
-        <h1 style={{ marginTop: 100 }}>Enter your email to reset password</h1>
-        <p>
-          Password reset link will be sent tou your email address. The link will
-          be valid till 5 minutes from token genaration
-        </p>
-        <input
-          type="email"
-          placeholder="Enter email address"
-          color="#777"
-          className={styles.input}
-          value={email}
-          onChange={e => {
-            setEmail(e.target.value)
+    <FadeInSectionCSS
+      style={{
+        padding: "0px 5vw",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <h1 style={{ marginTop: "10vh" }}>Enter your email to reset password</h1>
+      <p>
+        Password reset link will be sent tou your email address. The link will
+        be valid till 5 minutes from token genaration
+      </p>
+      <input
+        type="email"
+        placeholder="Enter email address"
+        color="#777"
+        style={{
+          lineHeight: "150%",
+          color: "#777",
+          borderWidth: 0,
+          borderBottomWidth: 1,
+          marginTop: 50,
+          fontSize: 20,
+          maxWidth: 400,
+          outline: "none",
+        }}
+        value={email}
+        onChange={e => {
+          setEmail(e.target.value)
+        }}
+      />
+      {apiState == APIstate.SUCCESS && (
+        <p
+          style={{
+            margin: 0,
+            padding: 0,
+            marginTop: 10,
+            fontSize: 12,
+            color: "#82E0AA",
           }}
-        />
-        {apiState == APIstate.SUCCESS && (
-          <p
-            style={{
-              margin: 0,
-              padding: 0,
-              marginTop: 10,
-              fontSize: 12,
-              color: "#82E0AA",
-            }}
-          >
-            Reset link sent to email address
-          </p>
-        )}
+        >
+          Reset link sent to email address
+        </p>
+      )}
 
-        <div>
-          <button onClick={onClick} className={styles.button} style={{}}>
-            {apiState == APIstate.SUCCESS
-              ? "EMAIL SENT"
-              : apiState == APIstate.BUSY
-              ? "GENERATING..."
-              : apiState == APIstate.ERROR
-              ? "RETRY"
-              : "RESET PASSWORD"}
-          </button>
-        </div>
-      </div>
-    </FadeInSection>
+      <button
+        onClick={onClick}
+        style={{
+          marginTop: 50,
+          width: 300,
+          backgroundColor: appColors.primaryHighlight,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h3
+          style={{
+            color: "#fff",
+            margin: "5px 10px",
+            textAlign: "center",
+          }}
+        >
+          {apiState == APIstate.SUCCESS
+            ? "EMAIL SENT"
+            : apiState == APIstate.BUSY
+            ? "GENERATING..."
+            : apiState == APIstate.ERROR
+            ? "RETRY"
+            : "RESET PASSWORD"}
+        </h3>
+      </button>
+    </FadeInSectionCSS>
   )
 }
+
+export default ResetPassMailForm
