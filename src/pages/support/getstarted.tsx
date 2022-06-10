@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import { SearchSharp } from "@mui/icons-material"
 import { alpha, styled } from "@mui/material/styles"
 import InputBase from "@mui/material/InputBase"

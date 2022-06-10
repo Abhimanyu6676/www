@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
 import { useTransition, animated } from "react-spring"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { borderBottom, height } from "@mui/system"
 import * as styles from "./Sec2.module.css"
 import appColors from "../../../styles/appColors"
@@ -211,7 +211,7 @@ const AccordianSection = () => {
 
 const Slider = () => {
   const data = useStaticQuery(graphql`
-    query {
+    {
       homepageSPSTthumbs: allFile(
         filter: {
           extension: { regex: "/(jpg)|(jpeg)|(png)/" }
@@ -225,9 +225,7 @@ const Slider = () => {
           node {
             id
             childImageSharp {
-              fluid(maxWidth: 100) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(width: 100, layout: CONSTRAINED)
             }
           }
         }
@@ -245,9 +243,7 @@ const Slider = () => {
           node {
             id
             childImageSharp {
-              fluid(maxWidth: 600) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(width: 600, layout: CONSTRAINED)
             }
           }
         }
@@ -296,10 +292,11 @@ const Slider = () => {
               ...props,
             }}
           >
-            <Img
-              fluid={item.node.childImageSharp.fluid}
+            <GatsbyImage
+              image={item.node.childImageSharp.gatsbyImageData}
               className={styles.imgWidth}
               style={{}}
+              alt="HUElite"
             />
           </animated.div>
         )

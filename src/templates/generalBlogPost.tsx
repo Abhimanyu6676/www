@@ -1,7 +1,7 @@
 import { graphql, navigate, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import { NoteBox } from "../components/noteBox"
 //@ts-ignore
@@ -13,9 +13,9 @@ const generalBlogPostTemplate = ({ data }) => {
   const { frontmatter, body } = data.mdx
 
   const sources = [
-    data.mobileBlogImage.childImageSharp.fluid,
+    data.mobileBlogImage.childImageSharp.gatsbyImageData,
     {
-      ...data.desktopBlogImage.childImageSharp.fluid,
+      ...data.desktopBlogImage.childImageSharp.gatsbyImageData,
       media: `(min-width: 576px)`,
     },
   ]
@@ -32,7 +32,11 @@ const generalBlogPostTemplate = ({ data }) => {
             alignItems: "center",
           }}
         >
-          <Img style={{ width: "100%" }} fluid={sources} />
+          <GatsbyImage
+            image={data.desktopBlogImage.childImageSharp.gatsbyImageData}
+            style={{ width: "100%" }}
+            alt="HUElite"
+          />
           <div
             style={{
               position: "absolute",
@@ -162,22 +166,16 @@ export const query = graphql`
         warningText
       }
     }
-
     mobileBlogImage: file(relativePath: { eq: $banner_img_mob }) {
       childImageSharp {
-        fluid(maxWidth: 700, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 700, quality: 100, layout: CONSTRAINED)
       }
     }
     desktopBlogImage: file(relativePath: { eq: $banner_img }) {
       childImageSharp {
-        fluid(maxWidth: 2000, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(quality: 100, layout: FULL_WIDTH)
       }
     }
-
     relatedPost: allMdx(
       filter: { frontmatter: { uuid: { in: $relatedTopics } } }
     ) {

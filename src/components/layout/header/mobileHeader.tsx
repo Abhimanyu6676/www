@@ -10,7 +10,7 @@ import Button from "../../Button"
 import * as styles from "./mobileHeader.module.css"
 import { primartMenu } from "."
 import { graphql, Link, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace"
 
 type Props = {
@@ -18,12 +18,10 @@ type Props = {
 }
 export const MobileHeader = (props: Props) => {
   const data = useStaticQuery(graphql`
-    query {
+    {
       icon: file(relativePath: { eq: "icon/icon.png" }) {
         childImageSharp {
-          fluid(maxWidth: 200) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 200, layout: CONSTRAINED)
         }
       }
     }
@@ -68,7 +66,11 @@ export const MobileHeader = (props: Props) => {
           )}
         </Button>
         <Link to="/">
-          <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 60 }} />
+          <GatsbyImage
+            image={data.icon.childImageSharp.gatsbyImageData}
+            style={{ width: 60 }}
+            alt="HUElite"
+          />
         </Link>
       </div>
 

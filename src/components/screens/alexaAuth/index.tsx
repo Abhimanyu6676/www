@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 //import { View, Text, Animated, Dimensions } from "react-native"
 import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import AlexaLoginScreen from "./alexaLogin"
 
 //const { height, width } = Dimensions.get("window")
@@ -36,12 +36,10 @@ interface concentScreenProps {
 }
 const ConcentScreen = ({ setPolicyAccepted }: concentScreenProps) => {
   const data = useStaticQuery(graphql`
-    query {
+    {
       icon: file(relativePath: { eq: "icon/icon.png" }) {
         childImageSharp {
-          fluid(maxWidth: 200) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 200, layout: CONSTRAINED)
         }
       }
     }
@@ -73,9 +71,10 @@ const ConcentScreen = ({ setPolicyAccepted }: concentScreenProps) => {
             maxWidth: 500,
           }}
         >
-          <Img
-            fluid={data.icon.childImageSharp.fluid}
+          <GatsbyImage
+            image={data.icon.childImageSharp.gatsbyImageData}
             style={{ width: 100, marginTop: "10vh" }}
+            alt="HUElite"
           />
           <div
             style={{

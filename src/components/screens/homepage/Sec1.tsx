@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { useTransition, animated } from "react-spring"
 
 const slides = [
@@ -36,7 +36,7 @@ export const Sec1 = (props: Props) => {
   const curSlide = slides[index]
 
   const data = useStaticQuery(graphql`
-    query {
+    {
       homepage_sec_1: allFile(
         filter: {
           extension: { regex: "/(jpg)|(jpeg)|(png)/" }
@@ -50,9 +50,7 @@ export const Sec1 = (props: Props) => {
           node {
             id
             childImageSharp {
-              fluid(maxWidth: 600) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(width: 600, layout: CONSTRAINED)
             }
           }
         }
@@ -100,11 +98,13 @@ export const Sec1 = (props: Props) => {
                 ...props,
               }}
             >
-              <Img
-                style={{ height: "100vh", width: "100vw" }}
-                fluid={
-                  data.homepage_sec_1.edges[index].node.childImageSharp.fluid
+              <GatsbyImage
+                image={
+                  data.homepage_sec_1.edges[index].node.childImageSharp
+                    .gatsbyImageData
                 }
+                style={{ height: "100vh", width: "100vw" }}
+                alt="HUElite"
               />
             </animated.div>
           )

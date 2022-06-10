@@ -1,51 +1,46 @@
-import { graphql, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
-import Img from "gatsby-image"
 import globalStyles from "../../../styles/globalStyles"
 import appColors from "../../../styles/appColors"
+import { HueliteIcon } from "../../../components/imageQueries/icon"
 
-type Props = {}
-const AppDownload = (props: Props) => {
-  const getPlatform = () => {
-    let userAgent =
-      //@ts-ignore
-      typeof window !== "undefined" && window.navigator
-        ? //@ts-ignore
-          window.navigator.platform
-        : undefined
-    if (userAgent && typeof userAgent === typeof "") {
-      userAgent = userAgent.toLowerCase()
-      if (
-        userAgent.includes("mac") ||
-        userAgent.includes("iphone") ||
-        userAgent.includes("ipad") ||
-        userAgent.includes("ipod")
-      ) {
-        return "ios"
-      } else if (userAgent.includes("linux") || userAgent.includes("android")) {
-        //return false
-      }
-    }
-    return "android"
-  }
+type Props = {
+  data: any
+}
+const AppDownload = ({ data }: Props) => {
   const [isIos, setIsIos] = useState<"none" | "ios" | "android">("none")
+
   const androidAppLink =
       "https://play.google.com/store/apps/details?id=com.sternet.huelite3",
     iosAppLink = "https://apps.apple.com/in/app/huelite-3-0/id1627075117"
 
-  const data = useStaticQuery(graphql`
-    query appDownloadV3icon {
-      appDownloadV3icon: file(relativePath: { eq: "icon/icon.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 500) {
-            ...GatsbyImageSharpFluid
-          }
+  useEffect(() => {
+    const getPlatform = () => {
+      let userAgent =
+        //@ts-ignore
+        typeof window != undefined && window.navigator
+          ? //@ts-ignore
+            window.navigator.platform
+          : navigator != undefined
+          ? navigator.platform
+          : undefined
+      if (userAgent && typeof userAgent === typeof "") {
+        userAgent = userAgent.toLowerCase()
+        if (
+          userAgent.includes("mac") ||
+          userAgent.includes("iphone") ||
+          userAgent.includes("ipad") ||
+          userAgent.includes("ipod")
+        ) {
+          return "ios"
+        } else if (
+          userAgent.includes("linux") ||
+          userAgent.includes("android")
+        ) {
+          //return false
         }
       }
+      return "android"
     }
-  `)
-
-  useEffect(() => {
     const isIos: boolean = getPlatform() == "ios"
     let _p = getPlatform()
     if (_p == "ios") {
@@ -93,10 +88,7 @@ const AppDownload = (props: Props) => {
             margin: "50px 0px",
           }}
         >
-          <Img
-            fluid={data.appDownloadV3icon.childImageSharp.fluid}
-            style={{ width: 200 }}
-          />
+          <HueliteIcon style={{ width: 200 }} />
         </div>
         <a // primary store jump button
           href={isIos == "ios" ? iosAppLink : androidAppLink}
@@ -141,10 +133,7 @@ const AppDownload = (props: Props) => {
             //...globalStyles.shadowLight,
           }}
         >
-          <Img
-            fluid={data.appDownloadV3icon.childImageSharp.fluid}
-            style={{}}
-          />
+          <HueliteIcon style={{}} />
         </div>
         <div // textSection
           style={{ marginLeft: 20 }}

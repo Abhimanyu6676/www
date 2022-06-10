@@ -2,7 +2,7 @@ import React from "react"
 //@ts-ignore
 import * as styles from "./desktopHeader.module.css"
 import { graphql, Link, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { primartMenu } from "."
 
 type Props = {
@@ -10,12 +10,10 @@ type Props = {
 }
 export const DesktopHeader = (props: Props) => {
   const data = useStaticQuery(graphql`
-    query {
+    {
       icon: file(relativePath: { eq: "icon/icon.png" }) {
         childImageSharp {
-          fluid(maxWidth: 200) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 200, layout: CONSTRAINED)
         }
       }
     }
@@ -24,7 +22,11 @@ export const DesktopHeader = (props: Props) => {
   return (
     <div className={styles.main}>
       <Link to="/">
-        <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 80 }} />
+        <GatsbyImage
+          image={data.icon.childImageSharp.gatsbyImageData}
+          style={{ width: 80 }}
+          alt="HUElite"
+        />
       </Link>
       <div
         style={{

@@ -1,15 +1,22 @@
 module.exports = {
     siteMetadata: {
-      title: `web`,
-        siteUrl: `https://www.yourdomain.tld`,
+      title: `HUElite`,
+      siteUrl: `https://www.huelite.in/`,
     },
     plugins: [
-      "gatsby-plugin-material-ui",
-      "gatsby-plugin-sharp",
-      "gatsby-transformer-sharp",
       "gatsby-plugin-use-query-params",
       `gatsby-plugin-react-helmet`,
-    /* "gatsby-plugin-image", */
+      { /* gatsby-plugin-sharp */
+        resolve: `gatsby-plugin-sharp`,
+        options: {
+          defaults: {
+            formats: [`auto`, `webp`],
+            backgroundColor: `white`,
+            placeholder: `none`,
+          }
+        }
+      },
+      "gatsby-transformer-sharp",
       { //gatsby-plugin-mdx
         resolve: `gatsby-plugin-mdx`,
         options: {
@@ -38,6 +45,7 @@ module.exports = {
           path: `${__dirname}/src/images`,
         },
       },
+      "gatsby-plugin-image",
       { //gatsby-plugin-google-fonts
         resolve: `gatsby-plugin-google-fonts`,
         options: {
@@ -48,6 +56,7 @@ module.exports = {
           ],
           display: 'swap'
         }
-      }
+      },
+      "gatsby-plugin-material-ui"
     ]
 }

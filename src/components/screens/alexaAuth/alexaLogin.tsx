@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles"
 import Button, { ButtonProps } from "@mui/material/Button"
 import { graphql, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import Link from "@mui/icons-material/Link"
 import axios from "axios"
 //@ts-ignore
@@ -33,28 +33,20 @@ export default (props: Props) => {
   }, [])
 
   const data = useStaticQuery(graphql`
-    query {
+    {
       icon: file(relativePath: { eq: "icon/icon.png" }) {
         childImageSharp {
-          fluid(maxWidth: 200) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 200, layout: CONSTRAINED)
         }
       }
-
       bdeIcon: file(relativePath: { eq: "icon/bdeIcon.png" }) {
         childImageSharp {
-          fluid(maxWidth: 200) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 200, layout: CONSTRAINED)
         }
       }
-
       alexaIcon: file(relativePath: { eq: "icon/alexaIcon.png" }) {
         childImageSharp {
-          fluid(maxWidth: 200) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 200, layout: CONSTRAINED)
         }
       }
     }
@@ -182,14 +174,16 @@ export default (props: Props) => {
               height: "fit-content",
             }}
           >
-            <Img
-              fluid={data.icon.childImageSharp.fluid}
+            <GatsbyImage
+              image={data.icon.childImageSharp.gatsbyImageData}
               style={{ width: 100 }}
+              alt="HUElite"
             />
             <Link style={{ fontSize: 50 }} color="disabled" />
-            <Img
-              fluid={data.alexaIcon.childImageSharp.fluid}
+            <GatsbyImage
+              image={data.alexaIcon.childImageSharp.gatsbyImageData}
               style={{ width: 90, marginLeft: 15 }}
+              alt="HUElite"
             />
           </div>
           <div // textfields and login button

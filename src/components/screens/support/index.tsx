@@ -1,6 +1,6 @@
 import { graphql, navigate, useStaticQuery } from "gatsby"
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 //@ts-ignore
 import * as styles from "./index.module.css"
 import globalStyles from "../../../styles/globalStyles"
@@ -17,75 +17,55 @@ interface article_i {
 type Props = {}
 export default (props: Props) => {
   const images = useStaticQuery(graphql`
-    query {
+    {
       articleImg1: file(relativePath: { eq: "support/shuttle.png" }) {
         childImageSharp {
-          fluid(maxWidth: 256, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 256, quality: 100, layout: CONSTRAINED)
         }
       }
-
       articleImg2: file(relativePath: { eq: "support/mobile.png" }) {
         childImageSharp {
-          fluid(maxWidth: 256, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 256, quality: 100, layout: CONSTRAINED)
         }
       }
-
       articleImg3: file(relativePath: { eq: "support/integrations.png" }) {
         childImageSharp {
-          fluid(maxWidth: 256, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 256, quality: 100, layout: CONSTRAINED)
         }
       }
-
       articleImg4: file(relativePath: { eq: "support/help.png" }) {
         childImageSharp {
-          fluid(maxWidth: 256, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 256, quality: 100, layout: CONSTRAINED)
         }
       }
-
       mobileBlogMain: file(relativePath: { eq: "common/blogMain_mobile.png" }) {
         childImageSharp {
-          fluid(maxWidth: 479, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 479, quality: 100, layout: CONSTRAINED)
         }
       }
-
       tabletBlogMain: file(relativePath: { eq: "common/blogMain_tablet.png" }) {
         childImageSharp {
-          fluid(maxWidth: 767, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 767, quality: 100, layout: CONSTRAINED)
         }
       }
-
       desktopBlogMain: file(
         relativePath: { eq: "common/blogMain_desktop.png" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 1600, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(quality: 100, layout: FULL_WIDTH)
         }
       }
     }
   `)
 
   const sources = [
-    images.mobileBlogMain.childImageSharp.fluid,
+    images.mobileBlogMain.childImageSharp.gatsbyImageData,
     {
-      ...images.desktopBlogMain.childImageSharp.fluid,
+      ...images.desktopBlogMain.childImageSharp.gatsbyImageData,
       media: `(min-width: 767px)`,
     },
     {
-      ...images.tabletBlogMain.childImageSharp.fluid,
+      ...images.tabletBlogMain.childImageSharp.gatsbyImageData,
       media: `(min-width:469px)`,
     },
   ]
@@ -93,22 +73,22 @@ export default (props: Props) => {
   const articles: article_i[] = [
     {
       heading: "Getting Setup",
-      img: images.articleImg1.childImageSharp.fluid,
+      img: images.articleImg1.childImageSharp.gatsbyImageData,
       link: "/support/getstarted",
     },
     {
       heading: "Exploring HUElite App",
-      img: images.articleImg2.childImageSharp.fluid,
+      img: images.articleImg2.childImageSharp.gatsbyImageData,
       link: "/",
     },
     {
       heading: "Link with other products",
-      img: images.articleImg3.childImageSharp.fluid,
+      img: images.articleImg3.childImageSharp.gatsbyImageData,
       link: "/",
     },
     {
       heading: "FAQ, troubleshoot, enquiry",
-      img: images.articleImg4.childImageSharp.fluid,
+      img: images.articleImg4.childImageSharp.gatsbyImageData,
       link: "/",
     },
   ]
@@ -118,7 +98,11 @@ export default (props: Props) => {
       <div //top image section
         style={{}}
       >
-        <Img fluid={sources} style={{ zIndex: 1 }} />
+        <GatsbyImage
+          image={images.desktopBlogMain.childImageSharp.gatsbyImageDataources}
+          style={{ zIndex: 1 }}
+          alt="HUElite"
+        />
       </div>
       <div // articles Section
       >
@@ -205,7 +189,11 @@ const ArticleComp = (props: { item: article_i }) => {
           paddingTop: 30,
         }}
       >
-        <Img fluid={props.item.img} style={{ width: 60 }} />
+        <GatsbyImage
+          image={props.item.img}
+          style={{ width: 60 }}
+          alt="HUElite"
+        />
       </div>
       <div>
         <h5 style={{ textAlign: "center" }}>{props.item.heading}</h5>
