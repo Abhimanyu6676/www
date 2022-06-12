@@ -18,6 +18,7 @@
     "deploy": "gatsby build && gh-pages -d public",
     "deploy_withPrefix": "gatsby build --prefix-paths && gh-pages -d public",
     "publish": "gh-pages -d public",
+    "ADD_UNIVERSALS_test": "git subtree add --prefix=@universals https://github.com/Abhimanyu6676/-types-huelite main --squash",
     "ADD_UNIVERSALS": "git subtree add --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash",
     "PUSH_UNIVERSALS": "git subtree push --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash",
     "PULL_UNIVERSALS": "git subtree pull --prefix=src/@universals https://github.com/Abhimanyu6676/-types-huelite main --squash"
