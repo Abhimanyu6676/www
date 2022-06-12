@@ -7,12 +7,13 @@ import React, { useEffect, useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Link from "@mui/icons-material/Link"
 import axios from "axios"
-//@ts-ignore
-import * as Styles from "./alexaLogin.module.css"
 import NotificationContainer, {
   getNewNotificationUUID,
   notification_i,
-} from "../../NotificationContainer"
+} from "../../components/NotificationContainer"
+import appColors from "../../styles/appColors"
+import globalStyles from "../../styles/globalStyles"
+import { display } from "@mui/system"
 
 interface Props {}
 export default (props: Props) => {
@@ -55,7 +56,8 @@ export default (props: Props) => {
   const login = async () => {
     if (!loginBusy) {
       setLoginBusy(true)
-      console.log("now logging In for Authorization : " + window.location.href)
+
+      console.log("now logging In for Authorization : ")
 
       let serverAdd =
         clientID == "BDE"
@@ -87,11 +89,13 @@ export default (props: Props) => {
           if (res.data.authCode) {
             let uri = redirectUri
             uri += "/?state="
-            uri += stateParam
+            // loading empty state value incase `stateParam` is not present
+            uri += stateParam ? stateParam : "__"
             uri += "&code="
             uri += res.data.authCode
             console.log("redirecting to amazon link ==> " + JSON.stringify(uri))
             console.log("------------")
+            //@ts-ignore
             window.location.replace(uri)
           }
           //return res
@@ -127,11 +131,10 @@ export default (props: Props) => {
   return (
     <div
       style={{
-        backgroundColor: "#31c4f3",
+        backgroundColor: appColors.alexaThemeColor,
         display: "flex",
         flex: 1,
         flexDirection: "column",
-        justifyContent: "flex-end",
         alignItems: "center",
       }}
     >
@@ -140,19 +143,19 @@ export default (props: Props) => {
         setNotifications={setNotifications}
       />
 
-      <div //main container
-        className={Styles.mainContainer}
+      <div // content container
         style={{
           backgroundColor: "#ffffff",
           display: "flex",
           flexDirection: "column",
           flex: 1,
-          padding: "0px 5%",
-          boxShadow: "0 2px 10px #273746",
+          padding: "0px 15px",
           marginBottom: 15,
           borderBottomLeftRadius: 25,
           borderBottomRightRadius: 25,
           position: "relative",
+          ...globalStyles.shadowLight,
+          maxWidth: "90vw",
         }}
       >
         <div //image and textFields container
@@ -163,28 +166,37 @@ export default (props: Props) => {
             flex: 1,
           }}
         >
-          <div //Image container
+          <div // link Images container
             style={{
               display: "flex",
               flex: 1,
               //backgroundColor: "#ff00ff",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "flex-end",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              alignItems: "center",
               height: "fit-content",
             }}
           >
-            <GatsbyImage
-              image={data.icon.childImageSharp.gatsbyImageData}
-              style={{ width: 100 }}
-              alt="HUElite"
-            />
-            <Link style={{ fontSize: 50 }} color="disabled" />
-            <GatsbyImage
-              image={data.alexaIcon.childImageSharp.gatsbyImageData}
-              style={{ width: 90, marginLeft: 15 }}
-              alt="HUElite"
-            />
+            <div // link images inner container
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <GatsbyImage
+                image={data.icon.childImageSharp.gatsbyImageData}
+                style={{ width: 100 }}
+                alt="HUElite"
+              />
+              <Link style={{ fontSize: 50 }} color="disabled" />
+              <GatsbyImage
+                image={data.alexaIcon.childImageSharp.gatsbyImageData}
+                style={{ width: 90, marginLeft: 15 }}
+                alt="HUElite"
+              />
+            </div>
           </div>
           <div // textfields and login button
             style={{
@@ -194,23 +206,28 @@ export default (props: Props) => {
               //backgroundColor: "#ff00ff",
             }}
           >
-            <TextField
-              onChange={_text => {
+            <input
+              onChange={(_text: any) => {
                 setEmail(_text.target.value)
               }}
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              style={{ backgroundColor: "#F4F6F6", marginTop: 40 }}
+              placeholder="Email"
+              style={{
+                marginTop: 40,
+                borderWidth: 1,
+                borderRadius: 5,
+              }}
             />
-            <TextField
-              onChange={_text => {
+
+            <input
+              onChange={(_text: any) => {
                 setPassword(_text.target.value)
               }}
-              id="outlined-basic"
-              label="Enter Password"
-              variant="outlined"
-              style={{ marginTop: 40, backgroundColor: "#F4F6F6" }}
+              placeholder="Enter Password"
+              style={{
+                marginTop: 40,
+                borderWidth: 1,
+                borderRadius: 5,
+              }}
             />
             <div // loginButton container
               style={{
@@ -230,36 +247,34 @@ export default (props: Props) => {
             </div>
           </div>
         </div>
-        <div // linking requirement text
+        <p // linking requirement text
           style={{
             textAlign: "center",
-            //background: "red",
             bottom: 10,
             left: 0,
             fontSize: 15,
-            margin: "10px 0px",
+            margin: "10px 10px",
           }}
         >
           Your HUElite Account is required to link your devices with Alexa and
           other Voice Assistants.
-        </div>
+        </p>
       </div>
 
-      <div //bottom container
-        style={{
-          backgroundColor: "#31c4f3",
-          width: "100%",
-          height: 60,
-          textAlign: "center",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontWeight: "bold",
-          color: "#ffffff",
-        }}
+      <a //privacy policy link
+        href="https://www.huelite.in/support/privacy_policy/"
+        target="_blank"
       >
-        Privacy policies can be found here
-      </div>
+        <h4
+          style={{
+            color: "#ffffff",
+            textAlign: "center",
+            margin: "20px 0px",
+          }}
+        >
+          Privacy policies can be found here
+        </h4>
+      </a>
     </div>
   )
 }

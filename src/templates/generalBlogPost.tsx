@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 //@ts-ignore
 import * as styles from "./generalBlogPost.module.css"
-import Layout from "../components/layout"
+import Layout from "../components/layouts/HeaderFooterCover"
 import { ContactUs } from "../components/common/contactUs"
 
 const generalBlogPostTemplate = ({ data }) => {

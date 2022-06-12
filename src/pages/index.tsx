@@ -1,6 +1,6 @@
 import * as React from "react"
-import Layout from "../components/layout"
-import { Homepage } from "../components/screens/homepage"
+import Layout from "../components/layouts/HeaderFooterCover"
+import { Homepage } from "../screens/homepage"
 
 const IndexPage = () => {
   return (

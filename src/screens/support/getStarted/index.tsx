@@ -1,9 +1,12 @@
 import { Container, Grid } from "@mui/material"
 import { navigate } from "gatsby"
 import React from "react"
-import globalStyles from "../../../../styles/globalStyles"
-import { FadeInSection, FadeInSectionCSS } from "../../../common/fadeInSection"
-import { ContactUs } from "../../../common/contactUs"
+import globalStyles from "../../../styles/globalStyles"
+import {
+  FadeInSection,
+  FadeInSectionCSS,
+} from "../../../components/common/fadeInSection"
+import { ContactUs } from "../../../components/common/contactUs"
 
 interface Item_i {
   heading: string

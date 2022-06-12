@@ -4,7 +4,7 @@ import { useTransition, animated } from "react-spring"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { borderBottom, height } from "@mui/system"
 import * as styles from "./Sec2.module.css"
-import appColors from "../../../styles/appColors"
+import appColors from "../../styles/appColors"
 import { Accordion } from "./accordion"
 
 type Props = {}

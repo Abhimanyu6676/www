@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import AlexaLoginScreen from "./alexaLogin"
+import { FullScreen } from "../../components/layouts/FullScreen"
 
 //const { height, width } = Dimensions.get("window")
 
@@ -11,23 +12,13 @@ export default (props: Props) => {
   const [policyAccepted, setPolicyAccepted] = useState<boolean>(false)
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flex: 1,
-        flexGrow: 1,
-        position: "fixed",
-        height: "100%",
-        width: "100%",
-        //backgroundColor: "#0000ff"
-      }}
-    >
+    <FullScreen>
       {!policyAccepted ? (
         <AlexaLoginScreen />
       ) : (
         <ConcentScreen setPolicyAccepted={setPolicyAccepted} />
       )}
-    </div>
+    </FullScreen>
   )
 }
 

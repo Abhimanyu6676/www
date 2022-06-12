@@ -3,10 +3,10 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 //@ts-ignore
 import * as styles from "./index.module.css"
-import globalStyles from "../../../styles/globalStyles"
+import globalStyles from "../../styles/globalStyles"
 import { Grid } from "@mui/material"
 import { textAlign } from "@mui/system"
-import { Subscrible } from "../../common/subscrible"
+import { Subscrible } from "../../components/common/subscrible"
 
 interface article_i {
   heading: string

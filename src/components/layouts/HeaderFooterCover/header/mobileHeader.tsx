@@ -5,7 +5,7 @@ import InstagramIcon from "@mui/icons-material/Instagram"
 import FacebookIcon from "@mui/icons-material/FacebookRounded"
 import YouTubeIcon from "@mui/icons-material/YouTube"
 import WhatsAppIcon from "@mui/icons-material/WhatsappRounded"
-import Button from "../../Button"
+import Button from "../../../Button"
 //@ts-ignore
 import * as styles from "./mobileHeader.module.css"
 import { primartMenu } from "."

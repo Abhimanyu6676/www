@@ -6,4 +6,5 @@ export default {
   warningLight: "#F1C40F",
   successDark: "#27AE60",
   success_1: "#48C9B0",
+  alexaThemeColor: "#31c4f3",
 }

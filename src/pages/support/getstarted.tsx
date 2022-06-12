@@ -1,12 +1,12 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image"
 import { SearchSharp } from "@mui/icons-material"
 import { alpha, styled } from "@mui/material/styles"
 import InputBase from "@mui/material/InputBase"
 import { Box, Grid } from "@mui/material"
-import Layout from "../../components/layout"
-import { GetStarted } from "../../components/screens/support/getStarted"
+import Layout from "../../components/layouts/HeaderFooterCover"
+import { GetStarted } from "../../screens/support/getStarted"
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   "label + &": {
