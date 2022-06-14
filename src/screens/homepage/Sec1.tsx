@@ -68,7 +68,8 @@ export const Sec1 = (props: Props) => {
 
   useEffect(() => {
     let indexLoop = setInterval(() => {
-      setIndex((index + 1) % (data.homepage_sec_1.edges.length - 1))
+      if (index == data.homepage_sec_1.edges.length) setIndex(0)
+      else setIndex(index + 1)
     }, 5000)
 
     return () => {
@@ -159,6 +160,7 @@ export const Sec1 = (props: Props) => {
               <SceneButton
                 title={item.slideName}
                 onClick={() => {
+                  console.log("index = ", _index)
                   if (index != _index) setIndex(_index)
                 }}
               />

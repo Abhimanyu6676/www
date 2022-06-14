@@ -12,7 +12,7 @@ module.exports = {
         options: {
           defaults: {
             formats: [`auto`, `webp`],
-            backgroundColor: `white`,
+            backgroundColor: `transparent`,
             placeholder: `none`,
           }
         }
