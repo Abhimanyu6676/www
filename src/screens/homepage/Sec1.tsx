@@ -68,8 +68,7 @@ export const Sec1 = (props: Props) => {
 
   useEffect(() => {
     let indexLoop = setInterval(() => {
-      if (index == 3) setIndex(0)
-      else setIndex(index + 1)
+      setIndex((index + 1) % (data.homepage_sec_1.edges.length - 1))
     }, 5000)
 
     return () => {
