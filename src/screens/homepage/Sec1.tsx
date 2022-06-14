@@ -3,6 +3,33 @@ import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { useTransition, animated } from "react-spring"
 
+const slides = [
+  {
+    id: 0,
+    heading: "Design Your Personal Oasis",
+    text: "Add a touch of natural sophistication to your home with the Elements wood look light panels.",
+    slideName: "Oasis",
+  },
+  {
+    id: 1,
+    heading: "Discover Limitless Lighting",
+    text: "Smart modular light panels for complete design freedom and customisation.",
+    slideName: " Limitless Lighting",
+  },
+  {
+    id: 2,
+    heading: "Your Smart Lighting Basics",
+    text: "The only bulbs and lightstrips you will ever need.",
+    slideName: "Basics",
+  },
+  {
+    id: 3,
+    heading: "Create Your Own Masterpiece",
+    text: "Touch-reactive light squares to change the way you experience your space.",
+    slideName: "Own Masterpiece",
+  },
+]
+
 interface Props {}
 export const Sec1 = (props: Props) => {
   const [index, setIndex] = useState<0 | 1 | 2 | 3>(0)
@@ -30,72 +57,13 @@ export const Sec1 = (props: Props) => {
     }
   `)
 
-  const slides = [
-    {
-      id: 0,
-      heading: "Design Your Personal Oasis",
-      text: "Add a touch of natural sophistication to your home with the Elements wood look light panels.",
-      slideName: "Oasis",
-      ImgComp: () => (
-        <ImgComp_
-          index={0}
-          imgData={
-            data.homepage_sec_1.edges[0].node.childImageSharp.gatsbyImageData
-          }
-        />
-      ),
-    },
-    {
-      id: 1,
-      heading: "Discover Limitless Lighting",
-      text: "Smart modular light panels for complete design freedom and customisation.",
-      slideName: " Limitless Lighting",
-      ImgComp: () => (
-        <ImgComp_
-          index={1}
-          imgData={
-            data.homepage_sec_1.edges[1].node.childImageSharp.gatsbyImageData
-          }
-        />
-      ),
-    },
-    {
-      id: 2,
-      heading: "Your Smart Lighting Basics",
-      text: "The only bulbs and lightstrips you will ever need.",
-      slideName: "Basics",
-      ImgComp: () => (
-        <ImgComp_
-          index={2}
-          imgData={
-            data.homepage_sec_1.edges[2].node.childImageSharp.gatsbyImageData
-          }
-        />
-      ),
-    },
-    {
-      id: 3,
-      heading: "Create Your Own Masterpiece",
-      text: "Touch-reactive light squares to change the way you experience your space.",
-      slideName: "Own Masterpiece",
-      ImgComp: () => (
-        <ImgComp_
-          index={3}
-          imgData={
-            data.homepage_sec_1.edges[3].node.childImageSharp.gatsbyImageData
-          }
-        />
-      ),
-    },
-  ]
-
   const curSlide = slides[index]
 
-  const transition = useTransition(slides[index], item => item.id, {
+  const transition = useTransition(index, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { duration: 500 },
+    config: { duration: 1000 },
   })
 
   useEffect(() => {
@@ -122,8 +90,29 @@ export const Sec1 = (props: Props) => {
           //backgroundColor: "#EC7063",
         }}
       >
-        {transition.map(({ item, props, key }) => {
-          return <item.ImgComp />
+        {transition((animatedStyles, item) => {
+          return (
+            <animated.div /// slides
+              key={"_" + item}
+              style={{
+                ...animatedStyles,
+                position: "absolute",
+                top: 0,
+                left: 0,
+                height: "100vh",
+                width: "100vw",
+              }}
+            >
+              <GatsbyImage
+                image={
+                  data.homepage_sec_1.edges[item].node.childImageSharp
+                    .gatsbyImageData
+                }
+                style={{ height: "100vh", width: "100vw" }}
+                alt="HUElite"
+              />
+            </animated.div>
+          )
         })}
       </div>
       <div // bottom text container
@@ -210,27 +199,5 @@ const SceneButton = ({
         </p>
       </div>
     </button>
-  )
-}
-
-const ImgComp_ = (props: { imgData: any; index: number }) => {
-  return (
-    <animated.div /// slides
-      key={"_" + props.index}
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        height: "100vh",
-        width: "100vw",
-        ...props,
-      }}
-    >
-      <GatsbyImage
-        image={props.imgData}
-        style={{ height: "100vh", width: "100vw" }}
-        alt="HUElite"
-      />
-    </animated.div>
   )
 }
