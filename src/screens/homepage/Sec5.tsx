@@ -17,7 +17,7 @@ export const Sec5 = (props: Props) => {
   `)
 
   return (
-    <div>
+    <div className="--my-50--xs--gt">
       <SectionType2
         img={imageData.main}
         config={{ roundedCornersOnImgAndButton: true }}
