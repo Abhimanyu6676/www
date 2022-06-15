@@ -5,6 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as styles from "./index.module.css"
 import appColors from "../../../styles/appColors"
 import { Accordion } from "../accordion"
+import globalStyles from "../../../styles/globalStyles"
 
 type Props = {}
 
@@ -67,13 +68,19 @@ export default (props: Props) => {
   `)
   return (
     <div
-      style={{ position: "relative", display: "flex", padding: "50px 0px" }}
+      style={{
+        position: "relative",
+        display: "flex",
+        padding: "50px 0px",
+        backgroundColor: appColors.backgrounds.greyLight,
+      }}
       className={styles.container}
     >
       <Slider
         homepageSPSTpics={data.homepageSPSTpics}
         homepageSPSTthumbs={data.homepageSPSTthumbs}
       />
+
       <div //content container
         className={styles.contentContainer}
       >
@@ -106,7 +113,7 @@ export default (props: Props) => {
                     alignItems: "center",
                   }}
                 >
-                  <h4 style={{ color: "#ffffff", margin: 0, fontWeight: 500 }}>
+                  <h4 style={{ color: "#ffffff", fontWeight: 500 }}>
                     {varient.heading}
                   </h4>
                 </div>
@@ -205,13 +212,7 @@ const AccordianSection = () => {
         }}
       />
       <Accordion.Content isVisible={accordianIndex == 1} style={{}}>
-        <h4
-          style={{
-            marginTop: 30,
-          }}
-        >
-          Key features
-        </h4>
+        <h4 style={{}}>Key features</h4>
         <p style={{}}>
           Music Sync, colors so live that you need to feel it yourself, more
           creativity with Custom Mode Creation, smoother app control experience,
@@ -337,6 +338,7 @@ const Slider = (props: { homepageSPSTpics: any; homepageSPSTthumbs: any }) => {
           //backgroundColor: "red",
           position: "relative",
           display: "flex",
+          ...globalStyles.shadowLight,
         }}
       >
         {transition((animatedStyles, item) => {
@@ -363,10 +365,11 @@ const Slider = (props: { homepageSPSTpics: any; homepageSPSTthumbs: any }) => {
           )
         })}
       </div>
-      <div
+      <div // buttons => previous | next
         style={{
           position: "absolute",
-          display: "flex",
+          display: "none", //REMOVE
+          //display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           zIndex: 3,

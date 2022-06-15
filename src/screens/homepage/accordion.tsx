@@ -49,6 +49,15 @@ const Heading = (props: {
   )
 }
 
+/**
+ *
+ * @param isVisible : weather content is visible or not
+ *
+ *
+ * @defaults innerContainerMargin : "15px 10px"
+ *
+ * @returns
+ */
 const Content = (props: {
   children?: any
   isVisible?: boolean
@@ -63,12 +72,17 @@ const Content = (props: {
         //transition: "height 0.5s ease-in-out",
         //height: props.isVisible ? 300 : 0,
         overflowY: "scroll",
-        padding: "0px 10px",
         ...props.style,
       }}
       className={styles.contentContainer}
     >
-      {props.children}
+      <div
+        style={{
+          margin: "15px 10px",
+        }}
+      >
+        {props.children}
+      </div>
     </div>
   )
 }

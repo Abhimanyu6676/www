@@ -63,7 +63,7 @@ export const Sec1 = (props: Props) => {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { duration: 1000 },
+    config: { duration: 500 },
   })
 
   useEffect(() => {
@@ -180,25 +180,23 @@ const SceneButton = ({
   onClick?: () => void
 }) => {
   return (
-    <button onClick={onClick}>
-      <div
+    <button
+      onClick={onClick}
+      style={{
+        margin: "0px 20px 20px 0px",
+        backgroundColor: "#eeeeee44",
+        padding: "1px 10px",
+        borderRadius: 10,
+      }}
+    >
+      <h3
         style={{
-          margin: "0px 20px 20px 0px",
-          backgroundColor: "#eeeeee44",
-          padding: "1px 10px",
-          borderRadius: 10,
+          color: "#ffffff",
+          margin: "12px 10px",
         }}
       >
-        <p
-          style={{
-            color: "#ffffff",
-            fontSize: 18,
-            fontWeight: "bold",
-          }}
-        >
-          {title}
-        </p>
-      </div>
+        {title}
+      </h3>
     </button>
   )
 }
