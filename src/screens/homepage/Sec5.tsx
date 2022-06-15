@@ -18,7 +18,10 @@ export const Sec5 = (props: Props) => {
 
   return (
     <div>
-      <SectionType2 img={imageData.main} config={{ roundedImgCorners: true }} />
+      <SectionType2
+        img={imageData.main}
+        config={{ roundedCornersOnImgAndButton: true }}
+      />
     </div>
   )
 }

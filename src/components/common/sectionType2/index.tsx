@@ -5,7 +5,7 @@ import * as styles from "./index.module.css"
 
 type Props = {
   config?: {
-    roundedImgCorners?: boolean
+    roundedCornersOnImgAndButton?: boolean
   }
   /** image query data. [.childImageSharp.gatsbyImageData] is applied later */
   img: any
@@ -21,7 +21,9 @@ export default (props: Props) => {
             image={props.img.childImageSharp.gatsbyImageData}
             style={{ width: "100%", height: "100%" }}
             imgStyle={{
-              borderRadius: props?.config?.roundedImgCorners ? 20 : 0,
+              borderRadius: props?.config?.roundedCornersOnImgAndButton
+                ? 20
+                : 0,
               width: "100%",
               height: "100%",
             }}
@@ -50,7 +52,7 @@ export default (props: Props) => {
             style={{
               backgroundColor: appColors.black_1,
               height: 50,
-              borderRadius: 50,
+              borderRadius: props.config?.roundedCornersOnImgAndButton ? 50 : 0,
               overflow: "hidden",
               marginTop: 40,
             }}
