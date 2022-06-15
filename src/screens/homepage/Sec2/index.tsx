@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
 import { useTransition, animated } from "react-spring"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as styles from "./index.module.css"
 import appColors from "../../../styles/appColors"
 import { Accordion } from "../accordion"
@@ -18,12 +18,62 @@ const varients = [
 ]
 
 export default (props: Props) => {
+  const data = useStaticQuery(graphql`
+    query {
+      amazon_marketplace_icon: file(
+        relativePath: { eq: "icon/amazon_marketplace.png" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 500, layout: CONSTRAINED)
+        }
+      }
+      homepageSPSTthumbs: allFile(
+        filter: {
+          extension: { regex: "/(jpg)|(jpeg)|(png)/" }
+          dir: {
+            eq: "/Users/abhimanyu/Documents/HUElite/web/src/images/Products/Strips/spectrum_strip/productPhotos"
+          }
+        }
+        sort: { fields: name }
+      ) {
+        edges {
+          node {
+            id
+            childImageSharp {
+              gatsbyImageData(width: 200, layout: CONSTRAINED)
+            }
+          }
+        }
+      }
+      homepageSPSTpics: allFile(
+        filter: {
+          extension: { regex: "/(jpg)|(jpeg)|(png)/" }
+          dir: {
+            eq: "/Users/abhimanyu/Documents/HUElite/web/src/images/Products/Strips/spectrum_strip/productPhotos"
+          }
+        }
+        sort: { fields: name }
+      ) {
+        edges {
+          node {
+            id
+            childImageSharp {
+              gatsbyImageData(width: 600, layout: CONSTRAINED)
+            }
+          }
+        }
+      }
+    }
+  `)
   return (
     <div
       style={{ position: "relative", display: "flex", padding: "50px 0px" }}
       className={styles.container}
     >
-      <Slider />
+      <Slider
+        homepageSPSTpics={data.homepageSPSTpics}
+        homepageSPSTthumbs={data.homepageSPSTthumbs}
+      />
       <div //content container
         className={styles.contentContainer}
       >
@@ -74,27 +124,40 @@ export default (props: Props) => {
               color: "#ffffff",
             }}
           >
-            Buy 2 & get 25% off
+            Buy now & get 25% off
           </h5>
         </div>
-        <div // Add to  art section
+        <div // Add to cart section
           style={{
             backgroundColor: "red",
             marginTop: 30,
           }}
         >
-          <button
-            style={{
-              height: 50,
-              width: "100%",
-              backgroundColor: "#000",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <h3 style={{ color: "#fff", textAlign: "center" }}>ADD TO CART</h3>
-          </button>
+          <a href="https://www.amazon.in/s?me=ADEJJYXA274FU&ref=sf_seller_app_share_new">
+            <button
+              style={{
+                height: 50,
+                width: "100%",
+                backgroundColor: "#000",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <h3 style={{ color: "#fff", textAlign: "center" }}>
+                Buy from amazon
+              </h3>
+              <GatsbyImage
+                image={getImage(data.amazon_marketplace_icon)}
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginLeft: 20,
+                }}
+              />
+            </button>
+          </a>
         </div>
 
         <div // accordian container
@@ -242,47 +305,7 @@ const AccordianSection = () => {
   )
 }
 
-const Slider = () => {
-  const data = useStaticQuery(graphql`
-    {
-      homepageSPSTthumbs: allFile(
-        filter: {
-          extension: { regex: "/(jpg)|(jpeg)|(png)/" }
-          dir: {
-            eq: "/Users/abhimanyu/Documents/HUElite/web/src/images/Products/Strips/spectrum_strip/productPhotos"
-          }
-        }
-        sort: { fields: name }
-      ) {
-        edges {
-          node {
-            id
-            childImageSharp {
-              gatsbyImageData(width: 100, layout: CONSTRAINED)
-            }
-          }
-        }
-      }
-      homepageSPSTpics: allFile(
-        filter: {
-          extension: { regex: "/(jpg)|(jpeg)|(png)/" }
-          dir: {
-            eq: "/Users/abhimanyu/Documents/HUElite/web/src/images/Products/Strips/spectrum_strip/productPhotos"
-          }
-        }
-        sort: { fields: name }
-      ) {
-        edges {
-          node {
-            id
-            childImageSharp {
-              gatsbyImageData(width: 600, layout: CONSTRAINED)
-            }
-          }
-        }
-      }
-    }
-  `)
+const Slider = (props: { homepageSPSTpics: any; homepageSPSTthumbs: any }) => {
   const [currIndex, setCurrIndex] = useState(0)
 
   const transition = useTransition(currIndex, {
@@ -294,7 +317,7 @@ const Slider = () => {
 
   useEffect(() => {
     let __tempInterval = setInterval(() => {
-      if (currIndex == data.homepageSPSTpics.edges.length - 1) {
+      if (currIndex == props.homepageSPSTpics.edges.length - 1) {
         setCurrIndex(0)
       } else {
         setCurrIndex(currIndex + 1)
@@ -329,7 +352,7 @@ const Slider = () => {
             >
               <GatsbyImage
                 image={
-                  data.homepageSPSTpics.edges[item].node.childImageSharp
+                  props.homepageSPSTpics.edges[item].node.childImageSharp
                     .gatsbyImageData
                 }
                 className={styles.imgWidth}
