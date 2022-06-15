@@ -141,12 +141,7 @@ const AccordianSection = () => {
           if (accordianIndex != 1) setAccordianIndex(1)
         }}
       />
-      <Accordion.Content
-        isVisible={accordianIndex == 1}
-        style={{
-          backgroundColor: "#e1e1e1",
-        }}
-      >
+      <Accordion.Content isVisible={accordianIndex == 1} style={{}}>
         <h4
           style={{
             marginTop: 30,
@@ -220,7 +215,6 @@ const AccordianSection = () => {
       <Accordion.Content
         isVisible={accordianIndex == 2}
         style={{
-          backgroundColor: "#e1e1e1",
           padding: 0,
         }}
       >
