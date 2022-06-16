@@ -3,10 +3,10 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
-//@ts-ignore
 import * as styles from "./generalBlogPost.module.css"
 import Layout from "../components/layouts/HeaderFooterCover"
 import { ContactUs } from "../components/common/contactUs"
+import { NoteBox } from "../components/common/NoteBox"
 
 const generalBlogPostTemplate = ({ data }) => {
   const { frontmatter, body } = data.mdx
@@ -22,7 +22,7 @@ const generalBlogPostTemplate = ({ data }) => {
   return (
     <Layout>
       <div style={{ width: "100%", margin: 0, padding: 0 }}>
-        <div
+        <div // hero image container
           style={{
             position: "relative",
             display: "flex",
@@ -56,86 +56,45 @@ const generalBlogPostTemplate = ({ data }) => {
           </div>
         </div>
 
-        <div style={{ padding: "0px 3%" }}>
-          <h1 style={{}}>{frontmatter.title}</h1>
-        </div>
-
-        <div style={{ padding: "0px 3%" }}>
-          <MDXProvider
-            components={{
-              step: (props: any) => (
-                <strong
-                  style={{
-                    fontSize: "1.1em",
-                    fontWeight: "bold",
-                    textDecoration: "underline",
-                  }}
-                  {...props}
-                />
-              ),
-              "h4.inlineCode": (props: any) => (
-                <code
-                  style={{
-                    color: "#EC7063",
-                    border: "solid 1px grey",
-                  }}
-                  {...props}
-                />
-              ),
-              note: (props: any) => (
-                <div
-                  style={{
-                    backgroundColor: "#F7DC6F",
-                    padding: "5px 5px",
-                    borderRadius: 5,
-                    margin: "5%",
-                    borderLeftColor: "#F39C12",
-                    borderLeftWidth: 5,
-                    borderLeftStyle: "solid",
-                  }}
-                >
-                  {props}
-                </div>
-              ),
-              hint: (props: {
-                color?: string
-                children?: any
-                style?: React.CSSProperties
-              }) => (
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <div
-                    style={{
-                      backgroundColor: props.color
-                        ? props.color + "aa"
-                        : "#F1C40Faa",
-                      borderRadius: 5,
-                      padding: "10px 10px",
-                      borderLeftColor: props.color ? props.color : "#F1C40F",
-                      borderLeftWidth: 5,
-                      borderLeftStyle: "solid",
-                      maxWidth: 600,
-                      minWidth: 300,
-                    }}
-                  >
-                    {props.children}
-                  </div>
-                </div>
-              ),
-              glink: (props: { children?: any; link?: string }) => {
-                return (
-                  <button
-                    {...props}
-                    onClick={() => {
-                      if (props.link) navigate(props.link)
-                    }}
-                  />
-                )
-              },
-              Link,
-            }}
+        <div // content contaienr
+          style={{ margin: "0px 3vw" }}
+        >
+          <div // blog title
           >
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
+            <h1 style={{ margin: "30px 0px" }}>{frontmatter.title}</h1>
+          </div>
+
+          <div // mdx container
+          >
+            <MDXProvider
+              components={{
+                step: (props: any) => (
+                  <strong
+                    style={{
+                      fontSize: "1.1em",
+                      fontWeight: "bold",
+                      textDecoration: "underline",
+                    }}
+                    {...props}
+                  />
+                ),
+                glink: (props: { children?: any; link?: string }) => {
+                  return (
+                    <button
+                      {...props}
+                      onClick={() => {
+                        if (props.link) navigate(props.link)
+                      }}
+                    />
+                  )
+                },
+                Link,
+                NoteBox,
+              }}
+            >
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
+          </div>
         </div>
       </div>
       <ContactUs style={{ marginBottom: 50 }} />
