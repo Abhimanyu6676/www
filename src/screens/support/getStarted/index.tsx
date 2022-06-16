@@ -58,21 +58,21 @@ export const GetStarted = (props: Props) => {
     >
       <div //top text section
         style={{
-          margin: "0px 20px",
+          margin: "0px 2.5vw",
+          marginTop: 50,
         }}
       >
         <h1 style={{}}>Support / Getting Setup</h1>
-        <h3 style={{ marginTop: 40 }}>Manual & Guides</h3>
+        <h3 style={{ marginTop: 20 }}>Manual & Guides</h3>
       </div>
       <Grid //link items
         container
         justifyContent="center"
         alignItems="center"
-        style={
-          {
-            //backgroundColor: "blue",
-          }
-        }
+        style={{
+          //backgroundColor: "blue",
+          marginTop: 50,
+        }}
       >
         {links.map((item, index) => {
           return (
@@ -119,7 +119,7 @@ const Item = (props: { item: Item_i }) => {
           justifyContent: "flex-end",
           alignItems: "flex-start",
           //backgroundColor: "blue",
-          padding: "10px 20px",
+          padding: "30px 20px",
         }}
         onClick={() => {
           navigate(props.item.link)
@@ -132,15 +132,15 @@ const Item = (props: { item: Item_i }) => {
         >
           {props.item.heading}
         </h2>
-        <h4
+        <p
           style={{
             color: "#ffffff",
             fontWeight: "normal",
-            marginTop: 0,
+            marginTop: 10,
           }}
         >
           {props.item.subHeading}
-        </h4>
+        </p>
       </button>
     </FadeInSectionCSS>
   )
