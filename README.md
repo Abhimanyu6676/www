@@ -1,4 +1,4 @@
-<p align="center" style="margin:0px;">
+<p align="center" style="margin:0px; background-color:#ff0000;">
   <a href="https://www.huelite.in/" >
     <img alt="Gatsby" src="https://www.huelite.in/staticImages/icon/hueliteIconNoBg_512px.png" width="150" />
   </a>
