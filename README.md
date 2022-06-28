@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.huelite.in/" style="margin:0px; background-color:red;">
+  <a href="https://www.huelite.in/" style={{margin:0; backgroundColor:red;}}">
     <img alt="Gatsby" src="https://www.huelite.in/staticImages/icon/hueliteIconNoBg_512px.png" width="150" height="150" />
   </a>
 </p>
