@@ -3,9 +3,7 @@
     <img alt="Gatsby" src="https://www.huelite.in/staticImages/icon/hueliteIconNoBg_512px.png" width="100" />
   </a>
 </p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+<h2 align="center">www.huelite.in</h2>
 
 ## 🚀 Quick start
 
