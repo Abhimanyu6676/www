@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://www.huelite.in/staticImages/icon/hueliteIconNoBg_512px.png">
-    <img alt="Gatsby" src="https://www.huelite.in/staticImages/icon/hueliteIconNoBg_512px.png" width="60" />
+  <a href="https://www.huelite.in/">
+    <img alt="Gatsby" src="https://www.huelite.in/staticImages/icon/hueliteIconNoBg_512px.png" width="100" />
   </a>
 </p>
 <h1 align="center">
