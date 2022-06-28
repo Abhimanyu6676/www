@@ -63,6 +63,9 @@ export default (props: Props) => {
         clientID == "BDE"
           ? "https://huelite.in/development/alexa/auth"
           : "https://huelite.in/backend/alexa/auth"
+      //let serverAdd = "https://huelite.in/development/alexa/auth"
+      //let serverAdd = "https://huelite.in/backend/alexa/auth"
+      //let serverAdd = "http://199.192.25.77:4000/backend/alexa/auth"
 
       console.log("serverAdd : " + serverAdd)
       console.log("clientID : " + clientID)

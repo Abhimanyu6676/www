@@ -8,7 +8,13 @@ type Props = {
 
 export const NoteBox = (props: Props) => {
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        ...props.style,
+      }}
+    >
       <div
         style={{
           backgroundColor: props.color ? props.color + "aa" : "#F1C40Faa",
