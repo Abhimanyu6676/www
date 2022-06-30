@@ -31,7 +31,9 @@
     "gatsby-plugin-manifest": "^4.5.1",
     "gatsby-plugin-material-ui": "^4.1.0",
     "gatsby-plugin-mdx": "^3.5.1",
+    "gatsby-plugin-purgecss": "^6.1.2",
     "gatsby-plugin-react-helmet": "^5.5.0",
+    "gatsby-plugin-sass": "^5.17.0",
     "gatsby-plugin-sharp": "^4.5.1",
     "gatsby-plugin-sitemap": "^5.5.0",
     "gatsby-plugin-use-query-params": "^1.0.1",
@@ -42,6 +44,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-spring": "^9.4.5",
+    "sass": "^1.53.0",
     "use-query-params": "^1.2.3"
   },
   "devDependencies": {

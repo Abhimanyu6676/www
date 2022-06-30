@@ -3,6 +3,10 @@
   flex-direction: row;
 }
 
+.containerReverse {
+  flex-direction: row-reverse;
+}
+
 .imgContainer {
   overflow: hidden;
   margin: 0px 5vw;

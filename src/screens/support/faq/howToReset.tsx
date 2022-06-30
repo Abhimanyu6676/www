@@ -7,6 +7,7 @@ type Props = {}
 
 export const HowToReset = (props: Props) => {
   const progressBarWidth = 150
+  const [intervalTime, setintervalTime] = useState(3000)
   const [controllerActive, setControllerActive] = useState(false)
   const [controllerProgress, setControllerProgress] = useState(0)
   const barStyle = useSpring({
@@ -15,18 +16,21 @@ export const HowToReset = (props: Props) => {
 
   useEffect(() => {
     let resetTimer: NodeJS.Timer | undefined = undefined
-    if (controllerActive && !resetTimer) {
+    if (controllerActive && !resetTimer && controllerProgress < 9) {
       resetTimer = setInterval(() => {
+        setintervalTime(controllerProgress % 2 == 0 ? 2000 : 5000)
         setControllerProgress(controllerProgress + 1)
-      }, 5000)
+      }, intervalTime)
     } else {
-      console.log("interval already running")
+      console.log("interval already running, or completed")
+      if (resetTimer) clearInterval(resetTimer)
+      if (controllerActive) setControllerActive(false)
     }
     return () => {
       console.log("clearing interval")
       clearInterval(resetTimer)
     }
-  }, [controllerActive, controllerProgress])
+  }, [controllerActive, controllerProgress, intervalTime])
 
   return (
     <div>
@@ -104,6 +108,8 @@ export const HowToReset = (props: Props) => {
             onClick={() => {
               if (!controllerActive) {
                 setControllerActive(true)
+                if (controllerProgress > 0) setControllerProgress(0)
+                if (intervalTime < 3000) setintervalTime(3000)
               } else {
                 setControllerActive(false)
                 setControllerProgress(0)

@@ -4,3 +4,4 @@ interface Link_i {
 }
 
 declare module "*.css"
+declare module "*.scss"

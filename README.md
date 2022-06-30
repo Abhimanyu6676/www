@@ -3,7 +3,7 @@
     <img alt="Gatsby" src="https://www.huelite.in/staticImages/icon/hueliteIconNoBg_512px.png" width="150" />
   </a>
 </p>
-<h2 align="center" color="#000000">www.huelite.in</h2>
+<h2 align="center">www.huelite.in</h2>
 
 ## Project Structure
 

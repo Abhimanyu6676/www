@@ -9,10 +9,17 @@ type Props = {
   }
   /** image query data. [.childImageSharp.gatsbyImageData] is applied later */
   img: any
+  /** Set flex direction as row-reverse. default is row */
+  reverseDesktopOrientation?: boolean
 }
 export default (props: Props) => {
   return (
-    <div className={styles.container}>
+    <div
+      className={`
+        ${styles.container}
+        ${props.reverseDesktopOrientation ? styles.containerReverse : " "}
+      `}
+    >
       <div //imageContainer
         className={styles.imgContainer}
       >
