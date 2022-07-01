@@ -37,7 +37,7 @@ export default (props: Props) => {
       className={styles.main}
       style={{
         display: "flex",
-        marginBottom: 100,
+        margin: "50px 0px",
       }}
     >
       <div>

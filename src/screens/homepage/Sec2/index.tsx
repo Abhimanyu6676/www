@@ -4,7 +4,7 @@ import { useTransition, animated } from "react-spring"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as styles from "./index.module.css"
 import appColors from "../../../styles/appColors"
-import { Accordion } from "../accordion"
+import { Accordion } from "../../../components/common/accordion"
 import globalStyles from "../../../styles/globalStyles"
 
 type Props = {}

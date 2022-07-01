@@ -4,14 +4,16 @@ import Button from "../Button"
 
 type Props = {
   style?: React.CSSProperties
+  className?: any
 }
 
 export const Subscrible = (props: Props) => {
   return (
     <div
+      className={props.className}
       style={{
         backgroundColor: "#eee",
-        padding: "50px 10vw",
+        padding: "100px 10vw",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -21,9 +23,9 @@ export const Subscrible = (props: Props) => {
       <div // text container
       >
         <h1 style={{ textAlign: "center" }}>Sign up & save</h1>
-        <p style={{ textAlign: "center" }}>
+        <p style={{ textAlign: "center", marginTop: 10 }}>
           Sign up to our mailing list to receive setup tips, product launches
-          and exclusiv offers
+          and exclusive offers
         </p>
       </div>
       <div // subscribe feild container
@@ -33,7 +35,7 @@ export const Subscrible = (props: Props) => {
           flexDirection: "row",
           justifyContent: "center",
           maxWidth: 500,
-          marginTop: 30,
+          marginTop: 50,
         }}
       >
         <div

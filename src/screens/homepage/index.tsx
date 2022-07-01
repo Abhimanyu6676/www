@@ -1,20 +1,25 @@
 import React from "react"
-import { HomeFeaturesSection } from "./HomeFeaturesSection"
-import { Sec1 } from "./Sec1"
+import { Subscrible } from "../../components/common/subscrible"
+import { AudieanceSection } from "./audienceSection"
+import { FeaturesSection } from "./featuresSection"
+import { HomePageHeroSection } from "./heroSection"
 import Sec2 from "./Sec2"
-import { Sec3 } from "./Sec3"
-import { Sec4 } from "./Sec4"
+import * as styles from "./index.module.scss"
 
 type Props = {}
 
 export const Homepage = (props: Props) => {
   return (
     <div>
-      <Sec1 />
+      <HomePageHeroSection />
       <Sec2 />
-      <HomeFeaturesSection />
-      <Sec3 />
-      <Sec4 />
+      <FeaturesSection />
+      <AudieanceSection />
+      <Subscrible />
     </div>
   )
+}
+
+{
+  /* className={styles.subscribeSection} */
 }
