@@ -1,3 +1,4 @@
+import { Box } from "@mui/material"
 import { graphql, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
 import { useSpring, animated, config } from "react-spring"
@@ -12,12 +13,7 @@ type Props = {}
 export const HowToReset = (props: Props) => {
   const progressBarWidth = 150
   const [intervalTime, setintervalTime] = useState(3000)
-  const [controllerActive, setControllerActive] = useState(false)
-  const [controllerProgress, setControllerProgress] = useState(0)
-  const barStyle = useSpring({
-    width: controllerProgress % 2 == 1 ? progressBarWidth : 0,
-    config: config.molasses,
-  })
+  const [controllerProgress, setControllerProgress] = useState(-1)
 
   const imageData = useStaticQuery(graphql`
     query {
@@ -37,27 +33,43 @@ export const HowToReset = (props: Props) => {
       }
     }
   `)
+  let stateOn = controllerProgress > -1 && controllerProgress % 2 == 0
+  let progressCountMax = 10
+
+  const barStyle = useSpring({
+    width: stateOn ? progressBarWidth : 0,
+    config: config.molasses,
+  })
 
   useEffect(() => {
     let resetTimer: NodeJS.Timer | undefined = undefined
-    if (controllerActive && !resetTimer && controllerProgress < 9) {
+    if (
+      !resetTimer &&
+      controllerProgress >= 0 &&
+      controllerProgress < progressCountMax
+    ) {
       resetTimer = setInterval(() => {
-        setintervalTime(controllerProgress % 2 == 0 ? 2000 : 5000)
+        setintervalTime(stateOn ? 5000 : 2000)
         setControllerProgress(controllerProgress + 1)
       }, intervalTime)
     } else {
       console.log("interval already running, or completed")
       if (resetTimer) clearInterval(resetTimer)
-      if (controllerActive) setControllerActive(false)
+      if (controllerProgress == progressCountMax) {
+        /*  ;(async () => {
+          //@ts-ignore
+          alert("Leave the controller in ON state")
+        })() */
+      }
     }
     return () => {
       console.log("clearing interval")
-      clearInterval(resetTimer)
+      if (resetTimer) clearInterval(resetTimer)
     }
-  }, [controllerActive, controllerProgress, intervalTime])
+  }, [controllerProgress, intervalTime])
 
   return (
-    <div
+    <Box
       style={{
         marginBottom: 50,
       }}
@@ -71,15 +83,18 @@ export const HowToReset = (props: Props) => {
         <h2 style={{ marginTop: 10, fontFamily: "Ubuntu" }}>
           Manual Reset procedure
         </h2>
-        <p style={{ marginTop: 10, fontFamily: "Ubuntu" }}>
+        <p style={{ marginTop: 10, marginLeft: 10, fontFamily: "Ubuntu" }}>
           To perform a manual reset, you need to switch on & switch off your
           device 4 time in a row, causing a hard reset event on HUElite device.
         </p>
         <h4 style={{ marginTop: 20 }}>
-          Start the reset conteoller timer to begin.
+          Start the reset controller timer to begin.
         </h4>
-        <p style={{ marginTop: 10, fontFamily: "Ubuntu" }}>
-          You have to switch off on
+        <p style={{ fontFamily: "Ubuntu", marginTop: 10, marginLeft: 10 }}>
+          - Lets switch off the HUElite device first.
+        </p>
+        <p style={{ marginTop: 10, fontFamily: "Ubuntu", marginLeft: 10 }}>
+          - You have to switch off on
           <text
             style={{
               backgroundColor: appColors.warning + "77",
@@ -105,9 +120,7 @@ export const HowToReset = (props: Props) => {
       </NoteBox>
 
       <SectionType2
-        img={
-          controllerProgress % 2 == 0 ? imageData.switchOff : imageData.switchOn
-        }
+        img={stateOn ? imageData.switchOn : imageData.switchOff}
         imgContainerStyle={{
           display: "flex",
           justifyContent: "center",
@@ -132,86 +145,87 @@ export const HowToReset = (props: Props) => {
         >
           <div //text section inner container
           >
-            <p style={{ marginTop: 30 }}>
-              Lets switch off the HUElite device first.
-            </p>
-            <p style={{ marginTop: 10 }}>
+            <h3 style={{}}>Press `START` button when ready</h3>
+            <p style={{ marginTop: 20 }}>
               It is very important that you match the switching timing with the
               timer.
             </p>
-            <h3 style={{ marginTop: 20 }}>Press `START` button when ready</h3>
-            <div // reset button container
+          </div>
+          <div // reset button container
+            style={{
+              marginTop: 20,
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <button
               style={{
-                marginTop: 20,
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
+                borderRadius: 10,
+              }}
+              onClick={() => {
+                if (
+                  controllerProgress == -1 ||
+                  controllerProgress >= progressCountMax
+                ) {
+                  setControllerProgress(1)
+                } else {
+                  if (controllerProgress > -1) setControllerProgress(-1)
+                  if (intervalTime < 3000) setintervalTime(3000)
+                }
               }}
             >
-              <button
+              <h2
                 style={{
-                  borderRadius: 10,
-                }}
-                onClick={() => {
-                  if (!controllerActive) {
-                    setControllerActive(true)
-                    if (controllerProgress > 0) setControllerProgress(0)
-                    if (intervalTime < 3000) setintervalTime(3000)
-                  } else {
-                    setControllerActive(false)
-                    setControllerProgress(0)
-                  }
+                  padding: "5px 10px",
+                  backgroundColor: appColors.black_1,
+                  color: "#ffffff",
                 }}
               >
-                <h2
-                  style={{
-                    padding: "5px 10px",
-                    backgroundColor: appColors.black_1,
-                    color: "#ffffff",
-                  }}
-                >
-                  {controllerActive ? "STOP" : "START"}
-                </h2>
-              </button>
-              <div // reset indicator
-                style={{
-                  backgroundColor:
-                    controllerProgress % 2 == 0
-                      ? appColors.warning
-                      : appColors.successDark,
-                  width: 20,
-                  height: 20,
-                  borderRadius: 5000,
-                  marginLeft: 20,
-                }}
-              ></div>
-            </div>
-            <div // progress bar container
+                {controllerProgress == -1
+                  ? "START"
+                  : controllerProgress >= 0 &&
+                    controllerProgress < progressCountMax
+                  ? "STOP"
+                  : "RESTART"}
+              </h2>
+            </button>
+            <div // reset indicator
               style={{
-                position: "relative",
-                height: 10,
-                width: progressBarWidth,
-                borderRadius: 50,
-                backgroundColor: appColors.backgrounds.greyHard,
-                marginTop: 20,
-                overflow: "hidden",
+                backgroundColor: stateOn
+                  ? appColors.successDark
+                  : appColors.warning,
+                width: 20,
+                height: 20,
+                borderRadius: 5000,
+                marginLeft: 20,
               }}
-            >
-              <animated.div
-                style={{
-                  height: 10,
-                  //backgroundColor: appColors.primaryHighlight,
-                  backgroundColor:
-                    controllerProgress % 2 == 0
-                      ? appColors.warning
-                      : appColors.successDark,
-                  ...barStyle,
-                }}
-              ></animated.div>
-            </div>
+            ></div>
+          </div>
+          <div // progress bar container
+            style={{
+              position: "relative",
+              height: 10,
+              width: progressBarWidth,
+              borderRadius: 50,
+              backgroundColor: appColors.backgrounds.greyHard,
+              marginTop: 20,
+              overflow: "hidden",
+            }}
+          >
+            <animated.div
+              style={{
+                height: 10,
+                //backgroundColor: appColors.primaryHighlight,
+                backgroundColor: stateOn
+                  ? appColors.successDark
+                  : appColors.warning,
+                ...barStyle,
+              }}
+            ></animated.div>
           </div>
         </div>
       </SectionType2>
-    </div>
+    </Box>
   )
 }
