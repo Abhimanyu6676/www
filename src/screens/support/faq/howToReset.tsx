@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Alert, Box, Collapse, IconButton } from "@mui/material"
 import { graphql, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
 import { useSpring, animated, config } from "react-spring"
@@ -7,6 +7,7 @@ import { NoteBox } from "../../../components/common/NoteBox"
 import SectionType2 from "../../../components/common/sectionType2"
 import appColors from "../../../styles/appColors"
 import globalStyles from "../../../styles/globalStyles"
+import CloseIcon from "@mui/icons-material/Close"
 
 type Props = {}
 
@@ -69,7 +70,7 @@ export const HowToReset = (props: Props) => {
   }, [controllerProgress, intervalTime])
 
   return (
-    <Box
+    <div
       style={{
         marginBottom: 50,
       }}
@@ -226,6 +227,36 @@ export const HowToReset = (props: Props) => {
           </div>
         </div>
       </SectionType2>
-    </Box>
+
+      <div
+        style={{
+          position: "fixed",
+          bottom: 20,
+          right: 20,
+          maxWidth: 300,
+        }}
+      >
+        <Box>
+          <Collapse in={controllerProgress == progressCountMax}>
+            <Alert
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setControllerProgress(-1)
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+            >
+              Reset process completed
+            </Alert>
+          </Collapse>
+        </Box>
+      </div>
+    </div>
   )
 }
