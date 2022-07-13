@@ -26,7 +26,11 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 
 const GetStartedPage = () => {
   return (
-    <Layout>
+    <Layout
+      helmetConfig={{
+        title: "get-started",
+      }}
+    >
       <GetStarted />
     </Layout>
   )

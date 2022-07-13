@@ -1,0 +1,18 @@
+{
+  "username": "root",
+  "host": "huelite.in",
+  "commands": [
+    "cd ..",
+    "cd ..",
+    "cd /var/www/",
+    "ls",
+    "rm -r ./public",
+    "ls",
+    "echo 'Unzipping build folder now'",
+    "unzip build.zip",
+    "echo 'Unzipping build folder completed'",
+    "ls",
+    "rm ./build.zip",
+    "ls"
+  ]
+}

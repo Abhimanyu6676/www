@@ -13,8 +13,9 @@
     "_build": "gatsby build",
     "serve": "gatsby serve -H 0.0.0.0 -p 8000",
     "clean": "gatsby clean",
-    "deploy": "gatsby build && scp -r ./public root@huelite.in:/var/www",
-    "publish": "scp -r ./public root@huelite.in:/var/www"
+    "deploySshCommands": "simple-ssh-commands",
+    "deploy": "npm run build && npm run publish",
+    "publish": "zip -r build.zip public/ && scp ./build.zip root@huelite.in:/var/www && npm run deploySshCommands"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -27,11 +28,14 @@
     "gatsby": "^4.5.2",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-google-tagmanager": "^4.18.0",
     "gatsby-plugin-image": "^2.5.1",
     "gatsby-plugin-manifest": "^4.5.1",
     "gatsby-plugin-material-ui": "^4.1.0",
     "gatsby-plugin-mdx": "^3.5.1",
+    "gatsby-plugin-purgecss": "^6.1.2",
     "gatsby-plugin-react-helmet": "^5.5.0",
+    "gatsby-plugin-sass": "^5.17.0",
     "gatsby-plugin-sharp": "^4.5.1",
     "gatsby-plugin-sitemap": "^5.5.0",
     "gatsby-plugin-use-query-params": "^1.0.1",
@@ -42,9 +46,12 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-spring": "^9.4.5",
+    "react-swipeable": "^7.0.0",
+    "sass": "^1.53.0",
     "use-query-params": "^1.2.3"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^3.1.0",
+    "simple-ssh-commands": "^0.4.2"
   }
 }

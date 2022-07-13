@@ -1,17 +1,13 @@
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
+import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image"
 import React from "react"
-import {
-  GatsbyImage,
-  getImage,
-  StaticImage,
-  withArtDirection,
-} from "gatsby-plugin-image"
 import globalStyles from "../../../styles/globalStyles"
-import * as styles from "./index.module.css"
+import * as styles from "./index.module.scss"
 
 type Props = {
   config?: {
-    desktopRightAligned?: boolean
+    /** set content on the left side on desktop */
+    desktopContentOnLeft?: boolean
     roundedContentContainer?: boolean
   }
   /** takes 2 images [small-(max-width:600px)  & a full size image may be 16:9 for greater screen sizes ] */
@@ -23,14 +19,15 @@ type Props = {
   }
   content?: {
     heading: string
-    text?: string
-    text2: string
+    subHeading?: string
+    text: string
+    text2?: string
     button?: {
       link: string
       text: string
     }
   }
-  contentChild?: any
+  children?: any
 }
 /**
  * @defaults Content container is aligned at left on desktop|tablet. use `config.desktopRightAligned` boolean to make it rightAligned
@@ -73,21 +70,24 @@ export default (props: Props) => {
         }}
         className={[
           styles.contentContainer,
-          props.config?.desktopRightAligned
-            ? styles.contentContainer_right
-            : styles.contentContainer_left,
+          props.config?.desktopContentOnLeft
+            ? styles.contentContainer_left
+            : styles.contentContainer_right,
         ].join(" ")}
       >
-        {props.contentChild ? (
-          <props.contentChild />
-        ) : (
+        {props.content ? (
           //default container
           <>
             <h1 style={{}}>{props.content?.heading}</h1>
-            <p style={{ fontWeight: "normal", marginTop: 15 }}>
+            {props.content.subHeading && <h5>{props.content.subHeading}</h5>}
+            <p
+              style={{ fontWeight: "normal", marginTop: 15 }}
+              className="p-content"
+            >
               {props.content?.text}
             </p>
             <p
+              className="p-content"
               style={{
                 fontWeight: "normal",
                 marginTop: 15,
@@ -112,6 +112,8 @@ export default (props: Props) => {
               </Link>
             )}
           </>
+        ) : (
+          props.children
         )}
       </div>
     </div>

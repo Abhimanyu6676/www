@@ -1,7 +1,8 @@
 @import "./customBootstrap.css";
+@import "./typography.scss";
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 body {
   margin: 0;

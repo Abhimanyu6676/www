@@ -1,17 +1,15 @@
-import React, { useState } from "react"
-import MenuIcon from "@mui/icons-material/Menu"
 import CloseIcon from "@mui/icons-material/Close"
-import InstagramIcon from "@mui/icons-material/Instagram"
 import FacebookIcon from "@mui/icons-material/FacebookRounded"
-import YouTubeIcon from "@mui/icons-material/YouTube"
+import InstagramIcon from "@mui/icons-material/Instagram"
+import MenuIcon from "@mui/icons-material/Menu"
 import WhatsAppIcon from "@mui/icons-material/WhatsappRounded"
+import React, { useState } from "react"
 import Button from "../../../Button"
-//@ts-ignore
-import * as styles from "./mobileHeader.module.css"
-import { primartMenu } from "."
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace"
+import { primartMenu } from "."
+import * as styles from "./mobileHeader.module.css"
 
 type Props = {
   transparent?: boolean

@@ -1,0 +1,72 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
+
+$breakpoints: (
+  xs: (
+    breakpoint: 0px,
+    suffix: --xs,
+  ),
+  sm: (
+    breakpoint: 600px,
+    suffix: --sm,
+  ),
+  md: (
+    breakpoint: 768px,
+    suffix: --md,
+  ),
+  lg: (
+    breakpoint: 992px,
+    suffix: --lg,
+  ),
+  xl: (
+    breakpoint: 1200px,
+    suffix: --xl,
+  ),
+);
+
+@mixin --media-xs {
+  @media screen and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin --media-sm {
+  @media screen and (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin --media-md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin --media-lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin --media-xl {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}

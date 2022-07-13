@@ -1,14 +1,13 @@
-import React, { useState } from "react"
-//@ts-ignore
-import * as styles from "./index.module.css"
-import { MobileHeader } from "./mobileHeader"
+import React from "react"
 import { DesktopHeader } from "./desktopHeader"
+import { MobileHeader } from "./mobileHeader"
+import * as styles from "./index.module.css"
 
 export const primartMenu: Link_i[] = [
-  { text: "Products", link: "/products" },
+  { text: "Products", link: "/products/spectrum-strip" },
   { text: "App", link: "/app" },
   { text: "Support", link: "/support" },
-  { text: "Contact Us", link: "/contact_us" },
+  { text: "Contact Us", link: "/contact-us" },
 ]
 type Props = {
   style?: React.CSSProperties

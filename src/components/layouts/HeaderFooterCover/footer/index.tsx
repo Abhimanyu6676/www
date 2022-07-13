@@ -1,7 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-//@ts-ignore
-import * as styles from "./index.module.css"
+import * as styles from "./footer.module.css"
 
 const menu1: Link_i[] = [
   { text: "About Us", link: "/" },
@@ -37,7 +36,7 @@ export default (props: Props) => {
       className={styles.main}
       style={{
         display: "flex",
-        marginBottom: 100,
+        margin: "50px 0px",
       }}
     >
       <div>
