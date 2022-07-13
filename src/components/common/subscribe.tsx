@@ -1,5 +1,5 @@
-import { maxWidth } from "@mui/system"
-import React from "react"
+import axios from "axios"
+import React, { useState } from "react"
 import Button from "../Button"
 
 type Props = {
@@ -7,7 +7,18 @@ type Props = {
   className?: any
 }
 
-export const Subscrible = (props: Props) => {
+export const Subscribe = (props: Props) => {
+  const [email, setEmail] = useState("")
+
+  const checkEmail = () => {
+    var filter =
+      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+    if (email.length && email.match(filter)) return true
+
+    return false
+  }
+
   return (
     <div
       className={props.className}
@@ -47,6 +58,11 @@ export const Subscrible = (props: Props) => {
           }}
         >
           <input
+            onChange={txt => {
+              setEmail(txt.currentTarget.value)
+            }}
+            value={email}
+            placeholder="Enter Email ID"
             style={{
               height: 50,
               flex: 1,
@@ -55,9 +71,27 @@ export const Subscrible = (props: Props) => {
           />
         </div>
         <Button
-          onClick={() => {
+          onClick={async () => {
             console.log("now subscribing")
             //TODO add email to subscribe list
+            if (checkEmail()) {
+              const res = await axios.request({
+                method: "post",
+                url: "https://huelite.in/backend/admin/api",
+                data: {
+                  query: `mutation($email:String!){
+                    createSubscribers(data:{data:{email:$email}}){
+                     id
+                      email
+                    }
+                  }`,
+                  variables: { email },
+                },
+                timeout: 5000,
+              })
+              console.log("test response")
+              console.log(res)
+            } else console.log("incorrect mail id ", email)
           }}
           style={{
             backgroundColor: "black",

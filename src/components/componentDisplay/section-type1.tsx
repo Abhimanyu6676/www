@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import SectionType1 from "../../components/common/sectionType1"
+import SectionType1 from "../common/sectionType1"
 
 type Props = {}
 

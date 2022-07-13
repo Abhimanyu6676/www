@@ -5,7 +5,7 @@ import appColors from "../../../styles/appColors"
 
 type Props = {}
 
-export const AudieanceSection = (props: Props) => {
+export const AudienceSection = (props: Props) => {
   const imgData = useStaticQuery(graphql`
     query {
       gaming: file(

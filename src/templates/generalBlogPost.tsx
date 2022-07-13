@@ -1,9 +1,9 @@
-import { graphql, navigate, Link } from "gatsby"
+import { navigate, Link, graphql, useStaticQuery } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+//@ts-ignore
 import { MDXProvider } from "@mdx-js/react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
-import * as styles from "./generalBlogPost.module.css"
 import Layout from "../components/layouts/HeaderFooterCover"
 import { ContactUs } from "../components/common/contactUs"
 import { NoteBox } from "../components/common/NoteBox"
@@ -108,10 +108,10 @@ export const query = graphql`
   query PostsBySlug(
     $slug: String!
     $banner_img: String!
-    $banner_img_mob: String!
+    $banner_img_mob: String
     $relatedTopics: [String]
   ) {
-    mdx(fields: { slug: { eq: $slug } }) {
+    mdx(slug: { eq: $slug }) {
       body
       frontmatter {
         title

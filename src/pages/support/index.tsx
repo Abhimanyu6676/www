@@ -5,7 +5,11 @@ type Props = {}
 
 const Comp = (props: Props) => {
   return (
-    <Layout>
+    <Layout
+      helmetConfig={{
+        title: "support",
+      }}
+    >
       <Support />
     </Layout>
   )

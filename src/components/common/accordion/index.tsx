@@ -1,6 +1,6 @@
 import React from "react"
-import * as styles from "./index.module.css"
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
+import * as styles from "./index.module.css"
 
 type Props = {}
 

@@ -61,7 +61,7 @@ export const FeaturesSection = (props: Props) => {
           img={imageData.modes}
           config={{ roundedCornersOnImgAndButton: true }}
           content={{
-            heading: "Modes/Presets",
+            heading: "Modes & Presets",
             subHeading: "Create your own magic with DIY preset modes",
             text: "HUElite strips can shift through tones during bedtime story, invigorate you for your daily workout emulate a warm candle flicker when you’re settled in for the night.",
             button: { text: "Learn More" },

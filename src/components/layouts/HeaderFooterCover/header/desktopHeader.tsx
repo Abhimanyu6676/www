@@ -1,9 +1,8 @@
 import React from "react"
-//@ts-ignore
-import * as styles from "./desktopHeader.module.css"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { primartMenu } from "."
+import * as styles from "./desktopHeader.module.css"
 
 type Props = {
   transparent?: boolean

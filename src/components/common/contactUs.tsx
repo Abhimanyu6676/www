@@ -1,8 +1,7 @@
-import React from "react"
-import WhatsAppIcon from "@mui/icons-material/WhatsApp"
-import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid"
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail"
 import CallIcon from "@mui/icons-material/Call"
+import WhatsAppIcon from "@mui/icons-material/WhatsApp"
+import React from "react"
 
 type Props = {
   style?: React.CSSProperties

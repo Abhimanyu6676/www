@@ -4,6 +4,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import AlexaLoginScreen from "./alexaLogin"
 import { FullScreen } from "../../components/layouts/FullScreen"
+//@ts-ignore
+import Helmet from "react-helmet"
 
 //const { height, width } = Dimensions.get("window")
 
@@ -13,6 +15,14 @@ export default (props: Props) => {
 
   return (
     <FullScreen>
+      <Helmet>
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1"
+        ></meta>
+        <title>alexa-auth</title>
+        <meta name="description" content="Link & integrate with alexa" />
+      </Helmet>
       {!policyAccepted ? (
         <AlexaLoginScreen />
       ) : (

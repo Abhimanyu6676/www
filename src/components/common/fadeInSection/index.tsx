@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react"
-//@ts-ignore
 import * as styles from "./index.module.css"
 
 export const FadeInSection = (props: {

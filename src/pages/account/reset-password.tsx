@@ -3,8 +3,6 @@ import React, { useState } from "react"
 import { StringParam, useQueryParam } from "use-query-params"
 import { FadeInSection } from "../../components/common/fadeInSection"
 import appColors from "../../styles/appColors"
-//@ts-ignore
-import * as styles from "./reset-password.module.css"
 
 enum APIstate {
   IDLE,

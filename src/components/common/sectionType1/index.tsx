@@ -1,11 +1,6 @@
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
+import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image"
 import React from "react"
-import {
-  GatsbyImage,
-  getImage,
-  StaticImage,
-  withArtDirection,
-} from "gatsby-plugin-image"
 import globalStyles from "../../../styles/globalStyles"
 import * as styles from "./index.module.scss"
 
@@ -85,10 +80,14 @@ export default (props: Props) => {
           <>
             <h1 style={{}}>{props.content?.heading}</h1>
             {props.content.subHeading && <h5>{props.content.subHeading}</h5>}
-            <p style={{ fontWeight: "normal", marginTop: 15 }}>
+            <p
+              style={{ fontWeight: "normal", marginTop: 15 }}
+              className="p-content"
+            >
               {props.content?.text}
             </p>
             <p
+              className="p-content"
               style={{
                 fontWeight: "normal",
                 marginTop: 15,

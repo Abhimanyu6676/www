@@ -1,12 +1,10 @@
-import { graphql, navigate, useStaticQuery } from "gatsby"
-import React from "react"
-import { GatsbyImage } from "gatsby-plugin-image"
-//@ts-ignore
-import * as styles from "./index.module.css"
-import globalStyles from "../../styles/globalStyles"
 import { Grid } from "@mui/material"
-import { textAlign } from "@mui/system"
-import { Subscrible } from "../../components/common/subscrible"
+import { graphql, navigate, useStaticQuery } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
+import React from "react"
+import { Subscribe } from "../../components/common/subscribe"
+import globalStyles from "../../styles/globalStyles"
+import * as styles from "./index.module.css"
 
 interface article_i {
   heading: string
@@ -155,7 +153,7 @@ export default (props: Props) => {
           </Grid>
         </div>
       </div>
-      <Subscrible style={{ marginTop: 50 }} />
+      <Subscribe style={{ marginTop: 50 }} />
     </div>
   )
 }

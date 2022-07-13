@@ -1,13 +1,13 @@
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
 import { graphql, useStaticQuery } from "gatsby"
-import React, { useEffect, useState } from "react"
-import { useTransition, animated } from "react-spring"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import * as styles from "./index.module.css"
-import appColors from "../../../styles/appColors"
+import React, { useEffect, useState } from "react"
+import { animated, useTransition } from "react-spring"
+import { useSwipeable } from "react-swipeable"
 import { Accordion } from "../../../components/common/accordion"
+import appColors from "../../../styles/appColors"
 import globalStyles from "../../../styles/globalStyles"
-
-type Props = {}
+import * as styles from "./index.module.css"
 
 const varients = [
   {
@@ -18,7 +18,8 @@ const varients = [
   },
 ]
 
-export default (props: Props) => {
+type Props = {}
+export const ProductSection1 = (props: Props) => {
   const data = useStaticQuery(graphql`
     query {
       amazon_marketplace_icon: file(
@@ -169,21 +170,21 @@ export default (props: Props) => {
 
         <div // accordian container
         >
-          <AccordianSection />
+          <AccordionSection />
         </div>
       </div>
     </div>
   )
 }
 
-const AccordianSection = () => {
-  const [accordianIndex, setAccordianIndex] = useState(0)
+const AccordionSection = () => {
+  const [accordionIndex, setAccordionIndex] = useState(0)
   return (
     <div>
       <Accordion.Heading
-        isOpen={accordianIndex == 0}
+        isOpen={accordionIndex == 0}
         onClick={() => {
-          if (accordianIndex != 0) setAccordianIndex(0)
+          if (accordionIndex != 0) setAccordionIndex(0)
         }}
         containerStyle={{
           marginTop: 20,
@@ -191,7 +192,7 @@ const AccordianSection = () => {
       >
         <h4 style={{ margin: 0, flex: 1 }}>Description</h4>
       </Accordion.Heading>
-      <Accordion.Content isVisible={accordianIndex == 0}>
+      <Accordion.Content isVisible={accordionIndex == 0}>
         <p style={{}}>
           Music Sync, colors so live that you need to feel it yourself, more
           creativity with Custom Mode Creation, smoother app control experience,
@@ -205,13 +206,13 @@ const AccordianSection = () => {
         </p>
       </Accordion.Content>
       <Accordion.Heading
-        isOpen={accordianIndex == 1}
+        isOpen={accordionIndex == 1}
         title="HIGHLIGHTS"
         onClick={() => {
-          if (accordianIndex != 1) setAccordianIndex(1)
+          if (accordionIndex != 1) setAccordionIndex(1)
         }}
       />
-      <Accordion.Content isVisible={accordianIndex == 1} style={{}}>
+      <Accordion.Content isVisible={accordionIndex == 1} style={{}}>
         <h4 style={{}}>Key features</h4>
         <p style={{}}>
           Music Sync, colors so live that you need to feel it yourself, more
@@ -270,14 +271,14 @@ const AccordianSection = () => {
         </p>
       </Accordion.Content>
       <Accordion.Heading
-        isOpen={accordianIndex == 2}
+        isOpen={accordionIndex == 2}
         title="PRODUCT SPECIFICATION"
         onClick={() => {
-          if (accordianIndex != 2) setAccordianIndex(2)
+          if (accordionIndex != 2) setAccordionIndex(2)
         }}
       />
       <Accordion.Content
-        isVisible={accordianIndex == 2}
+        isVisible={accordionIndex == 2}
         style={{
           padding: 0,
         }}
@@ -307,30 +308,88 @@ const AccordianSection = () => {
 }
 
 const Slider = (props: { homepageSPSTpics: any; homepageSPSTthumbs: any }) => {
-  const [currIndex, setCurrIndex] = useState(0)
+  const [currIndexNew, setCurrIndexNew] = useState<{
+    index: number
+    preIndex: number
+  }>({
+    index: 0,
+    preIndex: -1,
+  })
 
-  const transition = useTransition(currIndex, {
-    from: { opacity: 0, transform: "translate3d(100%,0,0)" },
+  const transition = useTransition(currIndexNew.index, {
+    from: {
+      opacity: 0,
+      transform: `translate3d(${
+        currIndexNew.index > currIndexNew.preIndex ? "100%" : "-100%"
+      },0,0)`,
+    },
     enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
-    leave: { opacity: 0, transform: "translate3d(-50%,0,0)" },
+    leave: {
+      opacity: 0.5,
+      transform: `translate3d(${
+        currIndexNew.index < currIndexNew.preIndex ? "50%" : "-50%"
+      },0,0)`,
+    },
     config: { duration: 700 },
   })
 
   useEffect(() => {
     let __tempInterval = setInterval(() => {
-      if (currIndex == props.homepageSPSTpics.edges.length - 1) {
-        setCurrIndex(0)
+      if (currIndexNew.index == props.homepageSPSTpics.edges.length - 1) {
+        setCurrIndexNew({ index: 0, preIndex: -1 })
       } else {
-        setCurrIndex(currIndex + 1)
+        setCurrIndexNew({
+          index: currIndexNew.index + 1,
+          preIndex: currIndexNew.index,
+        })
       }
     }, 3000)
     return () => {
       clearInterval(__tempInterval)
     }
-  }, [currIndex])
+  }, [currIndexNew])
+
+  const previousImage = () => {
+    console.log("onSwipedRight")
+    if (currIndexNew.index == 0) {
+      setCurrIndexNew({
+        index: props.homepageSPSTpics.edges.length - 1,
+        preIndex: props.homepageSPSTpics.edges.length,
+      })
+    } else {
+      setCurrIndexNew({
+        index: currIndexNew.index - 1,
+        preIndex: currIndexNew.index,
+      })
+    }
+  }
+
+  const nextImage = () => {
+    console.log("onSwipedLeft")
+    if (currIndexNew.index == props.homepageSPSTpics.edges.length - 1) {
+      setCurrIndexNew({
+        index: 0,
+        preIndex: -1,
+      })
+    } else {
+      setCurrIndexNew({
+        index: currIndexNew.index + 1,
+        preIndex: currIndexNew.index,
+      })
+    }
+  }
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: nextImage,
+    onSwipedRight: previousImage,
+  })
 
   return (
-    <div className={styles.imgContainer} style={{ position: "relative" }}>
+    <div
+      className={styles.imgContainer}
+      style={{ position: "relative" }}
+      {...swipeHandlers}
+    >
       <div // images container
         className={styles.imgWidth}
         style={{
@@ -368,16 +427,35 @@ const Slider = (props: { homepageSPSTpics: any; homepageSPSTthumbs: any }) => {
       <div // buttons => previous | next
         style={{
           position: "absolute",
-          display: "none", //REMOVE
-          //display: "flex",
+          //display: "none", //REMOVE
+          display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           zIndex: 3,
         }}
         className={styles.imgWidth}
       >
-        <div style={{ width: 50, height: 50, backgroundColor: "#444" }} />
-        <div style={{ width: 50, height: 50, backgroundColor: "#444" }} />
+        <div
+          style={{
+            backgroundColor: "#ffffff55",
+            padding: 15,
+          }}
+          onClick={previousImage}
+        >
+          <ArrowBackIosNewIcon fontSize="medium" style={{ color: "#000000" }} />
+        </div>
+        <div
+          style={{
+            backgroundColor: "#ffffff55",
+            padding: 15,
+          }}
+          onClick={nextImage}
+        >
+          <ArrowBackIosNewIcon
+            fontSize="medium"
+            style={{ color: "#000000", transform: "rotate(180deg)" }}
+          />
+        </div>
       </div>
     </div>
   )

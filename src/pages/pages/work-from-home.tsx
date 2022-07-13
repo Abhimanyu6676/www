@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../../components/layouts/HeaderFooterCover"
-import { Subscrible } from "../../components/common/subscrible"
+import { Subscribe } from "../../components/common/subscribe"
 
 interface Props {}
 
@@ -81,7 +81,11 @@ export default (props: Props) => {
   `)
 
   return (
-    <Layout>
+    <Layout
+      helmetConfig={{
+        title: "work-from-home",
+      }}
+    >
       <div /// mainContainer
       >
         <div /// sec 1
@@ -194,7 +198,7 @@ export default (props: Props) => {
             marginTop: 30,
           }}
         >
-          <Subscrible />
+          <Subscribe />
         </div>
       </div>
     </Layout>

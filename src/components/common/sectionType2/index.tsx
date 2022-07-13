@@ -74,10 +74,9 @@ export default (props: Props) => {
             <h1>{props.content.heading}</h1>
             {props.content.subHeading && <h5>{props.content.subHeading}</h5>}
             <p
+              className="p-content"
               style={{
                 marginTop: "10%",
-                fontSize: 17,
-                color: "#333",
               }}
             >
               {props.content.text}
