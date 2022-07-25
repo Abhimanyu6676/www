@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import * as styles from "./footer.module.css"
+import * as styles from "./footer.module.scss"
 
 const menu1: Link_i[] = [
   { text: "About Us", link: "/" },

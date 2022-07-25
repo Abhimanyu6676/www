@@ -1,0 +1,17 @@
+@import "./mediaScreenTemplate.scss";
+
+.--container {
+  margin: 0px 5vw;
+}
+
+@include --media-sm {
+  .--container-ctm {
+    margin: 0px 5vw;
+  }
+}
+
+@include --media-lg {
+  .--container {
+    margin: 0px 10vw;
+  }
+}

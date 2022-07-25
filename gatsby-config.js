@@ -57,8 +57,8 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `Ubuntu\:300,400,400i,500,700,700i`,
-          `Inter\:300,400,400i,500,700,700i`,
+          `Ubuntu\:300,400,400i,500,600,700,700i`,
+          `Inter\:300,400,400i,500,600,700,700i`,
           `Nunito Sans\:300,400,400i,600,700,700i`,
         ],
         display: "swap",

@@ -6,7 +6,7 @@ import { Subscribe } from "../../components/common/subscribe"
 
 interface Props {}
 
-export default (props: Props) => {
+const WFH = (props: Props) => {
   const data = useStaticQuery(graphql`
     query {
       wfhImg1: file(relativePath: { eq: "workfromhome/img1.jpg" }) {
@@ -268,3 +268,5 @@ const ProductsSection = () => {
     </div>
   )
 }
+
+//export default WFH

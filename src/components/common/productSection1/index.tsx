@@ -9,17 +9,117 @@ import appColors from "../../../styles/appColors"
 import globalStyles from "../../../styles/globalStyles"
 import * as styles from "./index.module.css"
 
-const varients = [
-  {
-    heading: "5 mtr",
-  },
-  {
-    heading: "10 mtr",
-  },
-]
+interface offer_i {
+  offerValue: number
+  offerString?: string
+}
+interface specs_i {
+  specHeading: string
+  spec: string
+}
 
-type Props = {}
-export const ProductSection1 = (props: Props) => {
+interface variant_i {
+  variantName: string
+  varientCode: string
+  price: number
+  offer?: offer_i
+  specs?: specs_i[]
+}
+interface product_i {
+  brand: string
+  productName: string
+  subHeading?: string
+  description: string
+  highlightPoints?: { heading?: string; text: string }[]
+  variants: variant_i[]
+  specs?: specs_i[]
+}
+
+const baseProduct: product_i = {
+  brand: "HUElite",
+  productName: "HUElite Spectrum Strip",
+  subHeading: "60led/mtr",
+  description:
+    "Huelite LED light strips are packed with rich colors and fantastic light effects, perfect for any indoor occasion like bedrooms, kitchens, and bathrooms. They can be easily controlled using Huelite 3.0 App.",
+  highlightPoints: [
+    {
+      text: "Music Sync: Syncing lights at the rhythm of your music.",
+    },
+    {
+      text: "Convenient Voice Control: Works with Alexa.",
+    },
+    {
+      text: "Smart App Control: Control your lights via Wi-Fi.",
+    },
+    {
+      text: "Easy Installation: Mount to any dry and clean surface.",
+    },
+    {
+      text: "Colorful Life: Decorate with 16Million+ colors to choose from.",
+    },
+    {
+      text: "Custom DIY Function: Choose your favourite effects on the app.",
+    },
+    {
+      text: "Control from Anywhere: Control your space at your fingertips- literally.",
+    },
+  ],
+  specs: [
+    {
+      specHeading: "Brightness",
+      spec: "1100+ Lumens per meter",
+    },
+    {
+      specHeading: "Working Hours",
+      spec: "50,000 hours",
+    },
+  ],
+  variants: [
+    {
+      variantName: "5 mtr",
+      varientCode: "SPST_5M",
+      price: 1999,
+      offer: {
+        offerValue: 300,
+      },
+      specs: [
+        {
+          specHeading: "Length",
+          spec: "5 Meter",
+        },
+        {
+          specHeading: "Wattage",
+          spec: "14.4 Watt at full brightness",
+        },
+        {
+          specHeading: "Standby Power",
+          spec: "0.3 Watt",
+        },
+        {
+          specHeading: "Contains",
+          spec: "1 x 5m of LED lightstrip + controller + power supply",
+        },
+      ],
+    },
+    {
+      variantName: "10 mtr",
+      varientCode: "SPST_10M",
+      price: 2999,
+      specs: [
+        {
+          specHeading: "Length",
+          spec: "10 Meter",
+        },
+      ],
+    },
+  ],
+}
+
+type Props = {
+  style?: React.CSSProperties
+  product?: product_i
+}
+export const ProductSection1 = ({ product = baseProduct, ...props }: Props) => {
   const data = useStaticQuery(graphql`
     query {
       amazon_marketplace_icon: file(
@@ -67,13 +167,15 @@ export const ProductSection1 = (props: Props) => {
       }
     }
   `)
+
+  const [currVariant, setCurrVariant] = useState(0)
   return (
     <div
       style={{
         position: "relative",
         display: "flex",
         padding: "50px 0px",
-        backgroundColor: appColors.backgrounds.greyLight,
+        ...props.style,
       }}
       className={styles.container}
     >
@@ -87,9 +189,11 @@ export const ProductSection1 = (props: Props) => {
       >
         <div // top text container
         >
-          <p style={{ margin: 0 }}>HUElite</p>
-          <h1 style={{ margin: 0 }}>HUElite Spectrum Strip</h1>
-          <h5 style={{ margin: 0 }}>60led/mtr</h5>
+          <p style={{ margin: 0 }}>{product.brand}</p>
+          <h1 style={{ margin: 0 }}>{product.productName}</h1>
+          {product.subHeading && (
+            <h5 style={{ margin: 0 }}>{product.subHeading}</h5>
+          )}
           <div // varients container
             className="flex-container"
             style={{
@@ -100,40 +204,51 @@ export const ProductSection1 = (props: Props) => {
               flexWrap: "wrap",
             }}
           >
-            {varients.map((varient, varientIndex) => {
+            {product.variants?.map((variant, variantIndex) => {
               return (
-                <div
+                <button
                   style={{
                     marginRight: 30,
                     marginTop: 15,
                     height: 40,
                     width: 100,
-                    backgroundColor: "#000000",
+                    backgroundColor:
+                      variantIndex == currVariant ? "#000000" : "#000000aa",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                   }}
+                  onClick={() => {
+                    setCurrVariant(variantIndex)
+                  }}
                 >
                   <h4 style={{ color: "#ffffff", fontWeight: 500 }}>
-                    {varient.heading}
+                    {variant.variantName}
                   </h4>
-                </div>
+                </button>
               )
             })}
           </div>
-          <h2 style={{ marginBottom: 0, marginTop: 20 }}>Rs-1999/-</h2>
-          <h5
-            style={{
-              margin: 0,
-              backgroundColor: appColors.successDark,
-              borderRadius: 50,
-              padding: "3px 10px",
-              width: "fit-content",
-              color: "#ffffff",
-            }}
-          >
-            Buy now & get 25% off
-          </h5>
+          <h2 style={{ marginBottom: 0, marginTop: 20 }}>
+            Rs-{product.variants[currVariant].price}/-
+          </h2>
+          {product.variants[currVariant].offer && (
+            <h6
+              style={{
+                margin: 0,
+                backgroundColor: appColors.successDark,
+                borderRadius: 50,
+                padding: "5px 15px",
+                width: "fit-content",
+                color: "#ffffff",
+                fontFamily: "Ubuntu",
+              }}
+            >
+              {product.variants[currVariant].offer?.offerString
+                ? product.variants[currVariant].offer?.offerString
+                : `Buy now & get Rs${product.variants[currVariant].offer?.offerValue} off`}
+            </h6>
+          )}
         </div>
         <div // Add to cart section
           style={{
@@ -170,14 +285,17 @@ export const ProductSection1 = (props: Props) => {
 
         <div // accordian container
         >
-          <AccordionSection />
+          <AccordionSection product={product} currVarient={currVariant} />
         </div>
       </div>
     </div>
   )
 }
 
-const AccordionSection = () => {
+const AccordionSection = (props: {
+  product: product_i
+  currVarient: number
+}) => {
   const [accordionIndex, setAccordionIndex] = useState(0)
   return (
     <div>
@@ -193,83 +311,22 @@ const AccordionSection = () => {
         <h4 style={{ margin: 0, flex: 1 }}>Description</h4>
       </Accordion.Heading>
       <Accordion.Content isVisible={accordionIndex == 0}>
-        <p style={{}}>
-          Music Sync, colors so live that you need to feel it yourself, more
-          creativity with Custom Mode Creation, smoother app control experience,
-          anytime, anywhere your whole space is at your fingertips – literally.
-        </p>
-        <p style={{}}>
-          Works with Alexa, Huelite Smart LED strip lights could be controlled
-          easily. Power on/off, adjust brightness, or change colors to create
-          the ambiance needed for your morning routine, parties, or movie
-          nights. (Note: 5G Wi-Fi not supported){" "}
-        </p>
+        <p style={{}}>{props.product.description}</p>
+        <ul
+          style={{
+            marginTop: "1rem",
+          }}
+        >
+          {props.product.highlightPoints?.map((point, pointIndex) => {
+            return (
+              <li style={{ marginTop: pointIndex == 0 ? 0 : 5 }}>
+                {point.text}
+              </li>
+            )
+          })}
+        </ul>
       </Accordion.Content>
-      <Accordion.Heading
-        isOpen={accordionIndex == 1}
-        title="HIGHLIGHTS"
-        onClick={() => {
-          if (accordionIndex != 1) setAccordionIndex(1)
-        }}
-      />
-      <Accordion.Content isVisible={accordionIndex == 1} style={{}}>
-        <h4 style={{}}>Key features</h4>
-        <p style={{}}>
-          Music Sync, colors so live that you need to feel it yourself, more
-          creativity with Custom Mode Creation, smoother app control experience,
-          anytime, anywhere your whole space is at your fingertips – literally.
-        </p>
-        <h4
-          style={{
-            marginTop: 30,
-          }}
-        >
-          Convenient Voice Control
-        </h4>
-        <p style={{}}>
-          Works with Alexa, Huelite Smart LED strip lights could be controlled
-          easily. Power on/off, adjust brightness, or change colors to create
-          the ambiance needed for your morning routine, parties, or movie
-          nights. (Note: 5G Wi-Fi not supported){" "}
-        </p>
-        <h4
-          style={{
-            marginTop: 30,
-          }}
-        >
-          Wide Applications
-        </h4>
-        <p style={{}}>
-          The strip lights are 60 led/mtr IP20 non waterproof Color changing
-          with 16 Million colors. increase and decrease control brightness
-          control & Voice control. It is ideal for indoor lighting decoration,
-          such as kitchen, under cabinet, dining room, bedroom, TV Backlighting,
-          automobile, mirror, balcony, party, etc
-        </p>
-        <h4
-          style={{
-            marginTop: 30,
-          }}
-        >
-          User-Friendly Installation
-        </h4>
-        <p style={{}}>
-          Install your smart light strip conveniently and with more creative
-          freedom, thanks to the 3M adhesive tape and a cuttable design. Attach
-          them to any dry, clean indoor surface with ease.
-        </p>
-        <h4
-          style={{
-            marginTop: 30,
-          }}
-        >
-          Warranty & Support
-        </h4>
-        <p style={{}}>
-          One Year Warranty On Controller And Power Adapter, lifetime In-app
-          technical chat support.
-        </p>
-      </Accordion.Content>
+
       <Accordion.Heading
         isOpen={accordionIndex == 2}
         title="PRODUCT SPECIFICATION"
@@ -283,25 +340,21 @@ const AccordionSection = () => {
           padding: 0,
         }}
       >
-        <DiscriptionContainer heading="Length" spec="5 mtr" />
-        <DiscriptionContainer heading="Wattage" spec="14.4 Watts" />
-        <DiscriptionContainer heading="Number of leds" spec="300" />
-        <DiscriptionContainer
-          heading="Included Components"
-          spec="1x Power adapter, 1x Wi-Fi Smart controller, 1x Huelite starter guide, 1x 5m Led strip roll"
-        />
-        <DiscriptionContainer
-          heading="Key Features"
-          spec="Dimmable, Custom Mode Creation, Colour Changing, Amazon Alexa Control, Music Sync, Control from Anywhere"
-        />
-        <DiscriptionContainer
-          heading="Applications"
-          spec="❤Suitable for home lighting, light up your whole house like living room, Bedroom, Upstairs, Kitchen, cabinet, Porch, Computer,back of TV, etc. ❤Suitable for decorating hotels, clubs, bars, malls, shops etc. ❤Suitable for festival and parties decorations, festivals such as Diwali, Holi and Christmas etc., ❤Great for Lighting the shows, exhibitions and advertising signs etc. ❤Ideal gift for your family and friends."
-        />
-        <DiscriptionContainer
-          heading="Manufacturer"
-          spec="Sternet Smart Homes Private Limited"
-        />
+        {props.product.variants[props.currVarient].specs?.map(
+          (spec, specIndex) => {
+            return (
+              <DiscriptionContainer
+                heading={spec.specHeading}
+                spec={spec.spec}
+              />
+            )
+          }
+        )}
+        {props.product.specs?.map((spec, specIndex) => {
+          return (
+            <DiscriptionContainer heading={spec.specHeading} spec={spec.spec} />
+          )
+        })}
       </Accordion.Content>
     </div>
   )

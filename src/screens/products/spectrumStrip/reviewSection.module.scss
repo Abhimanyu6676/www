@@ -1,0 +1,20 @@
+@import "../../../styles//mediaScreenTemplate.scss";
+
+.reviewGrid {
+  display: grid;
+  row-gap: 40px;
+  margin: 5rem 5vw;
+}
+
+@include --media-md {
+  .reviewGrid {
+  }
+}
+
+@include --media-md {
+  .reviewGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 0px;
+  }
+}
