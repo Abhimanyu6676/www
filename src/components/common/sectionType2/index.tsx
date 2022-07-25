@@ -30,6 +30,12 @@ type Props = {
   imgContainerStyle?: React.CSSProperties
   imgStyle?: React.CSSProperties
 }
+/**
+ * ## contentContainer
+ *
+ * #### styles xs
+ * - marginTop:50
+ */
 export default (props: Props) => {
   return (
     <div
@@ -74,9 +80,8 @@ export default (props: Props) => {
             <h1>{props.content.heading}</h1>
             {props.content.subHeading && <h5>{props.content.subHeading}</h5>}
             <p
-              className="p-content"
               style={{
-                marginTop: "10%",
+                marginTop: "1rem",
               }}
             >
               {props.content.text}
@@ -90,7 +95,7 @@ export default (props: Props) => {
                     ? 50
                     : 0,
                   overflow: "hidden",
-                  marginTop: "15%",
+                  marginTop: "2rem",
                 }}
               >
                 <h3

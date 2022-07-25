@@ -39,13 +39,7 @@ export const SpectrumStripFeatureSection = (props: Props) => {
         }
       }
     >
-      <div
-        className={styles.container}
-        style={{
-          paddingTop: 50,
-          paddingBottom: 50,
-        }}
-      >
+      <div className={styles.container}>
         <div>
           <SectionType2
             img={imageData.music}
@@ -56,7 +50,8 @@ export const SpectrumStripFeatureSection = (props: Props) => {
             content={{
               heading: "Music Sync",
               text: "Recreate the dance floor ambiance right in your house with the Huelite smart led strip. This led strip syncs with music and adds that extra element to your party making it the most-happening home party in your neighborhood.",
-              button: { text: "Learn More" },
+              /* text: "You can relax or entertain your guests with a light show by syncing the lights with your favourite tunes.", */
+              //button: { text: "Learn More" },
             }}
           />
         </div>
@@ -70,10 +65,10 @@ export const SpectrumStripFeatureSection = (props: Props) => {
             img={imageData.modes}
             config={{ roundedCornersOnImgAndButton: true }}
             content={{
-              heading: "Modes & Presets",
-              subHeading: "Create your own magic with DIY preset modes",
-              text: "HUElite strips can shift through tones during bedtime story, invigorate you for your daily workout emulate a warm candle flicker when you’re settled in for the night.",
-              button: { text: "Learn More" },
+              heading: "Hands Free Control",
+              /* subHeading: "Create your own magic with DIY preset modes",
+              text: "HUElite strips can shift through tones during bedtime story, invigorate you for your daily workout emulate a warm candle flicker when you’re settled in for the night.", */
+              text: "Leave the app in your pocket and use voice control",
             }}
           />
         </div>

@@ -31,10 +31,10 @@ export const SecondaryFeatureGrid = (props: Props) => {
           backgroundConfig={{ radius: 10 }}
         >
           <div style={{ margin: "1rem", color: "#fff" }}>
-            <h3>Circadian Lighting</h3>
+            <h3>Control from Anywhere</h3>
             <p className="mt-2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis,
-              praesentium est perferendis.
+              Control your lights from anywhere you want & simulate someone
+              being at home to frighten away, unwanted visitors.
             </p>
           </div>
         </ContainerType1>
@@ -47,10 +47,11 @@ export const SecondaryFeatureGrid = (props: Props) => {
           }}
         >
           <div style={{ margin: "1rem", color: "#fff" }}>
-            <h3>Item 2</h3>
+            <h3>DIY Custom Modes</h3>
             <p className="mt-2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis,
-              praesentium est perferendis.
+              Now you can run your imagination freely, with mode creation &
+              customization by users so you can switch to your desired ambient
+              lighting with one tap.
             </p>
           </div>
         </ContainerType1>
@@ -67,8 +68,12 @@ export const SecondaryFeatureGrid = (props: Props) => {
           }
         >
           <div style={{ margin: "1rem", color: "#fff" }}>
-            <h3>Item 3</h3>
-            <p className="mt-2">Lorem ipsum</p>
+            <h3>Customised Schedules</h3>
+            <p className="mt-2">
+              Automate your lights to turn on/off on specific days and times to
+              make your daily routines a little easier. All scheduling can be
+              set using Amazon Alexa app, Google Home app.
+            </p>
           </div>
         </ContainerType1>
         <ContainerType1
@@ -80,10 +85,10 @@ export const SecondaryFeatureGrid = (props: Props) => {
           }}
         >
           <div style={{ margin: "1rem", color: "#fff" }}>
-            <h3>Item 4</h3>
+            <h3>16M+ Colors</h3>
             <p className="mt-2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis,
-              praesentium est perferendis.
+              Virtually limitless color options. Choose your favourite vibrant
+              color or create color-changing scenes for the perfect ambience.
             </p>
           </div>
         </ContainerType1>
@@ -96,10 +101,10 @@ export const SecondaryFeatureGrid = (props: Props) => {
           }}
         >
           <div style={{ margin: "1rem", color: "#fff" }}>
-            <h3>Item 5</h3>
+            <h3>Trimmable & Flexible</h3>
             <p className="mt-2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis,
-              praesentium est perferendis.
+              Cut it to whatever length you want and with IP20 you can easily
+              bend it around corners to fit your customized needs.
             </p>
           </div>
         </ContainerType1>
