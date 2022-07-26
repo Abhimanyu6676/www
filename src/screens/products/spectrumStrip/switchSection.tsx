@@ -1,11 +1,39 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
 import { GatsbyImageTransition } from "../../../components/common/imageTransition"
+import globalStyles from "../../../styles/globalStyles"
 import * as styles from "./switchSection.module.scss"
 
+interface slide_i {
+  heading: string
+  text: string
+  buttonText: string
+  styleClass: any
+}
+
+const slides: slide_i[] = [
+  {
+    heading: "Create your own colorful",
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore sapiente voluptatem unde sequi porro!",
+    buttonText: "Ocean Mode",
+    styleClass: styles.button0,
+  },
+  {
+    heading: "Lighting experience",
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolore sapiente voluptatem unde sequi porro!",
+    buttonText: "Romantic Mode",
+    styleClass: styles.button1,
+  },
+  {
+    heading: "Lorem ipsum heading!",
+    text: "Let smart strip bring you to any scene experience that beyond your imagination.",
+    buttonText: "Forrest Mode",
+    styleClass: styles.button2,
+  },
+]
+
 export const SwitchSection = () => {
-  const [currImgIndex, setCurrImgIndex] = useState(0)
-  const buttons = [styles.button0, styles.button1, styles.button2]
+  const [currSlideIndex, setCurrSlideIndex] = useState(0)
   const imgData = useStaticQuery(graphql`
     query {
       switch1: allFile(
@@ -32,9 +60,9 @@ export const SwitchSection = () => {
     <div className={styles.switchSectionContainer}>
       <GatsbyImageTransition
         imgArray={imgData.switch1.edges}
-        index={currImgIndex}
-        setIndex={setCurrImgIndex}
-        //skipFirstTransition={true}
+        index={currSlideIndex}
+        setIndex={setCurrSlideIndex}
+        //skipFirstTransition={true} // cannot use that as button 1 will set the index to 0 always
       />
       <div // content container
         style={{
@@ -46,46 +74,52 @@ export const SwitchSection = () => {
           padding: "1em",
           color: "#ffffff",
           textAlign: "center",
-          marginTop: "10%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: "space-between",
           /*  display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
           alignItems: "center", */
         }}
       >
-        <h1>Lorem ipsum dolor sit amet.</h1>
-        <p
+        <div // heading container
           style={{
-            marginTop: "0.5em",
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni culpa
-          rerum repellat alias
-        </p>
-        <div // button container
-          className={styles.buttonContainer}
-          style={{
-            display: "grid",
             marginTop: "2rem",
           }}
         >
-          {buttons.map((buttonStyles, buttonIndex) => {
+          <h1>{slides[currSlideIndex].heading}</h1>
+          <p
+            style={{
+              marginTop: "0.5rem",
+            }}
+          >
+            {slides[currSlideIndex].text}
+          </p>
+        </div>
+        <div // button grid container
+          className={styles.buttonContainer}
+          style={{
+            display: "grid",
+            marginBottom: "2rem",
+          }}
+        >
+          {slides.map((button, buttonIndex) => {
             return (
               <button
-                className={buttonStyles}
+                className={button.styleClass}
                 style={{
-                  backgroundColor: "#ffffff",
+                  backgroundColor: "#99999977",
                   borderRadius: 50,
                   padding: "10px 30px",
+                  ...globalStyles.shadowLight,
                 }}
                 onClick={() => {
-                  setCurrImgIndex(buttonIndex)
+                  setCurrSlideIndex(buttonIndex)
                 }}
               >
-                <h6>button-{buttonIndex + 1}</h6>
+                <h6 style={{ color: "#ffffff" }}>{button.buttonText}</h6>
               </button>
             )
           })}
