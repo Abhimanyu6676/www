@@ -7,8 +7,46 @@ type Props = {}
 export const SecondaryFeatureGrid = (props: Props) => {
   const imageData = useStaticQuery(graphql`
     query {
-      cct: file(
-        relativePath: { eq: "products/spectrumStrip/images/cct.jpeg" }
+      controlFromAnywhere: file(
+        relativePath: {
+          eq: "products/spectrumStrip/images/secondaryFeatures/controlFromAnywhere.png"
+        }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 578, placeholder: BLURRED)
+        }
+      }
+      customModes: file(
+        relativePath: {
+          eq: "products/spectrumStrip/images/secondaryFeatures/customModes.png"
+        }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 578, placeholder: BLURRED)
+        }
+      }
+      scheduler: file(
+        relativePath: {
+          eq: "products/spectrumStrip/images/secondaryFeatures/scheduler.png"
+        }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 578, placeholder: BLURRED)
+        }
+      }
+      colors: file(
+        relativePath: {
+          eq: "products/spectrumStrip/images/secondaryFeatures/colors.png"
+        }
+      ) {
+        childImageSharp {
+          gatsbyImageData(width: 578, placeholder: BLURRED)
+        }
+      }
+      flexibility: file(
+        relativePath: {
+          eq: "products/spectrumStrip/images/secondaryFeatures/flexibility.png"
+        }
       ) {
         childImageSharp {
           gatsbyImageData(width: 578, placeholder: BLURRED)
@@ -25,9 +63,9 @@ export const SecondaryFeatureGrid = (props: Props) => {
           marginBottom: "5rem",
         }}
       >
-        <ContainerType1
+        <ContainerType1 //control-from-anywhere
           containerClassName={styles.item1}
-          backgroundImg={imageData.cct}
+          backgroundImg={imageData.controlFromAnywhere}
           backgroundConfig={{ radius: 10 }}
         >
           <div style={{ margin: "1rem", color: "#fff" }}>
@@ -38,12 +76,12 @@ export const SecondaryFeatureGrid = (props: Props) => {
             </p>
           </div>
         </ContainerType1>
-        <ContainerType1
+        <ContainerType1 // custom-modes
           containerClassName={styles.item2}
-          backgroundImg={imageData.cct}
+          backgroundImg={imageData.customModes}
           backgroundConfig={{ radius: 10 }}
           contentContainerStyle={{
-            marginLeft: "40%",
+            marginRight: "10%",
           }}
         >
           <div style={{ margin: "1rem", color: "#fff" }}>
@@ -55,9 +93,12 @@ export const SecondaryFeatureGrid = (props: Props) => {
             </p>
           </div>
         </ContainerType1>
-        <ContainerType1
+        <ContainerType1 // scheduler
           containerClassName={styles.item3}
-          backgroundImg={imageData.cct}
+          containerStyle={{
+            border: "0.5px solid #cccccc",
+          }}
+          backgroundImg={imageData.scheduler}
           backgroundConfig={{ radius: 10 }}
           contentContainerStyle={{}}
           contentConfig={
@@ -67,7 +108,7 @@ export const SecondaryFeatureGrid = (props: Props) => {
             }
           }
         >
-          <div style={{ margin: "1rem", color: "#fff" }}>
+          <div style={{ margin: "1rem", color: "#000" }}>
             <h3>Customised Schedules</h3>
             <p className="mt-2">
               Automate your lights to turn on/off on specific days and times to
@@ -76,12 +117,12 @@ export const SecondaryFeatureGrid = (props: Props) => {
             </p>
           </div>
         </ContainerType1>
-        <ContainerType1
+        <ContainerType1 // 16M colors
           containerClassName={styles.item4}
-          backgroundImg={imageData.cct}
+          backgroundImg={imageData.colors}
           backgroundConfig={{ radius: 10 }}
           contentContainerStyle={{
-            marginRight: "30%",
+            marginRight: "15%",
           }}
         >
           <div style={{ margin: "1rem", color: "#fff" }}>
@@ -92,9 +133,9 @@ export const SecondaryFeatureGrid = (props: Props) => {
             </p>
           </div>
         </ContainerType1>
-        <ContainerType1
+        <ContainerType1 // flexibility
           containerClassName={styles.item5}
-          backgroundImg={imageData.cct}
+          backgroundImg={imageData.flexibility}
           backgroundConfig={{ radius: 10 }}
           contentConfig={{
             yAlign: "bottom",
