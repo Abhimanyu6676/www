@@ -1,6 +1,7 @@
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import appColors from "../../../styles/appColors"
+import { ContainerType1, contentConfig_i } from "../containerType1"
 import * as styles from "./index.module.scss"
 
 type Props = {
@@ -29,6 +30,7 @@ type Props = {
   children?: any
   imgContainerStyle?: React.CSSProperties
   imgStyle?: React.CSSProperties
+  contentConfig?: contentConfig_i
 }
 /**
  * ## contentContainer
@@ -67,52 +69,60 @@ export default (props: Props) => {
         )}
       </div>
       <div // contentContainer
-        className={`
-        ${styles.contentContainer} 
-        ${
-          props.config?.desktopContentOnLeft
-            ? styles.contentContainerLeft
-            : styles.contentContainerRight
-        }`}
+        className={styles.contentContainer}
+        style={
+          {
+            //backgroundColor: "red",
+          }
+        }
       >
-        {props.content ? (
-          <div style={{ maxWidth: 350 }}>
-            <h1>{props.content.heading}</h1>
-            {props.content.subHeading && <h5>{props.content.subHeading}</h5>}
-            <p
-              style={{
-                marginTop: "1rem",
-              }}
-            >
-              {props.content.text}
-            </p>
-            {props.content.button && (
-              <button
+        <ContainerType1
+          contentConfig={props.contentConfig}
+          contentContainerClassName={
+            props.config?.desktopContentOnLeft
+              ? styles.ContainerType1InnerLeft
+              : styles.ContainerType1InnerRight
+          }
+        >
+          {props.content ? (
+            <div style={{}}>
+              <h1>{props.content.heading}</h1>
+              {props.content.subHeading && <h5>{props.content.subHeading}</h5>}
+              <p
                 style={{
-                  backgroundColor: appColors.black_1,
-                  height: 50,
-                  borderRadius: props.config?.roundedCornersOnImgAndButton
-                    ? 50
-                    : 0,
-                  overflow: "hidden",
-                  marginTop: "2rem",
+                  marginTop: "1rem",
                 }}
               >
-                <h3
+                {props.content.text}
+              </p>
+              {props.content.button && (
+                <button
                   style={{
-                    textAlign: "center",
-                    color: "#ffffff",
-                    margin: "0px 20px",
+                    backgroundColor: appColors.black_1,
+                    height: 50,
+                    borderRadius: props.config?.roundedCornersOnImgAndButton
+                      ? 50
+                      : 0,
+                    overflow: "hidden",
+                    marginTop: "2rem",
                   }}
                 >
-                  {props.content.button.text}
-                </h3>
-              </button>
-            )}
-          </div>
-        ) : (
-          props.children
-        )}
+                  <h3
+                    style={{
+                      textAlign: "center",
+                      color: "#ffffff",
+                      margin: "0px 20px",
+                    }}
+                  >
+                    {props.content.button.text}
+                  </h3>
+                </button>
+              )}
+            </div>
+          ) : (
+            props.children
+          )}
+        </ContainerType1>
       </div>
     </div>
   )

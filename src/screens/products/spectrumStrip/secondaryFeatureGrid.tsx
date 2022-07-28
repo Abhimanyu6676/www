@@ -1,9 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
+import { ContainerType1 } from "../../../components/common/containerType1"
 import * as styles from "./secondaryFeatureGrid.module.scss"
 
-type Props = {}
+type Props = {
+  containerStyle?: React.CSSProperties
+}
 export const SecondaryFeatureGrid = (props: Props) => {
   const imageData = useStaticQuery(graphql`
     query {
@@ -56,13 +58,13 @@ export const SecondaryFeatureGrid = (props: Props) => {
   `)
 
   return (
-    <div className="--container">
-      <div
-        className={styles.wrapper}
-        style={{
-          marginBottom: "5rem",
-        }}
-      >
+    <div
+      className="--container"
+      style={{
+        ...props.containerStyle,
+      }}
+    >
+      <div className={styles.wrapper} style={{}}>
         <ContainerType1 //control-from-anywhere
           containerClassName={styles.item1}
           backgroundImg={imageData.controlFromAnywhere}
@@ -149,70 +151,6 @@ export const SecondaryFeatureGrid = (props: Props) => {
             </p>
           </div>
         </ContainerType1>
-      </div>
-    </div>
-  )
-}
-
-interface ContainerType1_props {
-  containerStyle?: React.CSSProperties
-  containerClassName?: any
-  backgroundImg?: any
-  imgStyle?: React.CSSProperties
-  imgInnerStyle?: React.CSSProperties
-  children?: any
-  backgroundConfig?: {
-    radius?: number
-  }
-  contentContainerStyle?: React.CSSProperties
-  contentConfig?: {
-    /** @default top */
-    yAlign?: "top" | "bottom"
-    /** @default left */
-    xAlign?: "right" | "left"
-  }
-}
-const ContainerType1 = (props: ContainerType1_props) => {
-  return (
-    <div
-      className={props.containerClassName}
-      style={{
-        width: "100%",
-        height: "100%",
-        overflow: "hidden",
-        position: "relative",
-        borderRadius: props.backgroundConfig?.radius,
-        ...props.containerStyle,
-      }}
-    >
-      <GatsbyImage
-        image={props.backgroundImg.childImageSharp.gatsbyImageData}
-        style={{
-          width: "100%",
-          height: "100%",
-          ...props.imgStyle,
-          borderRadius: props.backgroundConfig?.radius,
-        }}
-        imgStyle={{
-          ...props.imgInnerStyle,
-          borderRadius: props.backgroundConfig?.radius,
-        }}
-        alt=""
-      />
-      <div // content container
-        style={{
-          position: "absolute",
-          top: props.contentConfig?.yAlign == "bottom" ? "unset" : 0,
-          bottom: props.contentConfig?.yAlign == "bottom" ? 0 : "unset",
-          left: props.contentConfig?.xAlign == "right" ? "unset" : 0,
-          right: props.contentConfig?.xAlign == "right" ? 0 : "unset",
-          zIndex: 1,
-          //backgroundColor: "red",
-          borderRadius: props.backgroundConfig?.radius,
-          ...props.contentContainerStyle,
-        }}
-      >
-        {props.children}
       </div>
     </div>
   )

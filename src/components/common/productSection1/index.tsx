@@ -116,7 +116,7 @@ const baseProduct: product_i = {
 }
 
 type Props = {
-  style?: React.CSSProperties
+  containerStyle?: React.CSSProperties
   product?: product_i
 }
 export const ProductSection1 = ({ product = baseProduct, ...props }: Props) => {
@@ -174,8 +174,7 @@ export const ProductSection1 = ({ product = baseProduct, ...props }: Props) => {
       style={{
         position: "relative",
         display: "flex",
-        padding: "50px 0px",
-        ...props.style,
+        ...props.containerStyle,
       }}
       className={styles.container}
     >

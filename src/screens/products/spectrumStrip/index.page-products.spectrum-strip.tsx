@@ -14,10 +14,26 @@ const SpstComp = (props: Props) => {
   return (
     <div>
       <HeaderFooterCover>
-        <ProductSection1 />
-        <SpectrumStripFeatureSection />
-        <SecondaryFeatureGrid />
-        <SwitchSection />
+        <ProductSection1
+          containerStyle={{
+            marginTop: "5rem",
+          }}
+        />
+        <SpectrumStripFeatureSection
+          containerStyle={{
+            marginTop: "5rem",
+          }}
+        />
+        <SecondaryFeatureGrid
+          containerStyle={{
+            marginTop: "5rem",
+          }}
+        />
+        <SwitchSection
+          containerStyles={{
+            marginTop: "5rem",
+          }}
+        />
         <SPSTReviewSection />
         <Subscribe />
       </HeaderFooterCover>

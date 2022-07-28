@@ -27,12 +27,15 @@ const slides: slide_i[] = [
   {
     heading: "Lorem ipsum heading!",
     text: "Let smart strip bring you to any scene experience that beyond your imagination.",
-    buttonText: "Forrest Mode",
+    buttonText: "Forest Mode",
     styleClass: styles.button2,
   },
 ]
 
-export const SwitchSection = () => {
+interface Props {
+  containerStyles?: React.CSSProperties
+}
+export const SwitchSection = (props: Props) => {
   const [currSlideIndex, setCurrSlideIndex] = useState(0)
   const imgData = useStaticQuery(graphql`
     query {
@@ -57,7 +60,10 @@ export const SwitchSection = () => {
     }
   `)
   return (
-    <div className={styles.switchSectionContainer}>
+    <div
+      className={styles.switchSectionContainer}
+      style={{ ...props.containerStyles }}
+    >
       <GatsbyImageTransition
         imgArray={imgData.switch1.edges}
         index={currSlideIndex}

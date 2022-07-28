@@ -6,7 +6,7 @@ type Props = {}
 export const HomePageProductSection = (props: Props) => {
   return (
     <ProductSection1
-      style={{
+      containerStyle={{
         backgroundColor: appColors.backgrounds.greyLight,
       }}
     />
