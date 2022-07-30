@@ -8,8 +8,8 @@ export default (props: {
   children?: any
   headerStyle?: React.CSSProperties
   transparentHeader?: boolean
-  helmetConfig?: {
-    title?: string
+  helmetConfig: {
+    title: string
     description?: string
     themeColor?: string
   }

@@ -1,6 +1,8 @@
 import React from "react"
+import { ProductSection1 } from "../../components/common/productSection1"
 import { Subscribe } from "../../components/common/subscribe"
 import HeaderFooterCover from "../../components/layouts/HeaderFooterCover"
+import appColors from "../../styles/appColors"
 import { AudienceSection } from "./audienceSection"
 import { FeaturesSection } from "./featuresSection"
 import { HomePageHeroSection } from "./heroSection"
@@ -21,11 +23,25 @@ export default (props: Props) => {
       }}
       transparentHeader={true}
       helmetConfig={{
-        title: "huelite.in",
+        title: "/",
       }}
     >
       <HomePageHeroSection />
-      <HomePageProductSection />
+      <div
+        style={{
+          paddingTop: "5rem",
+          paddingBottom: "2.5rem",
+          backgroundColor: appColors.backgrounds.greyLight,
+        }}
+      >
+        <ProductSection1
+          containerStyle={{}}
+          buyButtonConf={{
+            id: "AMZ_BUY_BUTTON_homepage",
+            link: "https://www.amazon.in/s?me=ADEJJYXA274FU&ref=sf_seller_app_share_new",
+          }}
+        />
+      </div>
       <FeaturesSection />
       <AudienceSection />
       <Subscribe />

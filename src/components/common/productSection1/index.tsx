@@ -10,8 +10,7 @@ import globalStyles from "../../../styles/globalStyles"
 import * as styles from "./index.module.css"
 
 interface offer_i {
-  offerValue: number
-  offerString?: string
+  offerString: string
 }
 interface specs_i {
   specHeading: string
@@ -70,17 +69,25 @@ const baseProduct: product_i = {
       spec: "1100+ Lumens per meter",
     },
     {
+      specHeading: "Standby Power",
+      spec: "0.3 Watt",
+    },
+    {
       specHeading: "Working Hours",
       spec: "50,000 hours",
+    },
+    {
+      specHeading: "Warranty",
+      spec: "1 year warranty + Lifetime Tech support",
     },
   ],
   variants: [
     {
       variantName: "5 mtr",
       varientCode: "SPST_5M",
-      price: 1999,
+      price: 1399,
       offer: {
-        offerValue: 300,
+        offerString: "Buy now & get upto Rs-50 off",
       },
       specs: [
         {
@@ -92,10 +99,6 @@ const baseProduct: product_i = {
           spec: "14.4 Watt at full brightness",
         },
         {
-          specHeading: "Standby Power",
-          spec: "0.3 Watt",
-        },
-        {
           specHeading: "Contains",
           spec: "1 x 5m of LED lightstrip + controller + power supply",
         },
@@ -104,11 +107,22 @@ const baseProduct: product_i = {
     {
       variantName: "10 mtr",
       varientCode: "SPST_10M",
-      price: 2999,
+      price: 2849,
+      offer: {
+        offerString: "Buy now & get upto Rs-100 off",
+      },
       specs: [
         {
           specHeading: "Length",
           spec: "10 Meter",
+        },
+        {
+          specHeading: "Wattage",
+          spec: "28.8 Watt at full brightness",
+        },
+        {
+          specHeading: "Contains",
+          spec: "2 x 5m of LED lightstrip + controller(dual output-single channel) + power supply",
         },
       ],
     },
@@ -118,7 +132,18 @@ const baseProduct: product_i = {
 type Props = {
   containerStyle?: React.CSSProperties
   product?: product_i
+  buyButtonConf: {
+    link: string
+    id?: string
+  }
 }
+/**
+ *
+ * @param amazinLinkConf for amazon buy button configuration
+ *
+ * @default buyButton ID = `BUY_BUTTON_DEFAULT`
+ *
+ */
 export const ProductSection1 = ({ product = baseProduct, ...props }: Props) => {
   const data = useStaticQuery(graphql`
     query {
@@ -243,42 +268,45 @@ export const ProductSection1 = ({ product = baseProduct, ...props }: Props) => {
                 fontFamily: "Ubuntu",
               }}
             >
-              {product.variants[currVariant].offer?.offerString
-                ? product.variants[currVariant].offer?.offerString
-                : `Buy now & get Rs${product.variants[currVariant].offer?.offerValue} off`}
+              {product.variants[currVariant].offer?.offerString}
             </h6>
           )}
         </div>
         <div // Add to cart section
           style={{
-            backgroundColor: "red",
+            //backgroundColor: "red",
             marginTop: 30,
           }}
         >
-          <a href="https://www.amazon.in/s?me=ADEJJYXA274FU&ref=sf_seller_app_share_new">
-            <button
+          <a // amazon Buy button
+            target="_blank"
+            href={props.buyButtonConf?.link}
+            id={
+              props.buyButtonConf?.id
+                ? props.buyButtonConf.id
+                : "BUY_BUTTON_DEFAULT"
+            }
+            style={{
+              height: 50,
+              width: "100%",
+              backgroundColor: "#000",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <h3 style={{ color: "#fff", textAlign: "center" }}>
+              Buy from amazon
+            </h3>
+            <GatsbyImage
+              image={getImage(data.amazon_marketplace_icon)}
               style={{
-                height: 50,
-                width: "100%",
-                backgroundColor: "#000",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
+                width: 30,
+                height: 30,
+                marginLeft: 20,
               }}
-            >
-              <h3 style={{ color: "#fff", textAlign: "center" }}>
-                Buy from amazon
-              </h3>
-              <GatsbyImage
-                image={getImage(data.amazon_marketplace_icon)}
-                style={{
-                  width: 30,
-                  height: 30,
-                  marginLeft: 20,
-                }}
-              />
-            </button>
+            />
           </a>
         </div>
 

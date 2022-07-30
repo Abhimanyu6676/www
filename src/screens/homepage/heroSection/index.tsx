@@ -13,7 +13,7 @@ const slides = [
   {
     id: 1,
     heading: "Lights for content creators",
-    text: "Wow, your audience with captivating visuals through endless color options, with a massive range of effects.",
+    text: "Wow, your audience with captivating visuals through endless color options, with a massive range of effects",
     slideName: "Studio",
   },
   {

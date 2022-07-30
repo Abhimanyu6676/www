@@ -95,13 +95,14 @@ export const SwitchSection = (props: Props) => {
             marginTop: "2rem",
           }}
         >
-          <h1>{slides[currSlideIndex].heading}</h1>
+          <h1>Create your own colorful Lighting experience</h1>
           <p
             style={{
-              marginTop: "0.5rem",
+              marginTop: "1rem",
             }}
           >
-            {slides[currSlideIndex].text}
+            Let smart strip bring you to any scene experience that beyond your
+            imagination.
           </p>
         </div>
         <div // button grid container

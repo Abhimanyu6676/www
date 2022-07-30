@@ -12,32 +12,38 @@ import { Subscribe } from "../../../components/common/subscribe"
 type Props = {}
 const SpstComp = (props: Props) => {
   return (
-    <div>
-      <HeaderFooterCover>
-        <ProductSection1
-          containerStyle={{
-            marginTop: "5rem",
-          }}
-        />
-        <SpectrumStripFeatureSection
-          containerStyle={{
-            marginTop: "5rem",
-          }}
-        />
-        <SecondaryFeatureGrid
-          containerStyle={{
-            marginTop: "5rem",
-          }}
-        />
-        <SwitchSection
-          containerStyles={{
-            marginTop: "5rem",
-          }}
-        />
-        <SPSTReviewSection />
-        <Subscribe />
-      </HeaderFooterCover>
-    </div>
+    <HeaderFooterCover
+      helmetConfig={{
+        title: "products/spectrum-strip",
+      }}
+    >
+      <ProductSection1
+        containerStyle={{
+          marginTop: "5rem",
+        }}
+        buyButtonConf={{
+          id: "AMZ_BUY_BUTTON_products/spectrum-strip",
+          link: "https://www.amazon.in/s?me=ADEJJYXA274FU&ref=sf_seller_app_share_new",
+        }}
+      />
+      <SpectrumStripFeatureSection
+        containerStyle={{
+          marginTop: "5rem",
+        }}
+      />
+      <SecondaryFeatureGrid
+        containerStyle={{
+          marginTop: "5rem",
+        }}
+      />
+      <SwitchSection
+        containerStyles={{
+          marginTop: "5rem",
+        }}
+      />
+      <SPSTReviewSection />
+      <Subscribe />
+    </HeaderFooterCover>
   )
 }
 
