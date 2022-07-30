@@ -14,8 +14,7 @@
     "serve": "gatsby serve -H 0.0.0.0 -p 8000",
     "clean": "gatsby clean",
     "deploySshCommands": "simple-ssh-commands",
-    "deploy": "npm run build && npm run publish",
-    "publish": "zip -r build.zip public/ && scp ./build.zip root@huelite.in:/var/www && npm run deploySshCommands"
+    "publish":"bash npm-scripts/publish.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",

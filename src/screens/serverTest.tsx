@@ -147,13 +147,13 @@ export default (props: Props) => {
 
   const check = async () => {
     if (checkBusy) {
-      //console.log("check already running")
+      console.log("check already running")
     } else {
       setCheckBusy(true)
-      //console.log("check function")
-      //await checkCustomServer()
-      //await checkGraphqlServer()
-      //await checkMailServer()
+      console.log("check function")
+      await checkCustomServer()
+      await checkGraphqlServer()
+      await checkMailServer()
       await checkAlexaServer()
       setCheckBusy(false)
     }
