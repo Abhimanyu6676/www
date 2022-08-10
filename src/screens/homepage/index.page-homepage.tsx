@@ -6,7 +6,6 @@ import appColors from "../../styles/appColors"
 import { AudienceSection } from "./audienceSection"
 import { FeaturesSection } from "./featuresSection"
 import { HomePageHeroSection } from "./heroSection"
-import { HomePageProductSection } from "./homePageProductSection"
 
 type Props = {}
 
@@ -23,7 +22,9 @@ export default (props: Props) => {
       }}
       transparentHeader={true}
       helmetConfig={{
-        title: "/",
+        title: "www.huelite.in/",
+        description:
+          "Wi-Fi Controlled Smart Lighting 💡📲, The Best Smart Lights Ever 🔥 Level up your Work From Home experience",
       }}
     >
       <HomePageHeroSection />

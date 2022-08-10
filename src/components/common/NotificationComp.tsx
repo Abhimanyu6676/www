@@ -13,6 +13,7 @@ export interface notifications_i {
 type Props = {
   notifications: notifications_i[]
   removeNotification?: (removeNotificationProps: { id: number }) => void
+  containerStyles?: React.CSSProperties
 }
 /**
  * @description returns an absolute notification container
@@ -23,6 +24,7 @@ type Props = {
 export const NotificationComp = ({
   notifications,
   removeNotification,
+  containerStyles,
 }: Props) => {
   useEffect(() => {
     const itrl = setInterval(() => {
@@ -45,11 +47,12 @@ export const NotificationComp = ({
     <div // notifications container
       style={{
         position: "absolute",
+        top: 0,
+        left: 0,
         width: "100%",
-        maxWidth: 400,
-        bottom: 0,
-        right: 0,
-        padding: "0vw 5vw 10px 5vw",
+        padding: "20px 5vw",
+        zIndex: 10,
+        ...containerStyles,
       }}
     >
       {notifications.map((notificationItem, notificationItemIndex) => {

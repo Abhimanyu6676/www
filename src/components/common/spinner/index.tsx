@@ -16,8 +16,8 @@ export const Spinner = (props: Props) => {
   return (
     <div
       style={{
-        width: props.radius ? props.radius : "100%",
-        height: props.radius ? props.radius : "100%",
+        width: props.radius ? props.radius : 25,
+        height: props.radius ? props.radius : 25,
       }}
     >
       <svg

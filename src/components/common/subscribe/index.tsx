@@ -1,6 +1,5 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
-import Button from "../../Button"
 import { NotificationComp, notifications_i } from "../NotificationComp"
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 import { Spinner } from "../spinner"
@@ -175,6 +174,9 @@ export const Subscribe = (props: Props) => {
       </div>
 
       <NotificationComp
+        containerStyles={{
+          maxWidth: 400,
+        }}
         notifications={notifications}
         removeNotification={({ id: removeID }) => {
           setNotifications(notifications.filter(temp => temp.id != removeID))

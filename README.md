@@ -9,19 +9,30 @@
 
 This project uses gatsby static stie generator.
 
-## 🚀 Quick start
+## web page nomenclature and terminology
 
-1.  **Publish website**
+1. `new-web-page` nomenclature - {$filename}.page-{$route-nomenclature}]
 
-    ```shell
-    # run gatsby build & push the`/public` folder content to server `var/www/`
-    npm run deploy
-    ```
+2. `Comp` a Component. following rule#1
 
-2.  **Start developing.**
+3. `route-nomenclature` - {$any-prefix}.page-products.spectrum-strip.{$extension} will be available at url - ${domain}/products/spectrum-strip].
+   - page path is extracted from page filename. words after `{$any-prefix}.page-` are grabbed as path/url
+   - `.'s` after `page-` are converted to `/`
 
-    Navigate into the project directory and start it up.
+### creating new website page
 
-    ```shell
-    npm run develop
-    ```
+new pages are created in `gatsby-node.js` by dynamic CMS query.
+
+To simply create a new web page - create a page with nomenclature#1 & rule#1
+
+## rules
+
+1. all `Comp` components should started with Capital first letter.[If possible Use camel casing]
+
+## notes
+
+1. all pages should export a const component as default with first letter capital (as in /ga-auth/index.page-ga.auth.tsx)
+
+2. all components should start with Capital letter
+
+3. no default exports directly. [default exports can be achieved by exporting a component in combination of a const Com]
