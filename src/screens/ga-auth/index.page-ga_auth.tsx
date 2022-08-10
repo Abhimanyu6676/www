@@ -1,17 +1,16 @@
-import { graphql, useStaticQuery } from "gatsby"
-import { useQueryParam, StringParam } from "use-query-params"
-import React, { useEffect, useState } from "react"
-import GoogleConsent from "./googleConsent"
-import { FadeInSection } from "../../components/common/fadeInSection"
 import LinkIcon from "@mui/icons-material/Link"
-import Img from "gatsby-image"
 import Axios from "axios"
-import { Spinner } from "../../components/common/spinner"
-import { FullScreen } from "../../components/layouts/FullScreen"
+import { graphql, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
+import React, { useEffect, useState } from "react"
+import { StringParam, useQueryParam } from "use-query-params"
+import { FadeInSection } from "../../components/common/fadeInSection"
 import {
   NotificationComp,
   notifications_i,
 } from "../../components/common/NotificationComp"
+import { Spinner } from "../../components/common/spinner"
+import { FullScreen } from "../../components/layouts/FullScreen"
 
 interface Props {}
 
