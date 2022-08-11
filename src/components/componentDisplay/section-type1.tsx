@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import SectionType1 from "../common/sectionType1"
+import { FullScreen } from "../layouts/FullScreen"
 
 type Props = {}
 
@@ -25,23 +26,34 @@ export default (props: Props) => {
   `)
 
   return (
-    <>
-      <SectionType1
-        srcSetImgs={{
-          img: imgData.gaming,
-          img_sm: imgData.gaming_sm,
+    <FullScreen
+      style={{
+        backgroundColor: "#00ffff33",
+      }}
+    >
+      <div
+        style={{
+          margin: "100px 10%",
+          backgroundColor: "#ffffff",
         }}
-        content={{
-          heading: "Working from home?",
-          text: "Set up Schedules to help keep a routine throughout the day,",
-          text2:
-            "or connect your lights to apps and receive light notifications when a meeting is coming up, when the weather changes, and more.",
-          button: {
-            text: "Learn More",
-            link: "/pages/work-from-home",
-          },
-        }}
-      />
-    </>
+      >
+        <SectionType1
+          srcSetImgs={{
+            img: imgData.gaming,
+            img_sm: imgData.gaming_sm,
+          }}
+          content={{
+            heading: "Working from home?",
+            text: "Set up Schedules to help keep a routine throughout the day,",
+            text2:
+              "or connect your lights to apps and receive light notifications when a meeting is coming up, when the weather changes, and more.",
+            button: {
+              text: "Learn More",
+              link: "/pages/work-from-home",
+            },
+          }}
+        />
+      </div>
+    </FullScreen>
   )
 }

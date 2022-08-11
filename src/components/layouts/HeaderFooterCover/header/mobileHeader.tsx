@@ -37,9 +37,10 @@ export const MobileHeader = (props: Props) => {
           alignItems: "center",
           flex: 1,
           padding: "0px 10px",
-          boxShadow: props.transparent
+          borderBottom: props.transparent ? "none" : "1px solid #dddddd",
+          /* boxShadow: props.transparent
             ? "unset"
-            : "0px 4px 8px 0px rgba(143,143,143,0.75)",
+            : "0px 4px 8px 0px rgba(143,143,143,0.75)", */
         }}
       >
         <Button

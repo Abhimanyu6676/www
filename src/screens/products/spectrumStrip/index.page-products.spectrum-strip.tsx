@@ -19,7 +19,7 @@ const SpstComp = (props: Props) => {
     >
       <ProductSection1
         containerStyle={{
-          marginTop: "5rem",
+          marginTop: "4rem",
         }}
         buyButtonConf={{
           id: "AMZ_BUY_BUTTON_products/spectrum-strip",
