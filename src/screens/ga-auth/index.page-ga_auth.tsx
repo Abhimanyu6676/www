@@ -91,7 +91,7 @@ const GoogleLinkingForm = () => {
       )
 
       let serverAdd = `https://huelite.in/${
-        process.env.NODE_ENV == "development" ? "development" : "backend"
+        clientID?.includes("dev") ? "development" : "backend"
       }/ga/auth`
 
       let res = await Axios.post(
@@ -190,7 +190,23 @@ const GoogleLinkingForm = () => {
             marginTop: 25,
           }}
         >
-          <h2>Link your account</h2>
+          <h2
+            style={{
+              textAlign: "center",
+              margin: "0px 5vw",
+            }}
+          >
+            Huelite
+          </h2>
+          <p
+            style={{
+              textAlign: "center",
+              margin: "0px 5vw",
+              marginTop: "1rem",
+            }}
+          >
+            By signing in, you are authorizing Google to control your devices
+          </p>
 
           <div // link images container
             style={{
@@ -199,7 +215,7 @@ const GoogleLinkingForm = () => {
               justifyContent: "center",
               alignItems: "center",
               height: "fit-content",
-              marginTop: "5rem",
+              marginTop: "2rem",
             }}
           >
             <Img
@@ -226,16 +242,25 @@ const GoogleLinkingForm = () => {
             width: "100%",
           }}
         >
+          {/*  <p
+            style={{
+              textAlign: "center",
+              maxWidth: 300,
+            }}
+          >
+            SignIn using your HUElite account Email-ID & password
+          </p> */}
           <input
             placeholder="Email"
             style={{
-              height: 40,
+              height: 50,
               borderWidth: 0,
               borderBottomWidth: 1,
               width: "90%",
               marginLeft: 20,
               marginRight: 20,
               maxWidth: 400,
+              //marginTop: "1rem",
             }}
             value={email}
             onChange={event => {
@@ -245,7 +270,7 @@ const GoogleLinkingForm = () => {
           <input
             placeholder="Password"
             style={{
-              height: 40,
+              height: 50,
               borderWidth: 0,
               borderBottomWidth: 1,
               width: "90%",
@@ -267,7 +292,7 @@ const GoogleLinkingForm = () => {
             style={{
               padding: "10px 20px",
               margin: 20,
-              marginTop: 50,
+              marginTop: "5rem",
               backgroundColor: "#31c4f3",
               display: "flex",
               height: 40,
