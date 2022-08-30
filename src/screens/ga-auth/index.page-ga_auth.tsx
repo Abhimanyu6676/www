@@ -190,6 +190,7 @@ const GoogleLinkingForm = () => {
             marginTop: 25,
           }}
         >
+          <Img fluid={data.icon.childImageSharp.fluid} style={{ width: 100 }} />
           <h2
             style={{
               textAlign: "center",
@@ -208,7 +209,7 @@ const GoogleLinkingForm = () => {
             By signing in, you are authorizing Google to control your devices
           </p>
 
-          <div // link images container
+          {/*   <div // link images container
             style={{
               display: "flex",
               flexDirection: "row",
@@ -230,7 +231,7 @@ const GoogleLinkingForm = () => {
               fluid={data.googleAssistantIcon.childImageSharp.fluid}
               style={{ width: 80, marginLeft: 20 }}
             />
-          </div>
+          </div> */}
         </div>
         <div /// login form
           style={{
